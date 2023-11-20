@@ -25,6 +25,8 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&family=Poppins:wght@400;500;600;700&display=swap"
     rel="stylesheet">
+    <script src="assets/js/firebasedb.js"></script>
+
 </head>
 
 <body>
@@ -34,7 +36,64 @@
   -->
 
   <header >
-    <section class="cta">
+     <div class="header-top">
+      <div class="container">
+
+        <ul class="header-top-list">
+
+          <li>
+            <a href="mailto:info@homeverse.com" class="header-top-link">
+              <ion-icon name="mail-outline"></ion-icon>
+              
+
+              <span>info@baseta.com</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="header-top-link">
+              <ion-icon name="location-outline"></ion-icon>
+              <address>105/A, Maadi Tower, MAADI</address>
+            </a>
+          </li>
+
+        </ul>
+
+        <div class="wrapper">
+          <ul class="header-top-social-list">
+
+            <li>
+              <a href="#" class="header-top-social-link">
+                <ion-icon name="logo-facebook"></ion-icon>
+              </a>
+            </li>
+
+            <li>
+              <a href="#" class="header-top-social-link">
+                <ion-icon name="logo-twitter"></ion-icon>
+              </a>
+            </li>
+
+            <li>
+              <a href="#" class="header-top-social-link">
+                <ion-icon name="logo-instagram"></ion-icon>
+              </a>
+            </li>
+
+            <li>
+              <a href="#" class="header-top-social-link">
+                <ion-icon name="logo-pinterest"></ion-icon>
+              </a>
+            </li>
+
+          </ul>
+
+          <button class="header-top-btn">STAFF</button>
+        </div>
+
+      </div>
+    </div>
+    <!-- <section class="cta">
       <div class="container">
 
         <div class="cta-card">
@@ -52,7 +111,7 @@
         </div>
 
       </div>
-    </section>
+    </section> -->
 
 
   </header>
@@ -85,7 +144,9 @@
               Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.
             </p>
 
-            <button class="btn">Make An Enquiry</button>
+            <button class="btn" id="setDataButton">Make An Enquiry</button>
+            <button id="setDataButton">Set Data to Firebase</button>
+
 
           </div>
 
