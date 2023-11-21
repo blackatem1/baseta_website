@@ -49,3 +49,10 @@ window.addEventListener("scroll", function () {
   window.scrollY >= 400 ? header.classList.add("active")
     : header.classList.remove("active");
 }); 
+
+
+
+
+function change_page(){
+  window.location.href = "login/login.html";
+} 
