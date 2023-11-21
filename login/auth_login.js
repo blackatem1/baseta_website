@@ -1,4 +1,5 @@
 // JavaScript code (script.js)
+document.addEventListener('DOMContentLoaded', function() {
 
 // Retrieve the form element
 const loginForm = document.getElementById('login-form');
@@ -18,9 +19,15 @@ loginForm.addEventListener('submit', function(event) {
   }
 
   // Perform any additional validation or processing here
+  firebase.auth()
+  .signInWithEmailAndPassword(document.getElementById('email-input').value,document.getElementById('password-input').value)
+  .then((result) => {
+    window.location.replace("../dashboard/dashboard.html")
+  }).catch((error) => {
+    alert("Error: there is error with email or the password")
+  });
 
-  // If all validation passes, you can proceed with user authentication or other actions
-  alert('Login successful!');
+
   // Add code here to redirect the user to another page or perform other actions
 });// JavaScript code (script.js)
 
@@ -88,3 +95,14 @@ function switchScreen(screen) {
 
 // By default, display the login screen
 switchScreen('login');
+
+
+
+function login() {
+  // alert(emailq+passwordq)
+
+document.getElementById("login-btn").onclick = login();
+
+}
+}
+)

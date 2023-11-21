@@ -9,14 +9,11 @@ const firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
-
+// const auth = firebase.auth();
 function get(gets) {
   db.collection(gets).get().then((querySnapshot) => {
     displayPropertyCards(querySnapshot)
-});
-  
-}
-
+});}
 
 function sett() {
   db.collection("employee").set({
@@ -87,7 +84,7 @@ function displayPropertyCards(querySnapshot) {
     cardContent.classList.add("card-content");
     cardContent.innerHTML = `
       <div class="card-price">
-        <strong>${propertyData.price}</strong>/Month
+        <strong>${propertyData.price}</strong>/${propertyData.typeofunit === 'rent' ? 'Month' : 'total price'}
       </div>
       <h3 class="h3 card-title">
         <a href="#">${propertyData.title}</a>
