@@ -1195,7 +1195,12 @@ button, a { transition: var(--transition); }
 }
 
 
+@media (max-width: 767px) {
 
+  .footer{
+    margin-bottom: 0 !important;
+  }
+}
 
 
 /**
