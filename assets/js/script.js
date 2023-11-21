@@ -30,12 +30,12 @@ for (let i = 0; i < navbarLinks.length; i++) { navElemArr.push(navbarLinks[i]); 
  * addd event on all elements for toggling navbar
  */
 
-for (let i = 0; i < navElemArr.length; i++) {
-  navElemArr[i].addEventListener("click", function () {
-    elemToggleFunc(navbar);
-    elemToggleFunc(overlay);
-  });
-}
+// for (let i = 0; i < navElemArr.length; i++) {
+//   navElemArr[i].addEventListener("click", function () {
+//     elemToggleFunc(navbar);
+//     elemToggleFunc(overlay);
+//   });
+// }
 
 
 
