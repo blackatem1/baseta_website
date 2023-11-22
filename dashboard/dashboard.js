@@ -1,17 +1,18 @@
-$(document).ready( function() {
-  
-    $('body').on("click", ".larg div h3", function(){
-      if ($(this).children('span').hasClass('close')) {
-        $(this).children('span').removeClass('close');
-      }
-      else {
-        $(this).children('span').addClass('close');
-      }
-      $(this).parent().children('p').slideToggle(250);
-    });
-    
-    $('body').on("click", "nav ul li a", function(){
-      var title = $(this).data('title');
-      $('.title').children('h2').html(title);
-    });
-  });
+
+  function toggleContent(showId, hideId) {
+    var showContent = document.getElementsByClassName(showId);
+    var hideContent = document.getElementsByClassName(hideId);
+  //  console.log( document.getElementsByClassName("theprop").innerHTML);
+    if (showId == "larg") {
+      document.getElementsByClassName("theprop")[0].innerText = "Add Projects";
+    }else{
+      document.getElementsByClassName("theprop")[0].innerText = "All Projects";
+    }
+    for (var i=0;i<showContent.length;i+=1){
+      showContent[i].style.display = 'block';
+    }
+    for (var i=0;i<hideContent.length;i+=1){
+      hideContent[i].style.display = 'none';
+    }
+
+  }

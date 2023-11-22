@@ -4,7 +4,15 @@
     --second-text-color: #bbbec5;
     --second-bg-color: #c1efde;
   }
-  
+  .mb-3{
+    padding: 25px !important; 
+  }
+  .vblock{
+    display: block;
+  }
+  .vnone{
+    display: none;
+  }
   .primary-text {
     color: var(--main-text-color);
   }
@@ -92,8 +100,7 @@
     #wrapper.toggled #sidebar-wrapper {
       margin-left: -15rem;
     }
-  }@import url(http://weloveiconfonts.com/api/?family=entypo);
-  @import url(https://fonts.googleapis.com/css?family=Muli);
+  }
   
   body {
     display: -webkit-box;

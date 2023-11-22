@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class="norm">
 <head>
   <title>Login</title>
   <script src="https://www.gstatic.com/firebasejs/10.6.0/firebase-app-compat.js"></script>
@@ -8,9 +8,26 @@
   
   <script src="/assets/js/firebasedb.js"></script>
   <link rel="stylesheet" href="login.css"> 
+  <link rel="stylesheet" href="loadingpage\loadingbar.css">
 
 </head>
 <body>
+    <div class="center" style="display: none;">
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+      </div>
+
+
+
+
   <div class="login-container">
     <h1>Welcome to dashboard</h1>
     <form id="login-form">
@@ -22,5 +39,4 @@
   <script src="auth_login.js"></script>
 </body>
 </html>
-
 </div>

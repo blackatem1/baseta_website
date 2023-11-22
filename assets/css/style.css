@@ -748,14 +748,29 @@ button, a { transition: var(--transition); }
 }
 
 .property-card .card-item span { margin-top: 5px; }
+.btn-wtsapp{
+  width: 20px !important;
+  height: 20px !important;
+}
+.whatsapp-btn{
+  background-color: #25D366;
+  border-color: #25D366;
 
-.card-footer {
-  padding: 15px;
+}
+.call-btn,.whatsapp-btn{
+  width: 45%;
+  text-align: center;
   display: flex;
-  flex-wrap: wrap-reverse;
-  justify-content: space-between;
   align-items: center;
-  gap: 15px;
+  justify-content: center;
+  gap: 5%;
+}
+.card-footer {
+
+  display: flex;
+
+  justify-content: space-evenly;
+
 }
 
 .card-author {

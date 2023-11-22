@@ -50,17 +50,12 @@ function displayPropertyCards(querySnapshot) {
   querySnapshot.forEach((doc) => {
     // Access data from each document
     const propertyData = doc.data();
-
-    // Create property card elements
-    const propertyCard = document.createElement("div");
-    propertyCard.classList.add("property-card");
-
-    // Create figure element for the card banner
-    const cardBanner = document.createElement("figure");
-    cardBanner.classList.add("card-banner");
+    const cardBanner = document.createElement("li");
     cardBanner.innerHTML = `
+    <div class="property-card">
+    <figure class="card-banner">
       <a href="#">
-        <img src="./assets/images/property-4.png" alt="image" class="w-100">
+        <img src="./assets/images/property-1.jpg" alt="New Apartment Nice View" class="w-100">
       </a>
       <div class="card-badge ${propertyData.typeofunit === 'rent' ? 'green' : 'blue'}">For ${propertyData.typeofunit}</div>
       <div class="banner-actions">
@@ -77,19 +72,17 @@ function displayPropertyCards(querySnapshot) {
           <span>2</span>
         </button>
       </div>
-    `;
-
-    // Create div for card content
-    const cardContent = document.createElement("div");
-    cardContent.classList.add("card-content");
-    cardContent.innerHTML = `
+    </figure>
+    <div class="card-content">
       <div class="card-price">
-        <strong>${propertyData.price}</strong>/${propertyData.typeofunit === 'rent' ? 'Month' : 'total price'}
+       <strong>${propertyData.price}</strong>/${propertyData.typeofunit === 'rent' ? 'Month' : 'total price'}
       </div>
       <h3 class="h3 card-title">
         <a href="#">${propertyData.title}</a>
       </h3>
-      <p class="card-text">${propertyData.description}</p>
+      <p class="card-text">
+      ${propertyData.description}
+      </p>
       <ul class="card-list">
         <li class="card-item">
           <strong>${propertyData.Bedrooms}</strong>
@@ -107,14 +100,16 @@ function displayPropertyCards(querySnapshot) {
           <span>Square Ft</span>
         </li>
       </ul>
-    `;
-
-    // Append the figure and content to the property card
-    propertyCard.appendChild(cardBanner);
-    propertyCard.appendChild(cardContent);
-
-    // Append the property card to the container
+    </div>
+    <div class="card-footer">
+    <button type="button" class="btn btn-primary call-btn"><ion-icon name="call-outline" class="btn-wtsapp"></ion-icon>  Call</button>
+      <button type="button" class="btn  whatsapp-btn"><ion-icon name="logo-whatsapp" class="btn-wtsapp"></ion-icon> Whatsapp</button>
+  </div>
+    </div>
+  </div>
+    `
     x= document.getElementsByClassName("property-list");
-    x[0].appendChild(propertyCard);
+    x[0].appendChild(cardBanner);
+
   });
 }
