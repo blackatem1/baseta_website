@@ -433,7 +433,6 @@ button, a { transition: var(--transition); }
 \*-----------------------------------*/
 
 .hero {
-  background: var(--cultured-2);
   padding-block: var(--section-padding);
 }
 
@@ -1421,7 +1420,6 @@ button, a { transition: var(--transition); }
 
   .hero .container {
     display: grid;
-    grid-template-columns: 1fr 1fr;
     align-items: center;
   }
 
@@ -1647,5 +1645,67 @@ button, a { transition: var(--transition); }
   .footer { --fs-5: 1rem; }
 
   .footer-link-box { flex-basis: 700px; }
+
+}
+a{
+  color: white !important;
+}
+.hero{
+  height: 75vh !important;
+  background-image: url(/assets/images/landing-background.jpg);
+  object-fit: cover;
+background-repeat: no-repeat;
+background-size: cover;
+display: flex !important;
+}
+.hero-tistle{
+  color: white;
+  font-size: 50px;
+  font-family: var(--ff-poppins);
+padding-bottom: 2%;
+text-align: center;  
+}
+.searchbar{
+  width: 80%;
+}
+.msh-cont{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  width: 100%;
+}
+.cont{
+  display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+.rentsandsales{
+  display: flex;
+}
+.btn-re{
+  border-radius: 10px;
+
+  margin: 1%;
+  padding: 1% 2% !important;
+}
+.btn-search{
+  margin: 1%;
+  padding: 1% 5% !important;
+  border-radius: 10px;
+}
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+.searchbarinput{
+  margin: 1%;
+  padding: 1.5% 2%;
+  border-radius: 10px;
+  width: 100%;
+  border: none;
+  text-align: start;
 
 }
