@@ -1652,7 +1652,7 @@ a{
 }
 .hero{
   height: 75vh !important;
-  background-image: url(/assets/images/landing-background.jpg);
+  background-image: url(./assets/images/landing-background.jpg);
   object-fit: cover;
 background-repeat: no-repeat;
 background-size: cover;
