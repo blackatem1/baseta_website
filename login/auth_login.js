@@ -20,10 +20,9 @@ loginForm.addEventListener('submit', function(event) {
     return;
   }
   
-  
+  const auth = firebase.auth();
   // Perform any additional validation or processing here
-  firebase.auth()
-  .signInWithEmailAndPassword(document.getElementById('email-input').value,document.getElementById('password-input').value)
+  auth.signInWithEmailAndPassword(document.getElementById('email-input').value,document.getElementById('password-input').value)
   .then((result) => {
     window.location.replace("../dashboard/dashboard.html")
   }).catch((error) => {
