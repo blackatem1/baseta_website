@@ -635,6 +635,7 @@ button, a { transition: var(--transition); }
 .property-card {
   border: 1px solid var(--alice-blue);
   box-shadow: var(--shadow-2);
+  padding-bottom: 2%;
 }
 
 .property-card .card-banner {

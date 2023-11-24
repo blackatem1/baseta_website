@@ -8,37 +8,24 @@ const firebaseConfig = {
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
-const db = firebase.firestore();
+var db = firebase.firestore();
 const auth = firebase.auth();
 function get(gets) {
   db.collection(gets).get().then((querySnapshot) => {
     displayPropertyCards(querySnapshot)
 });}
-
-function sett() {
-  db.collection("employee").set({
-  username: "blackatem",
-  password: "Lovelace",
-  })
-  .then((docRef) => {
-      console.log("Document written with ID: ", docRef.id);
-  })
-  .catch((error) => {
-      console.error("Error adding document: ", error);
-  });
-}
-
-
-
-
-
-
-
-
-
-
-
-
+// function sett() {
+//   db.collection("units").set({
+//   username: "blackatem",
+//   password: "Lovelace",
+//   })
+//   .then((docRef) => {
+//       console.log("Document written with ID: ", docRef.id);
+//   })
+//   .catch((error) => {
+//       console.error("Error adding document: ", error);
+//   });
+// }
 
 
 
@@ -52,10 +39,10 @@ function displayPropertyCards(querySnapshot) {
     const propertyData = doc.data();
     const cardBanner = document.createElement("li");
     cardBanner.innerHTML = `
-    <div class="property-card">
+    <div class="property-card" >
     <figure class="card-banner">
       <a href="#">
-        <img src="./assets/images/property-1.jpg" alt="New Apartment Nice View" class="w-100">
+        <img src=${propertyData.photos[0]} alt="New Apartment Nice View" class="w-100">
       </a>
       <div class="card-badge ${propertyData.typeofunit === 'rent' ? 'green' : 'blue'}">For ${propertyData.typeofunit}</div>
       <div class="banner-actions">
