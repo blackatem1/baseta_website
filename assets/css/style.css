@@ -1689,7 +1689,7 @@ a{
 .hero-tistle{
   color: white;
   font-size: 50px;
-  z-index: 999;
+  z-index: 999 !important;
   font-family: var(--ff-poppins);
 padding-bottom: 2%;
 text-align: center;  
