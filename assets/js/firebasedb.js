@@ -9,7 +9,7 @@ const firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
-// const auth = firebase.auth();
+const auth = firebase.auth();
 function get(gets) {
   db.collection(gets).get().then((querySnapshot) => {
     displayPropertyCards(querySnapshot)

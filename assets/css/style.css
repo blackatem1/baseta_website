@@ -1650,13 +1650,26 @@ button, a { transition: var(--transition); }
 a{
   color: white !important;
 }
-.hero{
+
+.hero {
   height: 75vh !important;
-  background-image: url("../assets/images/landing-background.jpg");
+  position: relative;
+  z-index: 100;
+  overflow: hidden;
+  display: flex;
+
+}
+.hero input {
+  z-index: 100;
+}
+
+.hero-image {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-background-repeat: no-repeat;
-background-size: cover;
-display: flex !important;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 .hero-tistle{
   color: white;
