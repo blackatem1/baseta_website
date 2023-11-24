@@ -27,7 +27,13 @@ function get(gets) {
 //   });
 // }
 
-
+function performSearch() {
+  // Get the search query from the input field
+  var searchQuery = document.getElementById("searchbar").value;
+  console.log(searchQuery);
+  // Navigate to the search page with the search query as a query parameter
+  window.location.href = "/search/search.html?q=" + encodeURIComponent(searchQuery);
+}
 
 function displayPropertyCards(querySnapshot) {
   // Clear the previous data
