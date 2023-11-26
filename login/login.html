@@ -8,40 +8,25 @@
   <script src="https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore-compat.js"></script>
   
   <script src="../assets/js/firebasedb.js"></script>
+  <script src="auth_login.js"></script>
   <link rel="stylesheet" href="login.css"> 
-  <link rel="stylesheet" href="loadingpage\loadingbar.css">
 
 </head>
 <body>
-    <div class="center" style="display: none;">
-        <div class="wave"></div>
-        <div class="wave"></div>
-        <div class="wave"></div>
-        <div class="wave"></div>
-        <div class="wave"></div>
-        <div class="wave"></div>
-        <div class="wave"></div>
-        <div class="wave"></div>
-        <div class="wave"></div>
-        <div class="wave"></div>
-      </div>
-
-
-
       <div class="limiter">
         <div class="container-login100">
           <div class="wrap-login100">
-            <div class="login100-pic js-tilt" data-tilt>
+            <div class="login100-pic js-tilt" >
               <img src="../assets/img-01.png" alt="IMG">
             </div>
     
-            <form class="login100-form validate-form" id="login-form">
+            <form id="login-form" class="login100-form" >
               <span class="login100-form-title">
                 Welcome to the dashboard
               </span>
     
               <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-                <input class="input100"  id="email-input"type="text" name="email" placeholder="Email">
+                <input class="input100"  id="email-input" type="text"  placeholder="Email" required>
                 <span class="focus-input100"></span>
                 <span class="symbol-input100">
                   <i class="fa fa-envelope" aria-hidden="true"></i>
@@ -49,7 +34,7 @@
               </div>
     
               <div class="wrap-input100 validate-input" data-validate = "Password is required">
-                <input class="input100"  id="password-input"type="password" name="pass" placeholder="Password">
+                <input class="input100"  id="password-input" type="password"  placeholder="Password" required>
                 <span class="focus-input100"></span>
                 <span class="symbol-input100">
                   <i class="fa fa-lock" aria-hidden="true"></i>
@@ -57,7 +42,7 @@
               </div>
               
               <div class="container-login100-form-btn">
-                <button id ="login-btn" class="login100-form-btn">
+                <button id ="login-btn" type="submit" class="login100-form-btn">
                   Login
                 </button>
               </div>

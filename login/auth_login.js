@@ -26,7 +26,7 @@ loginForm.addEventListener('submit', function(event) {
   .then((result) => {
     window.location.replace("../dashboard/dashboard.html")
   }).catch((error) => {
-    alert("Error: there is error with email or the password"+error.message+error.code)
+    alert("Error: there is error with email or the password");
 
 
   });

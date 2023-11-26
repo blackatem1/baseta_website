@@ -1,33 +1,4 @@
 
-
-
-
-/*//////////////////////////////////////////////////////////////////
-[ FONT ]*/
-
-@font-face {
-  font-family: Poppins-Regular;
-  src: url('../fonts/poppins/Poppins-Regular.ttf'); 
-}
-
-@font-face {
-  font-family: Poppins-Bold;
-  src: url('../fonts/poppins/Poppins-Bold.ttf'); 
-}
-
-@font-face {
-  font-family: Poppins-Medium;
-  src: url('../fonts/poppins/Poppins-Medium.ttf'); 
-}
-
-@font-face {
-  font-family: Montserrat-Bold;
-  src: url('../fonts/montserrat/Montserrat-Bold.ttf'); 
-}
-
-/*//////////////////////////////////////////////////////////////////
-[ RESTYLE TAG ]*/
-
 * {
 	margin: 0px; 
 	padding: 0px; 
@@ -359,7 +330,22 @@ iframe {
 
 @media (max-width: 992px) {
   .wrap-login100 {
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
     padding: 100px 90px 33px 85px;
+
+    flex-direction: column;
+    align-items: center;
+}
+  .wrap-login100 {
   }
 
   .login100-pic {
@@ -367,22 +353,35 @@ iframe {
   }
 
   .login100-form {
-    width: 50%;
+    width: 100%;
+  }
+  
+  .login100-form {
+    width: 100%;
+  }
+
+  .login100-form-title{
+    font-size: 30px;
+  }
+  .login100-form {
+    width: 100%;
+  }
+  
+  .input100{
+    font-size: 24px !important;
+
   }
 }
 
 @media (max-width: 768px) {
   .wrap-login100 {
-    padding: 100px 80px 33px 80px;
+    padding: 50px 80px 33px 80px;
   }
 
   .login100-pic {
     display: none;
   }
 
-  .login100-form {
-    width: 100%;
-  }
 }
 
 @media (max-width: 576px) {
