@@ -4,9 +4,9 @@
     var hideContent = document.getElementsByClassName(hideId);
   //  console.log( document.getElementsByClassName("theprop").innerHTML);
     if (showId == "larg") {
-      document.getElementsByClassName("theprop")[0].innerText = "Add Projects";
+      document.getElementsByClassName("theprop")[0].innerText = "Add Property";
     }else{
-      document.getElementsByClassName("theprop")[0].innerText = "propertys";
+      document.getElementsByClassName("theprop")[0].innerText = "All propertys";
     }
     for (var i=0;i<showContent.length;i+=1){
       showContent[i].style.display = 'block';
