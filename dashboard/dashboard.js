@@ -22,18 +22,18 @@
       displayUnitCards(querySnapshot)
   });}
 
+  let x = 0;
 function displayUnitCards(params) {
   document.getElementsByClassName("asd").innerHTML ="";
-var x = 0;
   // Iterate through the documents in the query snapshot
   params.forEach((doc) => {
     // Access data from each document
     const propertyData = doc.data();
     const cardBanner = document.createElement("tr");
-    
+     x=x+1;
     cardBanner.innerHTML = `
     <tr>
-    <th scope="row">${x}</th>
+    <th scope="row">${Number(x)}</th>
     <td>${propertyData.title}</td>
     <td>${propertyData.description}</td>
     <td>${propertyData.area}</td>
