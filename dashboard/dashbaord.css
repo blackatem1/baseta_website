@@ -1,3 +1,18 @@
+.vnone{
+  display: none;
+}
+.hb{
+  padding: 0.8% 1.9%;
+  margin: 1% 2% 0 0;
+}
+main{
+  padding: 1% 8%;
+}
+
+a{
+  color: black;
+  text-decoration: none;
+}
 /* :root {
     --main-bg-color: #009d63;
     --main-text-color: #009d63;
@@ -10,9 +25,7 @@
   .vblock{
     display: block;
   }
-  .vnone{
-    display: none;
-  }
+
   .primary-text {
     color: var(--main-text-color);
   }
