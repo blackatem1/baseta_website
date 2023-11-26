@@ -6,7 +6,7 @@
     if (showId == "larg") {
       document.getElementsByClassName("theprop")[0].innerText = "Add Projects";
     }else{
-      document.getElementsByClassName("theprop")[0].innerText = "All Projects";
+      document.getElementsByClassName("theprop")[0].innerText = "propertys";
     }
     for (var i=0;i<showContent.length;i+=1){
       showContent[i].style.display = 'block';
@@ -16,6 +16,49 @@
     }
 
   }
+
+  function getAllUnits(gets) {
+    db.collection(gets).get().then((querySnapshot) => {
+      displayUnitCards(querySnapshot)
+  });}
+
+function displayUnitCards(params) {
+  document.getElementsByClassName("asd").innerHTML ="";
+
+  // Iterate through the documents in the query snapshot
+  querySnapshot.forEach((doc) => {
+    // Access data from each document
+    const propertyData = doc.data();
+    const cardBanner = document.createElement("tr");
+    cardBanner.innerHTML = `
+    <tr>
+    <th scope="row">1</th>
+    <td>${propertyData.area}</td>
+    <td>prime location I Villa ready to move in new cairo</td>
+    <td>Maadi , Cairo</td>
+    <td>1000000M</td>
+    <td>300 M</td>
+    <td>3</td>
+    <td>3</td>
+    <td>Rent</td>
+   
+    <td>
+      <button type="button" class="btn btn-dark">Update</button>
+
+    </td>
+    <td><button type="button" class="btn btn-danger">delete</button>
+    </td>
+
+
+  </tr>
+
+    `
+    x= document.getElementsByClassName("asd");
+    x[0].appendChild(cardBanner);
+  });
+  
+}
+
   function login() {
     console.log("asas");
   
