@@ -372,6 +372,39 @@ iframe {
 
   }
 }
+#progress-container {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  background-color: #000000;
+  opacity: 0.4;
+  z-index: 999999;
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+#progress-bar {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  transform: translate(10%, -50%); /* Center the progress bar */
+}
+
+.spinner-border {
+  width: 100%;
+  height: 100%;
+}
+
+/* Media query for mobile devices */
+@media (min-width: 767px) {
+  #progress-bar {
+    width: 100px;
+  transform: translate(0%, -50%); /* Center the progress bar */
+    height: 100px;
+  }
+}
+
 
 @media (max-width: 768px) {
   .wrap-login100 {

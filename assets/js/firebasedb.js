@@ -12,6 +12,21 @@ var db = firebase.firestore();
 const auth = firebase.auth();
 function get(gets) {
   db.collection(gets).get().then((querySnapshot) => {
+
+    showProgressBar();
+    function wait(milliseconds) {
+      return new Promise(resolve => setTimeout(resolve, milliseconds));
+    }
+    
+    // Example usage:
+    async function example() {
+      console.log('Start');
+      await wait(2000); // Wait for 2000 milliseconds (2 seconds)
+      console.log('End after waiting');
+    }
+    
+    example();
+    
     displayPropertyCards(querySnapshot)
 });}
 // function sett() {
@@ -30,7 +45,6 @@ function get(gets) {
 function performSearch() {
   // Get the search query from the input field
   var searchQuery = document.getElementById("searchbar").value;
-  console.log(searchQuery);
   // Navigate to the search page with the search query as a query parameter
   window.location.href = "/search/search.html?q=" + encodeURIComponent(searchQuery);
 }
@@ -103,6 +117,28 @@ function displayPropertyCards(querySnapshot) {
     `
     x= document.getElementsByClassName("property-list");
     x[0].appendChild(cardBanner);
+    hideProgressBar();
 
   });
+}
+
+
+var progressContainer = document.getElementById('progress-container');
+var progressBar = document.getElementById('progress-bar');
+
+// Show the progress bar
+function showProgressBar() {
+  console.log("showed");
+  if (progressContainer && progressContainer.style) {
+    progressContainer.style.display = 'flex';
+  }
+}
+
+// Hide the progress bar
+function hideProgressBar() {
+  console.log("hide");
+
+  if (progressContainer && progressContainer.style) {
+    progressContainer.style.display = 'none';
+  }
 }

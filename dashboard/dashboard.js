@@ -1,4 +1,21 @@
 
+    
+var progressContainer = document.getElementById('progress-container');
+var progressBar = document.getElementById('progress-bar');
+
+// Show the progress bar
+function showProgressBar() {
+    console.log("showed");
+    progressContainer.style.display = 'flex';
+}
+
+// Hide the progress bar
+function hideProgressBar() {
+  
+    console.log("hide");
+    progressContainer.style.display = 'none';
+}
+
   function toggleContent(showId, hideId) {
     var showContent = document.getElementsByClassName(showId);
     var hideContent = document.getElementsByClassName(hideId);
@@ -18,6 +35,7 @@
   }
 
   function getAllUnits(gets) {
+  showProgressBar();
     db.collection(gets).get().then((querySnapshot) => {
       displayUnitCards(querySnapshot)
   });}
@@ -57,7 +75,7 @@ function displayUnitCards(params) {
     x= document.getElementsByClassName("asd");
     x[0].appendChild(cardBanner);
   });
-  
+    hideProgressBar();
 }
 
 
@@ -202,6 +220,7 @@ function Update(docId) {
 
 
   function Delete(params) {
+    showProgressBar();
     // Assume you have the document ID
     const documentIdToDelete = params;
 
@@ -211,16 +230,20 @@ function Update(docId) {
     // Delete the document
     docRefToDelete.delete()
       .then(() => {
+        hideProgressBar();
         alert("Document successfully deleted!");
         window.location.reload()
+        
       })
       .catch((error) => {
+        hideProgressBar();
         console.error("Error deleting document: ", error);
       });
 
   }
 
   function Add_unit() {
+    showProgressBar();
     event.preventDefault();
     var title = document.getElementById("title").value;
     var desc = document.getElementById("desc").value;
@@ -284,14 +307,17 @@ function Update(docId) {
           });
         })
         .then(() => {
+        hideProgressBar();
+
           var myModal = new bootstrap.Modal(document.getElementById('staticBackdropconfirmload'));
           myModal.show();
         })
         .catch(error => {
+          hideProgressBar();
+
           console.error("Error updating document: ", error);
         });
   }
   function reload() {
     window.location.reload();
   }
-  
