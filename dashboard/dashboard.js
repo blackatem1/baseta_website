@@ -48,10 +48,11 @@ function displayUnitCards(params) {
     // Access data from each document
     const propertyData = doc.data();
     const cardBanner = document.createElement("tr");
-     x=x+1;
+     x = x + 1;
+     console.log(x);
     cardBanner.innerHTML = `
     <tr>
-    <th scope="row">${Number(x)}</th>
+    <th scope="row">${Number(x.valueOf)}</th>
     <td>${propertyData.title}</td>
     <td>${propertyData.description}</td>
     <td>${propertyData.area}</td>
