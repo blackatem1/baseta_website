@@ -57,7 +57,6 @@ function displayUnitCards(params) {
        month: 'long',
        day: 'numeric'
      });
-     console.log(x);
     cardBanner.innerHTML = `
     <tr>
     <th scope="row">${cardNumber}</th>
@@ -230,31 +229,68 @@ function Update(docId) {
 
   }
 
-
   function Delete(params) {
-    // showProgressBar();
     // Assume you have the document ID
     const documentIdToDelete = params;
-
+  
     // Reference to the document
     const docRefToDelete = db.collection("units").doc(documentIdToDelete);
-
-    // Delete the document
-    docRefToDelete.delete()
-      .then(() => {
-        // hideProgressBar();
-        alert("Document successfully deleted!");
-        window.location.reload()
+  
+    // Get the document data before deletion
+    docRefToDelete.get()
+      .then((docSnapshot) => {
+        if (docSnapshot.exists) {
+          const productData = docSnapshot.data();
+  
+          // Delete the document
+          return docRefToDelete.delete().then(() => productData);
+        } else {
+          console.log("Document does not exist");
+          return null;
+        }
+      })
+      .then((productData) => {
         
+        deleteImagesFromStorage(productData.photos);
+  
+        alert("Document successfully deleteaaad!");
+        window.location.reload();
       })
       .catch((error) => {
-        // hideProgressBar();
         console.error("Error deleting document: ", error);
       });
+  }
+  deleteImagesFromStorage("1701191402245_tfxrea4elx");
+  function deleteImagesFromStorage(imageUrls) {
+    const storage = firebase.storage();
+  
+    imageUrls.forEach((imageUrl) => {
+      const pathOrFilename = extractPathOrFilename(imageUrl);
 
+      const storageRef = storage.ref().child("/images/"+pathOrFilename);
+  
+      // Delete the file
+      storageRef.delete()
+        .then(() => {
+          console.log('Image deleted successfully');
+        })
+        .catch((error) => {
+          console.error('Error deleting image', error);
+        });
+    });
+  }
+  
+  function extractPathOrFilename(imageUrl) {
+  const decodedUrl = decodeURIComponent(imageUrl);
+  const startIdx = decodedUrl.lastIndexOf('/') + 1;
+  const endIdx = decodedUrl.indexOf('?');
+
+  return decodedUrl.slice(startIdx, endIdx);
   }
   
 
+
+  
   function Add_unit() {
     // showProgressBar();
     event.preventDefault();

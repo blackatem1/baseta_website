@@ -1,8 +1,9 @@
 // Get the search query from the URL
 var searchQuery = new URLSearchParams(window.location.search).get("q");
+searchQuery=searchQuery.toLowerCase();
 document.addEventListener("DOMContentLoaded", function() {
+  document.getElementById("resaul").innerText = searchQuery;
 
-document.getElementById("resaul").innerText = searchQuery;
 
 // Now you can use the searchQuery variable to perform actions on the search page
 console.log("Search Query:", searchQuery);
@@ -18,7 +19,7 @@ function displayPropertyCardss(querySnapshot) {
   
     // Iterate through the documents in the query snapshot
       // Access data from each document
-      const propertyData = querySnapshot.data();
+      const propertyData = querySnapshot;
       const cardBanner = document.createElement("li");
       cardBanner.innerHTML = `
       <div class="property-card" >
@@ -82,20 +83,46 @@ function displayPropertyCardss(querySnapshot) {
   
   }
   
-function getSR() {        
-    db.collection("units")
-    .orderBy("title")
-    .startAt(searchQuery)
-    .endAt(searchQuery + "\uf8ff")
-    .get()
-    .then((querySnapshot) => {
-      // Handle the search results
-      querySnapshot.forEach((doc) => {
-        displayPropertyCardss(doc);
+function getSR() {    
+  
+  const collectionRef = db.collection("units");
+
+  collectionRef.get()
+    .then(querySnapshot => {
+      querySnapshot.forEach(doc => {
+        const data = doc.data();
+        // Perform client-side filtering
+        //  console.log(data.area);
+        data.area =data.area.toLowerCase();
+        if (data.area.includes(searchQuery)) {
+          console.log(data);
+          displayPropertyCardss(data);
+
+        }
+      });
+    })
+    .catch(error => {
+      console.error("Error getting documents: ", error);
     });
-})
-.catch((error) => {
-    console.log("Error searching for units: ", error);
-});
+
+
+
+
+
+
+//     db.collection("units")
+//     .orderBy("area")
+//     .startAt(searchQuery)
+//     .endAt(searchQuery + "\uf8ff")
+//     .get()
+//     .then((querySnapshot) => {
+//       // Handle the search results
+//       querySnapshot.forEach((doc) => {
+//         displayPropertyCardss(doc);
+//     });
+// })
+// .catch((error) => {
+//     console.log("Error searching for units: ", error);
+// });
 
     }

@@ -6,7 +6,7 @@ const firebaseConfig = {
   messagingSenderId: "592412780298",
   appId: "1:592412780298:web:7a3b3aeec1936c92a37cf3"
 };
-// Initialize Firebase
+
 firebase.initializeApp(firebaseConfig);
 var db = firebase.firestore();
 const auth = firebase.auth();
@@ -21,8 +21,6 @@ function get(gets) {
     // Example usage:
     async function example() {
       console.log('Start');
-      await wait(2000); // Wait for 2000 milliseconds (2 seconds)
-      console.log('End after waiting');
     }
     
     example();
@@ -43,6 +41,7 @@ function get(gets) {
 // }
 
 function performSearch() {
+  event.preventDefault();
   // Get the search query from the input field
   var searchQuery = document.getElementById("searchbar").value;
   // Navigate to the search page with the search query as a query parameter
@@ -60,11 +59,22 @@ function displayPropertyCards(querySnapshot) {
     const cardBanner = document.createElement("li");
     cardBanner.innerHTML = `
     <div class="property-card" >
-    <figure class="card-banner">
-      <a href="#">
+    <figure class="card-banner h-100">
+      <div id="carouselExampleControls" class="carousel h-100 slide" data-bs-ride="carousel">
+      <div class="carousel-inner h-100">
+
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+        
       
-        <img src=${propertyData.photos[0]} alt="New Apartment Nice View" class="w-100">
-      </a>
       <div class="card-badge ${propertyData.typeofunit === 'rent' ? 'green' : 'blue'}">For ${propertyData.typeofunit}</div>
       <div class="banner-actions">
         <button class="banner-actions-btn">
@@ -116,6 +126,20 @@ function displayPropertyCards(querySnapshot) {
     </div>
   </div>
     `
+      // Your code here
+      let osa = cardBanner.querySelector(".carousel-inner");
+  
+      propertyData.photos.forEach((element, index) => {
+        diva = document.createElement("div");
+        diva.className = "carousel-item h-100";
+  
+        img = document.createElement("img");
+        img.className = "d-block w-100 h-100";
+        img.src = element;
+  
+        diva.appendChild(img);
+        osa.appendChild(diva);
+    });
     x= document.getElementsByClassName("property-list");
     x[0].appendChild(cardBanner);
     hideProgressBar();

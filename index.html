@@ -31,7 +31,7 @@
 
   <header >
      <div class="header-top">
-      <div class="container">
+      <div class="constainer headn">
 
         <ul class="header-top-list">
 
@@ -86,30 +86,70 @@
             <div class="container cont">
               <p class="hero-tistle">Find Your Dream House By Us</p>
               <div class="row rentsandsales d-flex flex-column w-100">
-                <button class="btn btn-re" id="setDataButton">Rent</button>
-                <button class="btn btn-re" id="setDataButton">Buy</button>
+                <button class=" btn-re" id="setDataButton">Rent</button>
+                <button class=" btn-re" id="setDataButton">Buy</button>
       
               </div>
-              <div class="row cont w-100">
+              <div class="row cont searchdet w-100">
+                <form class="row cont w-100" onsubmit="performSearch()">
                 <div class="d-flex flex-row cont w-100" role="search">
-                  <div class="input-box">
+                  <div class="input-box ">
+
                     <ion-icon name="search" class="prefix"></ion-icon>
                     <input type="text" class="form-control searchbarinput" id="searchbar" placeholder="Search By Area">
-                  </div>
+                  </div> 
                   <select class="form-select" aria-label="Default select example">
                     <option selected>Open this select menu</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
+                    <option value="rent" selected="selected">Apartment</option>
+                    <option value="Villa">Villa</option>
+                    <option value="Townhouse">Townhouse</option>
+                    <option value="penthouse">penthouse</option>
+                    <option value="Compound">Compound</option>
+                    <option value="chalet">chalet</option>
+                    <option value="Twin House">Twin House</option>
+                    <option value="Duplex">Duplex</option>
+                    <option value="Full Floor">Full Floor</option>
+                    <option value="Half Floor">Half Floor</option>
+                    <option value="Whole Building">Whole Building</option>
+                    <option value="Land">Land</option>
+                    <option value="Bulk Sale Unit">Bulk Sale Unit</option>
+                    <option value="Bungalow">Bungalow</option>
+                    <option value="iVilla">iVilla</option>
                   </select>
                   <select class="form-select" aria-label="Default select example">
-                    <option selected>Open this select menu</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
+                    <option selected>price range start:</option>
+                    <option value="1000">1,000</option>
+                    <option value="10000">10,000</option>
+                    <option value="20000">30,000</option>
+                    <option value="20000">40,000</option>
+                    <option value="20000">50,000</option>
+                    <option value="20000">60,000</option>
+                    <option value="20000">70,000</option>
+                    <option value="20000">80,000</option>
+                    <option value="20000">90,000</option>
+                    <option value="20000">100,000</option>
+                    <option value="20000">>100,000</option>
                   </select>
-                  <button class="btn btn-search" type="submit" onclick="performSearch()">              <ion-icon name="search"></ion-icon>
+                  <select class="form-select" aria-label="Default select example">
+                    <option selected>price range end:</option>
+                    <option value="1000">1,000</option>
+                    <option value="10000">10,000</option>
+                    <option value="20000">30,000</option>
+                    <option value="20000">40,000</option>
+                    <option value="20000">50,000</option>
+                    <option value="20000">60,000</option>
+                    <option value="20000">70,000</option>
+                    <option value="20000">80,000</option>
+                    <option value="20000">90,000</option>
+                    <option value="20000">100,000</option>
+                    <option value="20000">>100,000</option>
+                  </select>
+                 
+                 
+                  <button class="btn btn-search"  type="submit" >              
+                    <ion-icon name="search" style="display: inline-block;"></ion-icon><h1  class="searcht">Search</h1>
                   </button>
+                  </form>
                 </div>
               </div>
             </div>
