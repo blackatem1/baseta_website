@@ -35,32 +35,43 @@ function hideProgressBar() {
   }
 
   function getAllUnits(gets) {
-  showProgressBar();
+  // showProgressBar();
     db.collection(gets).get().then((querySnapshot) => {
       displayUnitCards(querySnapshot)
   });}
 
   let x = 0;
 function displayUnitCards(params) {
-  document.getElementsByClassName("asd").innerHTML ="";
-  // Iterate through the documents in the query snapshot
+  const container = document.querySelector(".asd");
+  container.innerHTML = ""; 
+
+  let cardNumber = 1; 
   params.forEach((doc) => {
     // Access data from each document
     const propertyData = doc.data();
     const cardBanner = document.createElement("tr");
      x = x + 1;
+     const dateObj = propertyData.date.toDate(); // Assuming propertyData.date is a Firebase Timestamp
+     const formattedDate = dateObj.toLocaleDateString('en-EG', {
+       year: 'numeric',
+       month: 'long',
+       day: 'numeric'
+     });
      console.log(x);
     cardBanner.innerHTML = `
     <tr>
-    <th scope="row">${Number(x.valueOf)}</th>
+    <th scope="row">${cardNumber}</th>
     <td>${propertyData.title}</td>
     <td>${propertyData.description}</td>
     <td>${propertyData.area}</td>
     <td>${propertyData.price}</td>
     <td>${propertyData.Square_ft}</td>
     <td>${propertyData.Bathrooms}</td>
-    <td>${propertyData.Bedroom}</td>
+    <td>${propertyData.Bedrooms}</td>
     <td>${propertyData.typeofunit}</td>
+    <td>${formattedDate}</td>
+
+
    
     <td>
       <button type="button" class="btn btn-primary" data-bs-toggle="modal" onclick="showuupdateval('${doc.id}')">Update</button>
@@ -72,11 +83,11 @@ function displayUnitCards(params) {
 
   </tr>
 
-    `
-    x= document.getElementsByClassName("asd");
-    x[0].appendChild(cardBanner);
+    `;
+    container.appendChild(cardBanner);
+    cardNumber++; 
   });
-    hideProgressBar();
+    // hideProgressBar();
 }
 
 
@@ -221,7 +232,7 @@ function Update(docId) {
 
 
   function Delete(params) {
-    showProgressBar();
+    // showProgressBar();
     // Assume you have the document ID
     const documentIdToDelete = params;
 
@@ -231,20 +242,21 @@ function Update(docId) {
     // Delete the document
     docRefToDelete.delete()
       .then(() => {
-        hideProgressBar();
+        // hideProgressBar();
         alert("Document successfully deleted!");
         window.location.reload()
         
       })
       .catch((error) => {
-        hideProgressBar();
+        // hideProgressBar();
         console.error("Error deleting document: ", error);
       });
 
   }
+  
 
   function Add_unit() {
-    showProgressBar();
+    // showProgressBar();
     event.preventDefault();
     var title = document.getElementById("title").value;
     var desc = document.getElementById("desc").value;
@@ -308,13 +320,13 @@ function Update(docId) {
           });
         })
         .then(() => {
-        hideProgressBar();
+        // hideProgressBar();
 
           var myModal = new bootstrap.Modal(document.getElementById('staticBackdropconfirmload'));
           myModal.show();
         })
         .catch(error => {
-          hideProgressBar();
+          // hideProgressBar();
 
           console.error("Error updating document: ", error);
         });
@@ -322,3 +334,9 @@ function Update(docId) {
   function reload() {
     window.location.reload();
   }
+
+
+
+
+
+  

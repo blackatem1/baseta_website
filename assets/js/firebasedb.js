@@ -62,6 +62,7 @@ function displayPropertyCards(querySnapshot) {
     <div class="property-card" >
     <figure class="card-banner">
       <a href="#">
+      
         <img src=${propertyData.photos[0]} alt="New Apartment Nice View" class="w-100">
       </a>
       <div class="card-badge ${propertyData.typeofunit === 'rent' ? 'green' : 'blue'}">For ${propertyData.typeofunit}</div>
@@ -72,17 +73,14 @@ function displayPropertyCards(querySnapshot) {
         </button>
         <button class="banner-actions-btn">
           <ion-icon name="camera"></ion-icon>
-          <span>4</span>
+          <span>${propertyData.photos.length}</span>
         </button>
-        <button class="banner-actions-btn">
-          <ion-icon name="film"></ion-icon>
-          <span>2</span>
-        </button>
+       
       </div>
     </figure>
     <div class="card-content">
       <div class="card-price">
-       <strong>${propertyData.price}</strong>/${propertyData.typeofunit === 'rent' ? 'Month' : 'total price'}
+       <strong>${propertyData.price}</strong>/${propertyData.typeofunit === 'rent' ? 'MONTHLY' : 'TOTAL PRICE'}
       </div>
       <h3 class="h3 card-title">
         <a href="#">${propertyData.title}</a>
@@ -109,9 +107,12 @@ function displayPropertyCards(querySnapshot) {
       </ul>
     </div>
     <div class="card-footer">
-    <button type="button" class="btn btn-primary call-btn"><ion-icon name="call-outline" class="btn-wtsapp"></ion-icon><a href="tel:01111111111111"> Call</a></button>
-      <button type="button" class="btn  whatsapp-btn"><ion-icon name="logo-whatsapp" class="btn-wtsapp"></ion-icon> <a href="https://wa.me/1XXXXXXXXXX">Whatsapp</a></button>
-  </div>
+    <button type="button" class="btn btn-primary call-btn"><ion-icon name="call-outline" class="btn-wtsapp"></ion-icon><a href="tel:01111111111111"style="font-size: 16px; font-weight: bold; color: white;"> Call</a></button>
+    <button type="button" class="btn whatsapp-btn" style="font-size: 16px; font-weight: bold;">
+    <ion-icon name="logo-whatsapp" class="btn-wtsapp"></ion-icon> 
+    <a href="https://wa.me/1XXXXXXXXXX" style="font-size: 15px; font-weight: bold; color: white;">WhatsApp</a>
+  </button>
+    </div>
     </div>
   </div>
     `
