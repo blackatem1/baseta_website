@@ -6,6 +6,12 @@ var secondPrice = urlParams.get('second_price');
 var firstPrice = urlParams.get('first_price');
 var typeBtn = urlParams.get('type_btn');
 var unit = urlParams.get('unit');
+console.log("searchQuery:", searchQuery);
+console.log("secondPrice:", secondPrice);
+console.log("firstPrice:", firstPrice);
+console.log("typeBtn:", typeBtn);
+console.log("unit:", unit);
+
 searchQuery=searchQuery.toLowerCase();
 document.addEventListener("DOMContentLoaded", function() {
   document.getElementById("resaul").innerText = searchQuery;
@@ -25,11 +31,12 @@ function getSR() {
         //  console.log(data.area);
         data.area =data.area.toLowerCase();
         if (data.area.includes(searchQuery)) {
+          console.log("here");
           if (data.typeofunit==typeBtn) {
-          if (data.price>=firstPrice) {
-          if (data.price<=secondPrice) {
-            if (data.title==type) {
-          displayPropertyCardss(data);
+            if (data.price>=firstPrice || firstPrice==0) {
+          if (data.price<=secondPrice||secondPrice==0) {
+            if (data.title==unit || unit==0) {
+              displayPropertyCardss(data);
           }
         }
       }
