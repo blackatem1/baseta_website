@@ -6,25 +6,23 @@ const firebaseConfig = {
   messagingSenderId: "592412780298",
   appId: "1:592412780298:web:7a3b3aeec1936c92a37cf3"
 };
+function showProgressBar() {
+  document.getElementById('progress-container').style.display = 'flex';
+}
+  
+  // Hide the progress bar
+function hideProressBar() {
+  document.getElementById('progress-container').style.display = 'none';
+}
+
+
 
 firebase.initializeApp(firebaseConfig);
 var db = firebase.firestore();
 const auth = firebase.auth();
 function get(gets) {
-  db.collection(gets).get().then((querySnapshot) => {
-
-    showProgressBar();
-    function wait(milliseconds) {
-      return new Promise(resolve => setTimeout(resolve, milliseconds));
-    }
-    
-    // Example usage:
-    async function example() {
-      console.log('Start');
-    }
-    
-    example();
-    
+  showProgressBar();
+  db.collection(gets).get().then((querySnapshot) => {    
     displayPropertyCards(querySnapshot)
 });}
 // function sett() {
@@ -40,12 +38,76 @@ function get(gets) {
 //   });
 // }
 
+
+// var searchInput = document.getElementById('searchbar');
+// console.log("ddsds");
+// document.getElementById('searchbar').addEventListener('keyup', function() {
+//   document.getElementById('suggestion').style.display = 'flex';
+
+
+// });
+// document.getElementById('searchbar').addEventListener('keyup', function() {
+//   document.getElementById('suggestion-ul').style.display = 'none';
+
+
+// });
+
+window.addEventListener("keyup", function () {
+  var suggestions = document.getElementById("searchbar");
+  console.log("suggestions");
+
+});
+
+
+
+
+function searchchnaged() {
+  val=document.getElementById("searchbar").value;
+  document.getElementById("suggestion-ul").innerHTML="";
+  db.collection("units").get().then((querySnapshot) => {    
+    let currentIndex = 0;
+
+    querySnapshot.forEach((doc) => {
+        const propertyData = doc.data();
+        if (currentIndex <= 5) {
+            if (propertyData.area.includes(val)) {
+                var sugg_li = document.createElement("li");
+                sugg_li.onclick=function sssss() {
+                  document.getElementById("searchbar").value = sugg_li.innerText ;
+                  searchchnaged();
+                }
+                sugg_li.innerText = propertyData.area;
+                document.getElementById("suggestion-ul").appendChild(sugg_li);
+            }
+        }
+
+        currentIndex++;
+    });
+});
+
+
+
+
+}
 function performSearch() {
   event.preventDefault();
   // Get the search query from the input field
   var searchQuery = document.getElementById("searchbar").value;
-  // Navigate to the search page with the search query as a query parameter
-  window.location.href = "/search/search.html?q=" + encodeURIComponent(searchQuery);
+  var second_price = document.getElementById("second-price").value;
+  var first_price = document.getElementById("first-price").value;
+  
+  // Get the selected value from the radio button with the name "type-btn"
+  var type_btn = document.querySelector('input[name="type-btn"]:checked').value;
+  
+  var type_unit = document.getElementById("type-unit").value;
+  
+  // Navigate to the search page with the search query and other parameters
+  window.location.href = "/search/search.html?search=" + encodeURIComponent(searchQuery) +
+      "&second_price=" + encodeURIComponent(second_price) +
+      "&first_price=" + encodeURIComponent(first_price) +
+      "&type_btn=" + encodeURIComponent(type_btn) +
+      "&unit=" + encodeURIComponent(type_unit);
+  
 }
 
 function displayPropertyCards(querySnapshot) {
@@ -142,28 +204,9 @@ function displayPropertyCards(querySnapshot) {
     });
     x= document.getElementsByClassName("property-list");
     x[0].appendChild(cardBanner);
-    hideProgressBar();
+    hideProressBar();
 
   });
 }
 
 
-var progressContainer = document.getElementById('progress-container');
-var progressBar = document.getElementById('progress-bar');
-
-// Show the progress bar
-function showProgressBar() {
-  console.log("showed");
-  if (progressContainer && progressContainer.style) {
-    progressContainer.style.display = 'flex';
-  }
-}
-
-// Hide the progress bar
-function hideProgressBar() {
-  console.log("hide");
-
-  if (progressContainer && progressContainer.style) {
-    progressContainer.style.display = 'none';
-  }
-}

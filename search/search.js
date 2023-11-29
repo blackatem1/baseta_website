@@ -1,17 +1,68 @@
 // Get the search query from the URL
-var searchQuery = new URLSearchParams(window.location.search).get("q");
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
+var searchQuery = urlParams.get('search');
+var secondPrice = urlParams.get('second_price');
+var firstPrice = urlParams.get('first_price');
+var typeBtn = urlParams.get('type_btn');
+var unit = urlParams.get('unit');
 searchQuery=searchQuery.toLowerCase();
 document.addEventListener("DOMContentLoaded", function() {
   document.getElementById("resaul").innerText = searchQuery;
-
-
-// Now you can use the searchQuery variable to perform actions on the search page
-console.log("Search Query:", searchQuery);
-// Function to perform the search
-    // Get the search query from the input field
-  
-    // Perform a Firestore query based on the search query
+  // Now you can use the searchQuery variable to perform actions on the search page
+  console.log("Search Query:", searchQuery);
 })
+
+function getSR() {    
+  
+  const collectionRef = db.collection("units");
+
+  collectionRef.get()
+    .then(querySnapshot => {
+      querySnapshot.forEach(doc => {
+        const data = doc.data();
+        // Perform client-side filtering
+        //  console.log(data.area);
+        data.area =data.area.toLowerCase();
+        if (data.area.includes(searchQuery)) {
+          if (data.typeofunit==typeBtn) {
+          if (data.price>=firstPrice) {
+          if (data.price<=secondPrice) {
+            if (data.title==type) {
+          displayPropertyCardss(data);
+          }
+        }
+      }
+    }
+        }
+      });
+    })
+    .catch(error => {
+      console.error("Error getting documents: ", error);
+    });
+
+
+
+
+
+
+//     db.collection("units")
+//     .orderBy("area")
+//     .startAt(searchQuery)
+//     .endAt(searchQuery + "\uf8ff")
+//     .get()
+//     .then((querySnapshot) => {
+//       // Handle the search results
+//       querySnapshot.forEach((doc) => {
+//         displayPropertyCardss(doc);
+//     });
+// })
+// .catch((error) => {
+//     console.log("Error searching for units: ", error);
+// });
+
+    }
+
 
 function displayPropertyCardss(querySnapshot) {
     // Clear the previous data
@@ -80,49 +131,5 @@ function displayPropertyCardss(querySnapshot) {
       `
       x= document.getElementsByClassName("property-list");
       x[0].appendChild(cardBanner);
-  
-  }
-  
-function getSR() {    
-  
-  const collectionRef = db.collection("units");
-
-  collectionRef.get()
-    .then(querySnapshot => {
-      querySnapshot.forEach(doc => {
-        const data = doc.data();
-        // Perform client-side filtering
-        //  console.log(data.area);
-        data.area =data.area.toLowerCase();
-        if (data.area.includes(searchQuery)) {
-          console.log(data);
-          displayPropertyCardss(data);
-
-        }
-      });
-    })
-    .catch(error => {
-      console.error("Error getting documents: ", error);
-    });
-
-
-
-
-
-
-//     db.collection("units")
-//     .orderBy("area")
-//     .startAt(searchQuery)
-//     .endAt(searchQuery + "\uf8ff")
-//     .get()
-//     .then((querySnapshot) => {
-//       // Handle the search results
-//       querySnapshot.forEach((doc) => {
-//         displayPropertyCardss(doc);
-//     });
-// })
-// .catch((error) => {
-//     console.log("Error searching for units: ", error);
-// });
-
-    }
+      
+    }  

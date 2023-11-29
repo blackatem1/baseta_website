@@ -8,6 +8,7 @@ const loginForm = document.getElementById('login-form');
 // })
 // Add an event listener for form submission
 loginForm.addEventListener('submit', function(event) {
+  showProgressBar();
   event.preventDefault(); // Prevent the form from submitting
   
   // Retrieve the email and password inputs
@@ -25,7 +26,9 @@ loginForm.addEventListener('submit', function(event) {
   auth.signInWithEmailAndPassword(document.getElementById('email-input').value,document.getElementById('password-input').value)
   .then((result) => {
     window.location.replace("../dashboard/dashboard.html")
+    hideProressBar();
   }).catch((error) => {
+    hideProressBar();
     alert("Error: there is error with email or the password");
 
 

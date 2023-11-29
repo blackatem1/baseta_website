@@ -1,45 +1,38 @@
-
-    
-var progressContainer = document.getElementById('progress-container');
-var progressBar = document.getElementById('progress-bar');
-
-// Show the progress bar
-function showProgressBar() {
-    console.log("showed");
-    progressContainer.style.display = 'flex';
-}
-
-// Hide the progress bar
-function hideProgressBar() {
-  
-    console.log("hide");
-    progressContainer.style.display = 'none';
-}
-
-  function toggleContent(showId, hideId) {
-    var showContent = document.getElementsByClassName(showId);
-    var hideContent = document.getElementsByClassName(hideId);
-  //  console.log( document.getElementsByClassName("theprop").innerHTML);
-    if (showId == "larg") {
-      document.getElementsByClassName("theprop")[0].innerText = "Add Property";
-    }else{
-      document.getElementsByClassName("theprop")[0].innerText = "All propertys";
-    }
-    for (var i=0;i<showContent.length;i+=1){
-      showContent[i].style.display = 'block';
-    }
-    for (var i=0;i<hideContent.length;i+=1){
-      hideContent[i].style.display = 'none';
-    }
-
+function toggleContent(showId, hideId) {
+  var showContent = document.getElementsByClassName(showId);
+  var hideContent = document.getElementsByClassName(hideId);
+//  console.log( document.getElementsByClassName("theprop").innerHTML);
+  if (showId == "larg") {
+    document.getElementsByClassName("theprop")[0].innerText = "Add Property";
+  }else{
+    document.getElementsByClassName("theprop")[0].innerText = "All propertys";
+  }
+  for (var i=0;i<showContent.length;i+=1){
+    showContent[i].style.display = 'block';
+  }
+  for (var i=0;i<hideContent.length;i+=1){
+    hideContent[i].style.display = 'none';
   }
 
-  function getAllUnits(gets) {
-  // showProgressBar();
-    db.collection(gets).get().then((querySnapshot) => {
-      displayUnitCards(querySnapshot)
-  });}
+}
 
+function getAllUnits(gets) {
+  showProgressBar();
+  db.collection(gets).get().then((querySnapshot) => {
+      displayUnitCards(querySnapshot)
+  });
+}
+  // let progressBar = document.getElementsByClassName('progress-container');
+function showProgressBar() {
+  document.getElementById('progress-container').style.display = 'flex';
+  console.log("showedddd");
+}
+  
+  // Hide the progress bar
+function hideProressBar() {
+  console.log("hide");
+  document.getElementById('progress-container').style.display = 'none';
+}
   let x = 0;
 function displayUnitCards(params) {
   const container = document.querySelector(".asd");
@@ -86,7 +79,7 @@ function displayUnitCards(params) {
     container.appendChild(cardBanner);
     cardNumber++; 
   });
-    // hideProgressBar();
+  hideProressBar();
 }
 
 
@@ -94,10 +87,12 @@ function Update(docId) {
   // Assuming you have the document ID stored somewhere
 
   // Reference to the Firestore document
+  showProgressBar();
   var docRef = db.collection("units").doc(docId);
 
   // Get the document data from Firebase
   docRef.get().then((doc) => {
+    hideProressBar();
     if (doc.exists) {
       var data = doc.data();
 
@@ -128,14 +123,18 @@ function Update(docId) {
       docRef.update(data)
         .then(() => {
           reload();
+          hideProressBar();
         })
         .catch((error) => {
+          hideProressBar();
           console.error("Error updating document: ", error);
         });
-    } else {
+      } else {
+      hideProressBar();
       console.log("No such document!");
     }
   }).catch((error) => {
+    hideProressBar();
     console.log("Error getting document:", error);
   });
 }
@@ -192,6 +191,7 @@ function Update(docId) {
 //   }
 
   function showuupdateval(docId){
+    showProgressBar();
     var myModal = new bootstrap.Modal(document.getElementById('staticBackdropupdate'));
     myModal.show();
     // Reference to the Firestore document
@@ -213,6 +213,7 @@ function Update(docId) {
         document.getElementById("square_ft2").value = data.Square_ft || "";
         document.getElementById("update").addEventListener('click', function() {Update(docId)})
 
+        hideProressBar();
   
         // You may need to handle the 'photos' input differently,
         // depending on how you're storing and displaying images.
@@ -221,9 +222,13 @@ function Update(docId) {
         // You can proceed with the rest of your logic or show the modal, etc.
       } else {
         console.log("No such document!");
+      hideProressBar();
+        
       }
     }).catch((error) => {
       console.log("Error getting document:", error);
+      hideProressBar();
+
     });
 
 
@@ -231,6 +236,7 @@ function Update(docId) {
 
   function Delete(params) {
     // Assume you have the document ID
+    showProgressBar();
     const documentIdToDelete = params;
   
     // Reference to the document
@@ -252,15 +258,17 @@ function Update(docId) {
       .then((productData) => {
         
         deleteImagesFromStorage(productData.photos);
+        hideProressBar();
   
         alert("Document successfully deleteaaad!");
         window.location.reload();
       })
       .catch((error) => {
         console.error("Error deleting document: ", error);
+      hideProressBar();
+
       });
   }
-  deleteImagesFromStorage("1701191402245_tfxrea4elx");
   function deleteImagesFromStorage(imageUrls) {
     const storage = firebase.storage();
   
@@ -288,11 +296,8 @@ function Update(docId) {
   return decodedUrl.slice(startIdx, endIdx);
   }
   
-
-
-  
   function Add_unit() {
-    // showProgressBar();
+    showProgressBar();
     event.preventDefault();
     var title = document.getElementById("title").value;
     var desc = document.getElementById("desc").value;
@@ -356,13 +361,13 @@ function Update(docId) {
           });
         })
         .then(() => {
-        // hideProgressBar();
+          hideProressBar();
 
           var myModal = new bootstrap.Modal(document.getElementById('staticBackdropconfirmload'));
           myModal.show();
         })
         .catch(error => {
-          // hideProgressBar();
+          hideProressBar();
 
           console.error("Error updating document: ", error);
         });
