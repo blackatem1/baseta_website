@@ -220,10 +220,12 @@ button, a { transition: var(--transition); }
 
 .btn:is(:hover, :focus) {
   background: var(--black);
-  color: var(--dark-jungle-green);
+  color: black;
   border-color: var(--black);
 }
-
+.btn:is(:hover, :focus) a {
+  color: black !important;
+}
 .btn::before {
   content: "";
   position: absolute;
