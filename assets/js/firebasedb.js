@@ -102,7 +102,7 @@ function performSearch() {
   var type_unit = document.getElementById("type-unit").value;
   
   // Navigate to the search page with the search query and other parameters
-  window.location.href = "baseta_website/search/search.html?search=" + encodeURIComponent(searchQuery) +
+  window.location.href = "/search/search.html?search=" + encodeURIComponent(searchQuery) +
       "&second_price=" + encodeURIComponent(second_price) +
       "&first_price=" + encodeURIComponent(first_price) +
       "&type_btn=" + encodeURIComponent(type_btn) +
