@@ -32,11 +32,11 @@ function searchchnagedash() {
   container.innerHTML = ""; 
   var search = document.getElementById("search").value;
   db.collection("units").get().then((querySnapshot) => {
+    let cardNumber = 1; 
     querySnapshot.forEach((doc) => {
       // Access data from each document
       const propertyData = doc.data();
       // console.log(search);
-      let cardNumber = 1; 
 
       if (propertyData.area.toLowerCase().includes(search.toLowerCase())) {
             const cardBanner = document.createElement("tr");
