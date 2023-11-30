@@ -96,7 +96,15 @@
                     <ul class="suggestion-ul" id="suggestion-ul"> 
 
                     </ul>
+<script>
+  document.body.addEventListener("click", function (evt) {
+    document.getElementById("suggestions").style.display="none";
 
+    //note evt.target can be a nested element, not the body element, resulting in misfires
+}); 
+
+
+</script>
                   </div>
                   <div class="input-box ">
 
@@ -133,7 +141,7 @@
                     <option value="20000">80,000</option>
                     <option value="20000">90,000</option>
                     <option value="20000">100,000</option>
-                    <option value="20000">>100,000</option>
+                    <option value=">">>100,000</option>
                   </select>
                   <select class="form-select" id="second-price"aria-label="Default select example">
                     <option selected value="0">price range end:</option>
@@ -147,11 +155,11 @@
                     <option value="20000">80,000</option>
                     <option value="20000">90,000</option>
                     <option value="20000">100,000</option>
-                    <option value="20000">>100,000</option>
+                    <option value=">">>100,000</option>
                   </select>
                  
                  
-                  <button class="btn btn-search" id="search-submit" type="submit" >              
+                  <button class=" btn-search" id="search-submit" type="submit" >              
                     <ion-icon name="search" style="display: inline-block;"></ion-icon><h1  class="searcht">Search</h1>
                   </button>
                 </div>

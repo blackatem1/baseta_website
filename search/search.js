@@ -33,8 +33,8 @@ function getSR() {
         if (data.area.includes(searchQuery)) {
           console.log("here");
           if (data.typeofunit==typeBtn) {
-            if (data.price>=firstPrice || firstPrice==0) {
-          if (data.price<=secondPrice||secondPrice==0) {
+            if (firstPrice==">" && data.price<=100000 || data.price>=firstPrice || firstPrice==0) {
+          if (secondPrice==">" && data.price<=100000 ||data.price<=secondPrice||secondPrice==0) {
             if (data.title==unit || unit==0) {
               displayPropertyCardss(data);
           }

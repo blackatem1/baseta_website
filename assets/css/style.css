@@ -1946,9 +1946,8 @@ a{
   padding: 1.4%;
   outline: none;
   margin: 1%;
-  border: 0.2rem #bbb8bd solid !important;
-  border-radius: 10px;
-  color: #938e97;
+  border: 2px #bbb8bd solid !important;
+  color: #77757a;
 }
 
 .input-box {
@@ -1957,8 +1956,7 @@ a{
   width: 100%;
   /* position: relative; */
   background: #fff;
-  border:0.2rem #bbb8bd solid !important;
-  border-radius: 10px;
+  border:2px #bbb8bd solid !important;
   padding-left: 1rem;
   overflow: hidden;
   font-family: sans-serif;
@@ -1980,7 +1978,7 @@ a{
   background: #fff;
   border: none;
   outline: none;
-  padding: 0.5rem;
+  padding: 0.7rem;
 }
 
 .input-box:focus-within {
@@ -2031,3 +2029,19 @@ a{
   justify-content: flex-start;
   gap: 12px;
 }
+#search-submit:hover{
+  background:hsl(9deg 71.22% 47.83%);
+  
+}
+#search-submit{
+  position: relative;
+  background: var(--orange-soda);
+  color: var(--white);
+  font-family: var(--ff-poppins);
+  font-size: var(--fs-5);
+  text-transform: var(--text-transform, capitalize);
+  border: 1px solid var(--orange-soda);
+  padding: 10px 20px;
+  z-index: 1;
+}
+

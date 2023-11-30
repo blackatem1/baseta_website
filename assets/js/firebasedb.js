@@ -39,6 +39,11 @@ function get(gets) {
 // }
 
 
+document.addEventListener('click', function ss() {
+  document.getElementById("suggestions").style.display="none";
+  console.log("saffs");
+  
+});
 // var searchInput = document.getElementById('searchbar');
 // console.log("ddsds");
 // document.getElementById('searchbar').addEventListener('keyup', function() {
@@ -52,16 +57,24 @@ function get(gets) {
 
 // });
 
-window.addEventListener("keyup", function () {
+document.getElementById("searchbar").addEventListener("keyup", function () {
   var suggestions = document.getElementById("searchbar");
   console.log("suggestions");
 
+  
 });
-
+document.body.addEventListener("click", function (evt) {
+  console.dir(this);
+  //note evt.target can be a nested element, not the body element, resulting in misfires
+  console.log(evt.target);
+  alert("body clicked");
+}); 
 
 
 
 function searchchnaged() {
+   document.getElementById("suggestions").style.display="flex";
+console.log("dddd")
   val=document.getElementById("searchbar").value;
   document.getElementById("suggestion-ul").innerHTML="";
   db.collection("units").get().then((querySnapshot) => {    
