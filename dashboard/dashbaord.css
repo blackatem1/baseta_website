@@ -65,7 +65,7 @@
   margin: 1% 2% 0 0;
 }
 main{
-  padding: 1% 2%;
+  padding: 1% 6%;
 }
 
 a{
@@ -168,7 +168,9 @@ a{
   }
 }
 
-
+.unittype{
+  width: 6% !important;
+}
 
 
 /* :root {

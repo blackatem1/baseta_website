@@ -226,6 +226,9 @@ button, a { transition: var(--transition); }
 .btn:is(:hover, :focus) a {
   color: black !important;
 }
+.input-box input,.form-select{
+  font-size: 1rem;
+}
 .btn::before {
   content: "";
   position: absolute;

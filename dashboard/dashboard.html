@@ -55,10 +55,10 @@
   </div>
   
   <article class="ss">
-    <!-- <div class="w-750 mx-auto">
+    <div class="w-750 mx-auto">
       <label for="search">SEARCH :</label>
-      <input type="text" class=" form-control" id="search" placeholder="Search by Area">
-    </div> -->
+      <input type="text" class=" form-control" oninput="searchchnagedash()"  id="search" placeholder="Search by Area">
+    </div>
     <table class="table">
       <thead>
         <tr>
@@ -70,10 +70,10 @@
           <th scope="col">Square_ft</th>
           <th scope="col">Bathroom</th>
           <th scope="col">Bedroom</th>
-          <th scope="col">Unit-type</th>
+          <th scope="col" class="unittype">Unit-type</th>
           <th scope="col">Date Of Post</th>
-          <th scope="col">Update</th>
-          <th scope="col">Delete</th>
+          <!-- <th scope="col">Update</th>
+          <th scope="col">Delete</th> -->
           
           
         </tr>
@@ -99,7 +99,7 @@
                   <label for="exampleFormControlInput1" class="form-label">Title Of Unit</label>
                   <select class="form-select" id="title2" aria-label="Default select example">
                     <option selected>Open this select menu</option>
-                    <option value="rent" selected="selected">Apartment</option>
+                    <option value="Apartment" selected="selected">Apartment</option>
                     <option value="Villa">Villa</option>
                     <option value="Townhouse">Townhouse</option>
                     <option value="penthouse">penthouse</option>

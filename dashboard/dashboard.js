@@ -25,12 +25,68 @@ function getAllUnits(gets) {
   // let progressBar = document.getElementsByClassName('progress-container');
 function showProgressBar() {
   document.getElementById('progress-container').style.display = 'flex';
-  console.log("showedddd");
+  // console.log("showedddd");
 }
-  
+function searchchnagedash() {
+  const container = document.querySelector(".asd");
+  container.innerHTML = ""; 
+  var search = document.getElementById("search").value;
+  db.collection("units").get().then((querySnapshot) => {
+    querySnapshot.forEach((doc) => {
+      // Access data from each document
+      const propertyData = doc.data();
+      // console.log(search);
+      let cardNumber = 1; 
+
+      if (propertyData.area.toLowerCase().includes(search.toLowerCase())) {
+            const cardBanner = document.createElement("tr");
+             x = x + 1;
+             const dateObj = propertyData.date.toDate(); // Assuming propertyData.date is a Firebase Timestamp
+             const formattedDate = dateObj.toLocaleDateString('en-EG', {
+               year: 'numeric',
+               month: 'numeric',
+               day: 'numeric'
+             });
+            cardBanner.innerHTML = `
+            <tr>
+            <th scope="row">${cardNumber}</th>
+            <td>${propertyData.title}</td>
+            <td>${propertyData.description}</td>
+            <td>${propertyData.area}</td>
+            <td>${propertyData.price}</td>
+            <td>${propertyData.Square_ft}</td>
+            <td>${propertyData.Bathrooms}</td>
+            <td>${propertyData.Bedrooms}</td>
+            <td>${propertyData.typeofunit}</td>
+            <td>${formattedDate}</td>
+        
+        
+           
+            <td>
+              <button type="button" class="btn btn-primary" data-bs-toggle="modal" onclick="showuupdateval('${doc.id}')">Update</button>
+        
+            </td>
+            <td><button type="button" class="btn btn-danger" onclick="Delete('${doc.id}')">delete</button>
+            </td>
+        
+        
+          </tr>
+        
+            `;
+            container.appendChild(cardBanner);
+            cardNumber++; 
+          }
+        });
+      });
+      // displayUnitCards(querySnapshot)
+    }
+// });
+// }  
+
+
   // Hide the progress bar
 function hideProressBar() {
-  console.log("hide");
+  // console.log("hide");
   document.getElementById('progress-container').style.display = 'none';
 }
   let x = 0;
@@ -47,7 +103,7 @@ function displayUnitCards(params) {
      const dateObj = propertyData.date.toDate(); // Assuming propertyData.date is a Firebase Timestamp
      const formattedDate = dateObj.toLocaleDateString('en-EG', {
        year: 'numeric',
-       month: 'long',
+       month: 'numeric',
        day: 'numeric'
      });
     cardBanner.innerHTML = `
