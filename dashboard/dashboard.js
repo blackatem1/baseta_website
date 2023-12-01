@@ -40,7 +40,6 @@ function searchchnagedash() {
 
       if (propertyData.area.toLowerCase().includes(search.toLowerCase())) {
             const cardBanner = document.createElement("tr");
-             x = x + 1;
              const dateObj = propertyData.date.toDate(); // Assuming propertyData.date is a Firebase Timestamp
              const formattedDate = dateObj.toLocaleDateString('en-EG', {
                year: 'numeric',

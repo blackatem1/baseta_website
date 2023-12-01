@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Min and Max Selector</title>
+</head>
+<body>
+
+  <label for="minSelect">Select Minimum Number:</label>
+  <select id="minSelect" onchange="updateMaxSelect()">
+    <option value="1000">1,000</option>
+    <option value="10000">10,000</option>
+    <option value="30000">30,000</option>
+    <option value="40000">40,000</option>
+    <option value="50000">50,000</option>
+    <option value="60000">60,000</option>
+    <option value="70000">70,000</option>  
+    <option value="80000">80,000</option>
+    <option value="90000">90,000</option>
+    <option value="100000">100,000</option>
+    <option value=">">>100,000</option>
+    <!-- Add more options as needed -->
+  </select>
+
+  <br>
+
+  <label for="maxSelect">Select Maximum Number:</label>
+  <select id="maxSelect">
+    <!-- Options will be dynamically added based on the minimum selection -->
+  </select>
+
+  <script>
+    function updateMaxSelect() {
+      // Get the selected minimum value
+      var minSelect = document.getElementById('minSelect');
+      var selectedMin = parseInt(minSelect.value);
+
+      // Clear previous options in maxSelect
+      var maxSelect = document.getElementById('maxSelect');
+      maxSelect.innerHTML = '';
+
+      // Add options to maxSelect starting from selectedMin + 1
+      for (var i = selectedMin +10000; i <= 100000; i+=10000) {
+          var option = document.createElement('option');
+        option.value = i;
+        option.text = i.toLocaleString(); // Format the number with commas
+        maxSelect.add(option);
+      }
+      var option = document.createElement('option');
+       x=100000;
+      option.value = x;
+      option.text = ">100,000";
+
+      document.getElementById('maxSelect').add(option);
+
+    }
+
+    // Initialize maxSelect options on page load
+    updateMaxSelect();
+  </script>
+
+</body>
+</html>

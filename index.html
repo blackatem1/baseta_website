@@ -31,7 +31,8 @@
     </div>
   </div>
 
-  <header >
+  <navbar  style="    position: sticky;
+  z-index: 99999999;top:0;">
      <div class="header-top">
       <div class="constainer headn">
 
@@ -61,7 +62,7 @@
     </div>
     
 
-  </header>
+  </navbar>
 
 
 
@@ -96,15 +97,15 @@
                     <ul class="suggestion-ul" id="suggestion-ul"> 
 
                     </ul>
-<script>
-  document.body.addEventListener("click", function (evt) {
-    document.getElementById("suggestions").style.display="none";
+                      <script>
+                        document.body.addEventListener("click", function (evt) {
+                          document.getElementById("suggestions").style.display="none";
 
-    //note evt.target can be a nested element, not the body element, resulting in misfires
-}); 
+                          //note evt.target can be a nested element, not the body element, resulting in misfires
+                      }); 
 
 
-</script>
+                      </script>
                   </div>
                   <div class="input-box ">
 
@@ -129,35 +130,53 @@
                     <option value="Bungalow">Bungalow</option>
                     <option value="iVilla">iVilla</option>
                   </select>
-                  <select class="form-select"id="first-price" aria-label="Default select example">
+                  <select class="form-select"id="first-price" aria-label="Default select example"onchange="updateMaxSelect()">
                     <option selected value="0">price range start:</option>
                     <option value="1000">1,000</option>
                     <option value="10000">10,000</option>
-                    <option value="20000">30,000</option>
-                    <option value="20000">40,000</option>
-                    <option value="20000">50,000</option>
-                    <option value="20000">60,000</option>
-                    <option value="20000">70,000</option>
-                    <option value="20000">80,000</option>
-                    <option value="20000">90,000</option>
-                    <option value="20000">100,000</option>
+                    <option value="20000">20,000</option>
+                    <option value="30000">30,000</option>
+                    <option value="40000">40,000</option>
+                    <option value="50000">50,000</option>
+                    <option value="60000">60,000</option>
+                    <option value="70000">70,000</option>
+                    <option value="80000">80,000</option>
+                    <option value="90000">90,000</option>
+                    <option value="100000">100,000</option>
                     <option value=">">>100,000</option>
                   </select>
                   <select class="form-select" id="second-price"aria-label="Default select example">
                     <option selected value="0">price range end:</option>
-                    <option value="1000">1,000</option>
-                    <option value="10000">10,000</option>
-                    <option value="20000">30,000</option>
-                    <option value="20000">40,000</option>
-                    <option value="20000">50,000</option>
-                    <option value="20000">60,000</option>
-                    <option value="20000">70,000</option>  
-                    <option value="20000">80,000</option>
-                    <option value="20000">90,000</option>
-                    <option value="20000">100,000</option>
-                    <option value=">">>100,000</option>
                   </select>
-                 
+                  <script>
+                    function updateMaxSelect() {
+                      // Get the selected minimum value
+                      var minSelect = document.getElementById('first-price');
+                      var selectedMin = parseInt(minSelect.value);
+                
+                      // Clear previous options in maxSelect
+                      var maxSelect = document.getElementById('second-price');
+                      maxSelect.innerHTML = '';
+                
+                      // Add options to maxSelect starting from selectedMin + 1
+                      for (var i = selectedMin +10000; i <= 100000; i+=10000) {
+                          var option = document.createElement('option');
+                        option.value = i;
+                        option.text = i.toLocaleString(); // Format the number with commas
+                        maxSelect.add(option);
+                      }
+                      var option = document.createElement('option');
+                       x=100000;
+                      option.value = x;
+                      option.text = ">100,000";
+                
+                     maxSelect.add(option);
+                
+                    }
+                
+                    // Initialize maxSelect options on page load
+                    updateMaxSelect();
+                  </script>
                  
                   <button class=" btn-search" id="search-submit" type="submit" >              
                     <ion-icon name="search" style="display: inline-block;"></ion-icon><h1  class="searcht">Search</h1>

@@ -74,16 +74,18 @@ document.body.addEventListener("click", function (evt) {
 
 function searchchnaged() {
    document.getElementById("suggestions").style.display="flex";
-console.log("dddd")
-  val=document.getElementById("searchbar").value;
-  document.getElementById("suggestion-ul").innerHTML="";
-  db.collection("units").get().then((querySnapshot) => {    
+   val=document.getElementById("searchbar").value;
+  var val2 = document.querySelector('input[name="type-btn"]:checked').value;
+   console.log(val2);
+   db.collection("units").get().then((querySnapshot) => {    
+    document.getElementById("suggestion-ul").innerHTML="";
     let currentIndex = 0;
 
     querySnapshot.forEach((doc) => {
         const propertyData = doc.data();
         if (currentIndex <= 5) {
-            if (propertyData.area.includes(val)) {
+            if (propertyData.area.toLowerCase().includes(val.toLowerCase())) {
+              if (propertyData.typeofunit==val2) {
                 var sugg_li = document.createElement("li");
                 sugg_li.onclick=function sssss() {
                   document.getElementById("searchbar").value = sugg_li.innerText ;
@@ -93,6 +95,7 @@ console.log("dddd")
                 document.getElementById("suggestion-ul").appendChild(sugg_li);
             }
         }
+      }
 
         currentIndex++;
     });
