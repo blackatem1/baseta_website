@@ -6,20 +6,17 @@ var secondPrice = urlParams.get('second_price');
 var firstPrice = urlParams.get('first_price');
 var typeBtn = urlParams.get('type_btn');
 var unit = urlParams.get('unit');
-console.log("searchQuery:", searchQuery);
-console.log("secondPrice:", secondPrice);
-console.log("firstPrice:", firstPrice);
-console.log("typeBtn:", typeBtn);
-console.log("unit:", unit);
 
 searchQuery=searchQuery.toLowerCase();
 document.addEventListener("DOMContentLoaded", function() {
   document.getElementById("resaul").innerText = searchQuery;
+  document.getElementById("slaeorbuy").innerText = typeBtn;
   // Now you can use the searchQuery variable to perform actions on the search page
   console.log("Search Query:", searchQuery);
 })
 
 function getSR() {    
+  showProgressBar();
   let cardNumber = 0; 
   
   const collectionRef = db.collection("units");
@@ -48,6 +45,7 @@ function getSR() {
         }
       });
   document.getElementById("counts").innerText = cardNumber;
+  hideProressBar();
 
     
 
@@ -55,27 +53,8 @@ function getSR() {
     )
     .catch(error => {
       console.error("Error getting documents: ", error);
+      hideProressBar();
     });
-
-
-
-
-
-
-//     db.collection("units")
-//     .orderBy("area")
-//     .startAt(searchQuery)
-//     .endAt(searchQuery + "\uf8ff")
-//     .get()
-//     .then((querySnapshot) => {
-//       // Handle the search results
-//       querySnapshot.forEach((doc) => {
-//         displayPropertyCardss(doc);
-//     });
-// })
-// .catch((error) => {
-//     console.log("Error searching for units: ", error);
-// });
 
     }
 
@@ -149,17 +128,32 @@ function displayPropertyCardss(querySnapshot) {
     <img class="image" src="${propertyData.photos[0]}">
     <div class="search-result-item-body">
         <div class="row">
-            <div class="col-sm-9">
+            <div class="col-sm-9 ">
                 <h4 class="search-result-item-heading"><a href="#">${propertyData.title}</a></h4>
                 <p class="info">${propertyData.area}</p>
                 <p class="description">${propertyData.description}</p>
             </div>
-            <div class="col-sm-3 text-align-center">
+            <div class="col-sm-3 col-lg-12 text-align-center">
                 <p class="value3 mt-sm">$${propertyData.price}</p>
-                <p class="fs-mini text-muted">For ${propertyData.typeofunit}
+                <p class="fs-mini text-muted">For ${propertyData.typeofunit}</p>
+                <div class="info">
+                <div class="infoyaya">
+                  <ion-icon name="bed-outline"></ion-icon>
+                  <p>${propertyData.Bedrooms}</p>
+                </div>
+                <div class="infoyaya">
+                  <ion-icon name="man-outline"></ion-icon>
+                  <p>${propertyData.Bathrooms}</p>
+                </div>
+                <div class="infoyaya">
+                  <ion-icon name="square-outline"></ion-icon>
+                  <p>${propertyData.Square_ft}</p>
+                </div>
+              </div>
                 <div class="card-footer" style="justify-content:normal;gap:10px;">
-                <button type="button" class="btn btn-primary call-btn"><ion-icon name="call-outline" class="btn-wtsapp"></ion-icon><a href="tel:01111111111111"style="font-size: 16px; font-weight: bold; color: white;"> Call</a></button>
-                <button type="button" class="btn whatsapp-btn" style="font-size: 16px; font-weight: bold;">
+
+                <button type="button" class="btn btn-primary wts-btn call-btn"><ion-icon name="call-outline" class="btn-wtsapp"></ion-icon><a href="tel:01111111111111"style="font-size: 16px; font-weight: bold; color: white;"> Call</a></button>
+                <button type="button" class="btn whatsapp-btn wts-btn" style="font-size: 16px; font-weight: bold;">
                 <ion-icon name="logo-whatsapp" class="btn-wtsapp"></ion-icon> 
                 <a href="https://wa.me/1XXXXXXXXXX" style="font-size: 15px; font-weight: bold; color: white;">WhatsApp</a>
               </button>

@@ -2064,9 +2064,13 @@ a{
 }
 
 .search-results-count {
-  margin-top: 10px
+  margin-top: 10px;
+  font-size: 25px;
+  font-weight: bold;
+  padding-left: 2.5%;
+
 }
-p{
+a,p{
   word-break: break-all;
   white-space: normal;
 
@@ -2075,10 +2079,13 @@ p{
   padding: 2.3%;
   display: flex;
   background-color: #fff;
-  border-radius: 4px
+  border-radius: 4px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  margin: 1%;
+
 }
 .search-result-item a{
-  font-size: 20px;
+  font-size: 150%;
 }
 
 .search-result-item:after,
@@ -2098,7 +2105,21 @@ p{
   border-bottom-left-radius: 4px
 }
 
-@media (min-width:768px) {
+@media (max-width:816px) {
+  .description{
+    font-size: 15px;
+  }
+  .wts-btn{
+    padding: 1%;
+    font-size: 15px;
+  }
+  .card-footer{
+    display: flex;
+    flex-direction: column;
+  }
+  .wts-btn{
+    width: 100%;
+  }
   .search-result-item .image-link {
       display: inline-block;
       margin: -20px 0 -20px -20px;
@@ -2108,14 +2129,19 @@ p{
   }
 }
 
-@media (max-width:767px) {
-  .search-result-item .image-link {
-      max-height: 200px
+@media (max-width:680px) {
+  .search-result-item {
+    display: flex;
+    flex-direction: column;
+  }
+  .search-result-item .image {
+    width: 100% !important;
+    height: 50% !important;
   }
 }
 
 .search-result-item .image {
-  width: 15rem !important;
+  width: 15rem ;
 
 }
 
@@ -2139,7 +2165,7 @@ p{
     width: 100%;
   }
 }
-#counts{
+#counts, #slaeorbuy{
   display: inline-block;
 }
 .search-result-item-heading {
@@ -2154,4 +2180,15 @@ p{
   .search-result-item-heading {
       margin: 0
   }
+}
+.info{
+  display: flex;
+  width: 100%;
+}
+.infoyaya{
+  display: flex;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    padding: 1%;
 }
