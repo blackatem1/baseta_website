@@ -70,7 +70,9 @@ document.body.addEventListener("click", function (evt) {
   alert("body clicked");
 }); 
 
-
+function deleteContents() {
+  document.getElementById("searchbar").value="";
+}
 
 function searchchnaged() {
    document.getElementById("suggestions").style.display="flex";
@@ -129,26 +131,26 @@ function performSearch() {
 function displayPropertyCards(querySnapshot) {
   // Clear the previous data
   document.getElementsByClassName("property-list").innerHTML ="";
-
+  let c=0;
   // Iterate through the documents in the query snapshot
   querySnapshot.forEach((doc) => {
     // Access data from each document
+    c++;
+
     const propertyData = doc.data();
     const cardBanner = document.createElement("li");
     cardBanner.innerHTML = `
     <div class="property-card" >
     <figure class="card-banner h-100">
-      <div id="carouselExampleControls" class="carousel h-100 slide" data-bs-ride="carousel">
+      <div id="carouselExampleControls-${c}" class="carousel h-100 slide" data-bs-ride="carousel">
       <div class="carousel-inner h-100">
 
       </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls-${c}" data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
       </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls-${c}" data-bs-slide="next">
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
       </button>
     </div>
         
@@ -206,10 +208,14 @@ function displayPropertyCards(querySnapshot) {
     `
       // Your code here
       let osa = cardBanner.querySelector(".carousel-inner");
-  
+      
       propertyData.photos.forEach((element, index) => {
         diva = document.createElement("div");
-        diva.className = "carousel-item h-100";
+        if (index == 0) {
+          diva.className = "carousel-item active h-100";
+        }else{
+          diva.className = "carousel-item  h-100";
+        }
   
         img = document.createElement("img");
         img.className = "d-block w-100 h-100";
