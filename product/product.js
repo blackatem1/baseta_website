@@ -22,7 +22,7 @@ collectionRef.get()
       data.area =data.area.toLowerCase();
       if (doc.id == Product_ID) {
         document.title = "Baseta - "+data.title;
-        displayPropertyCardss(querySnapshot);
+        displayPropertyCardss(data);
       }
     });
     hideProressBar();
@@ -37,51 +37,84 @@ collectionRef.get()
 
 function displayPropertyCardss(querySnapshot) {
     // Clear the previous data
-    document.getElementsByClassName("property-list").innerHTML ="";
-  
-    // Iterate through the documents in the query snapshot
-      // Access data from each document
-      const propertyData = querySnapshot;
-      const cardBanner = document.createElement("li");
-    cardBanner.innerHTML=` <section class="search-result-item p-3">
-    <img class="image" src="${propertyData.photos[0]}">
-    <div class="search-result-item-body">
-        <div class="row">
-            <div class="col-sm-9 ">
-                <h4 class="search-result-item-heading"><a href="#">${propertyData.title}</a></h4>
-                <p class="info">${propertyData.area}</p>
-                <p class="description">${propertyData.description}</p>
-            </div>
-            <div class="col-sm-3 col-lg-12 text-align-center">
-                <p class="value3 mt-sm">$${propertyData.price}</p>
-                <p class="fs-mini text-muted">For ${propertyData.typeofunit}</p>
-                <div class="info">
-                <div class="infoyaya">
-                  <ion-icon name="bed-outline"></ion-icon>
-                  <p>${propertyData.Bedrooms}</p>
-                </div>
-                <div class="infoyaya">
-                  <ion-icon name="man-outline"></ion-icon>
-                  <p>${propertyData.Bathrooms}</p>
-                </div>
-                <div class="infoyaya">
-                  <ion-icon name="square-outline"></ion-icon>
-                  <p>${propertyData.Square_ft}</p>
-                </div>
-              </div>
-                <div class="card-footer" style="justify-content:normal;gap:10px;">
+    const propertyData = querySnapshot;
+    osa=document.getElementsByClassName("carousel-inner");
 
-                <button type="button" class="btn btn-primary wts-btn call-btn"><ion-icon name="call-outline" class="btn-wtsapp"></ion-icon><a href="tel:01111111111111"style="font-size: 16px; font-weight: bold; color: white;"> Call</a></button>
-                <button type="button" class="btn whatsapp-btn wts-btn" style="font-size: 16px; font-weight: bold;">
-                <ion-icon name="logo-whatsapp" class="btn-wtsapp"></ion-icon> 
-                <a href="https://wa.me/1XXXXXXXXXX" style="font-size: 15px; font-weight: bold; color: white;">WhatsApp</a>
-              </button>
-                </div>
-            </div>
-        </div>
+    osa.innerHTML ="";
+    
+    // Iterate through the documents in the query snapshot
+    // Access data from each document
+    propertyData.photos.forEach((element, index) => {
+        diva = document.createElement("div");
+        if (index == 0) {
+          diva.className = "carousel-item active h-100";
+        }else{
+          diva.className = "carousel-item h-100";
+        }
+        
+        img = document.createElement("img");
+        img.className = "d-block img-prod-caro w-100 h-100";
+        img.src = element;
+        diva.appendChild(img);
+        // alert(index);
+        osa[0].appendChild(diva);
+    });
+    // alert(document.getElementById("title-pro").innerHTML );
+    document.getElementById("title-pro").innerHTML=propertyData.title;
+    document.getElementById("conss").innerHTML=`      
+    <div   class="card-badge ${propertyData.typeofunit === 'rent' ? 'green' : 'blue'}">For ${propertyData.typeofunit}</div>
+    <div class="banner-actions" style="display:flex !important;padding:2% 0">
+      <button class="banner-actions-btn"style="color:black !important;width:fit-content;margin-right:2rem">
+        <ion-icon name="location"></ion-icon>
+        <address>${propertyData.area}</address>
+      </button>
+      <button class="banner-actions-btn" style="color:black !important">
+        <ion-icon name="camera"></ion-icon>
+        <span>${propertyData.photos.length}</span>
+      </button>
+     
     </div>
-</section>`;
-x= document.getElementsByClassName("sreasults");
-x[0].appendChild(cardBanner);
+  </figure>
+  <div class="card-content" style="padding:0 !important"  >
+    <div class="card-price">
+     <strong>${propertyData.price}</strong>/${propertyData.typeofunit === 'rent' ? 'MONTHLY' : 'TOTAL PRICE'}
+    </div>
+
+    <p class="card-text">
+    ${propertyData.description}
+    </p>
+    <ul class="card-list">
+      <li class="card-item" style="display: flex;
+      gap: 0.1rem;
+      align-items: center;
+      justify-content: space-evenly;
+      width: 25%; padding: .5rem 0">
+        <strong>${propertyData.Bedrooms}</strong>
+        <ion-icon name="bed-outline"></ion-icon>
+        <span>Bedrooms</span>
+      </li>
+      <li class="card-item" style="display: flex;
+      gap: 0.1rem;
+      align-items: center;
+      justify-content: space-evenly;
+      width: 25%; padding: .5rem 0">
+        <strong>${propertyData.Bathrooms}</strong>
+        <ion-icon name="man-outline"></ion-icon>
+        <span>Bathrooms</span>
+      </li>
+      <li class="card-item" style="display: flex;
+      gap: 0.1rem;
+      align-items: center;
+      justify-content: space-evenly;
+      width: 25%; padding: .5rem 0">
+        <strong>${propertyData.Square_ft}</strong>
+        <ion-icon name="square-outline"></ion-icon>
+        <span>Square Ft</span>
+      </li>
+    </ul>
+  </div>`;
+    // document.getElementById("perwhat").innerHTML="/ " +propertyData.typeofunit === 'rent' ? 'MONTHLY' : 'TOTAL PRICE';
+    // document.getElementById("price-pro").innerHTML="$ "+propertyData.price;
+    // document.getElementById("desc-prod").innerHTML=propertyData.description;
       
     }  

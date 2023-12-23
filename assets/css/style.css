@@ -2309,3 +2309,97 @@ address{
   display: flex;
   gap: 5% !important;
 }
+
+/* 
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  height: 100px;
+  width: 100px;
+  outline: white;
+  background-size: 100%, 100%;
+  border-radius: 50%;
+  border: 1px solid black;
+  filter: none !important;
+  opacity: 100% !important;
+  background-image: none;
+  filter: invert(100%);
+}
+
+.carousel-control-next-icon:after
+{
+  content: '>';
+  font-size: 55px;
+  color: white;
+  font-style: oblique;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512"><path d="M321.94 98L158.82 237.78a24 24 0 000 36.44L321.94 414c15.57 13.34 39.62 2.28 39.62-18.22v-279.6c0-20.5-24.05-31.56-39.62-18.18z"/></svg>') !important;
+}
+
+.carousel-control-prev-icon:after {
+  content: '<';
+  background: none !important;
+  background-image: url('<svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512"><path d="M190.06 414l163.12-139.78a24 24 0 000-36.44L190.06 98c-15.57-13.34-39.62-2.28-39.62 18.22v279.6c0 20.5 24.05 31.56 39.62 18.18z"/></svg>');
+  font-size: 55px;
+  color: white;
+} */
+
+.product-section{
+  /* height: 53.55rem !important; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.images-prod{
+  /* border: .5px solid grey; */
+}
+.img-prod-caro{
+  height: 30rem !important;
+}
+.img-ser-caro{
+  height: 100% ;
+  width:100%;
+}
+.banner-actions-btn{
+
+}
+body{
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+footer{
+  margin-top: auto;
+}
+
+.search-cont{
+  width: 100vw !important;
+  display: flex;
+  justify-content: center;
+}
+.ng-scope{
+  width: 85vw !important;
+}
+.img-sear-caro{
+  height: 100% ;
+  width: 100%;
+}
+ @media (min-width:1400px) {
+.img-sear-caro{
+  height: 100% ;
+}
+}
+@media (max-width:700px) {
+  .img-prod-caro{
+  height: 20rem !important ;
+}
+}
+/*@media (max-width:1100px) {
+  
+  .img-ser-caro{
+    height: 20rem ;
+    width: 25rem ;
+  }
+  }
+.carou-sear{
+
+} */
