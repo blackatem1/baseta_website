@@ -10,11 +10,12 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>  <link rel="stylesheet" href="./assets/css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.8.0/css/bulma.min.css" />
-
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <script src="https://www.gstatic.com/firebasejs/10.6.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore-compat.js"></script>
+  <script src='https://www.gstatic.com/firebasejs/10.6.0/firebase-analytics-compat.js'></script>
   <script src="assets/js/firebasedb.js"></script>
   <link
     href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&family=Poppins:wght@400;500;600;700&display=swap"
@@ -29,38 +30,40 @@
     </div>
   </div>
 
-  <navbar  style="    position: sticky;
-  z-index: 99999999;top:0;">
-     <div class="header-top">
-      <div class="constainer headn">
+    <navbar  style="    position: fixed;width: 100%;
+    z-index: 99999999;top:0;">
+        <div class="header-top"style="    position: fixed;width: 100%;
+        z-index: 99999999;top:0; height: 5rem !important;">
+        <div class="constainer headn">
 
         <ul class="header-top-list">
 
-       
-          <li>
+        
+            <li>
             <h2 class="hero-tistle">Baseta</h2>
 
-          </li>
+            </li>
 
 
-       
+        
 
         </ul>
 
         <div class="wrapper">
-       
-          <button class="header-top-btn">عربي</button>
-          <button class="header-top-btn">Eng</button>
-          
+        
+            <button class="header-top-btn">عربي</button>
+            <button class="header-top-btn">Eng</button>
+            
 
 
         </div>
 
-      </div>
+        </div>
     </div>
-    
 
-  </navbar>
+
+    </navbar>
+    
 
 
 
@@ -92,9 +95,13 @@
                 <div class="row cont w-100">
                 <div class="d-flex flex-row cont position-relative w-100" role="search">
                   <div class="suggestions" id="suggestions">
-                    <ul class="suggestio-ul" id="suggestion-ul"> 
-
-                    </ul>
+                    <div class="row w-100">
+                      <div class="locicon"> 
+                      </div>
+                      <ul class="suggestio-ul" id="suggestion-ul"> 
+  
+                      </ul>
+                    </div>
                       <script>
                         document.body.addEventListener("click", function (evt) {
                           document.getElementById("suggestions").style.display="none";
@@ -110,82 +117,83 @@
                     <ion-icon name="search" class="prefix"></ion-icon>
                     <input type="text" class=" searchbarinput" autocomplete="off" oninput="searchchnaged()" id="searchbar" placeholder="Search By Area">
                     <p onclick="deleteContents()">
-                      <ion-icon name="close-circle-outline" class="suffix"  ></ion-icon>
+                      <ion-icon name="close-circle-outline" class="suffix" id="suffix" ></ion-icon>
                     </p>
                   </div> 
-                  <select class="form-select" id="type-unit" aria-label="Default select example">
-                    <option  value="0">Open this select menu</option>
-                    <option value="Apartment" selected="selected">Apartment</option>
-                    <option value="Villa">Villa</option>
-                    <option value="Townhouse">Townhouse</option>
-                    <option value="penthouse">penthouse</option>
-                    <option value="Compound">Compound</option>
-                    <option value="chalet">chalet</option>
-                    <option value="Twin House">Twin House</option>
-                    <option value="Duplex">Duplex</option>
-                    <option value="Full Floor">Full Floor</option>
-                    <option value="Half Floor">Half Floor</option>
-                    <option value="Whole Building">Whole Building</option>
-                    <option value="Land">Land</option>
-                    <option value="Bulk Sale Unit">Bulk Sale Unit</option>
-                    <option value="Bungalow">Bungalow</option>
-                    <option value="iVilla">iVilla</option>
-                  </select>
-                  <select class="form-select"id="first-price" aria-label="Default select example"onchange="updateMaxSelect()">
-                    <option selected value="0">minim. price:</option>
-                    <option value="1000">1,000</option>
-                    <option value="10000">10,000</option>
-                    <option value="20000">20,000</option>
-                    <option value="30000">30,000</option>
-                    <option value="40000">40,000</option>
-                    <option value="50000">50,000</option>
-                    <option value="60000">60,000</option>
-                    <option value="70000">70,000</option>
-                    <option value="80000">80,000</option>
-                    <option value="90000">90,000</option>
-                    <option value="100000">100,000</option>
-                    <option value=">">>100,000</option>
-                  </select>
-                  <select class="form-select" id="second-price"aria-label="Default select example">
-                    <option selected value="0">price range end:</option>
-                  </select>
-                  <script>
-                    function updateMaxSelect() {
-                      // Get the selected minimum value
-                      var minSelect = document.getElementById('first-price');
-                      var selectedMin = parseInt(minSelect.value);
-                
-                      // Clear previous options in maxSelect
-                      var maxSelect = document.getElementById('second-price');
-                      maxSelect.innerHTML = '';
-                      var option = document.createElement('option');
-                      option.value = 0;
-                      option.text = "maxim. price"; // Format the number with commas
-                      maxSelect.add(option);
-                
-                      // Add options to maxSelect starting from selectedMin + 1
-                      for (var i = selectedMin +10000; i <= 100000; i+=10000) {
-                          var option = document.createElement('option');
-                        option.value = i;
-                        option.text = i.toLocaleString(); // Format the number with commas
+                  <div class="selects  position-relative w-100 ">
+                    <select class="form-select" id="type-unit" aria-label="Default select example">
+                      <option  class="option" value="0"selected>Property type</option>
+                      <option value="Apartment" >Apartment</option>
+                      <option value="Villa">Villa</option>
+                      <option value="Townhouse">Townhouse</option>
+                      <option value="penthouse">penthouse</option>
+                      <option value="Compound">Compound</option>
+                      <option value="chalet">chalet</option>
+                      <option value="Twin House">Twin House</option>
+                      <option value="Duplex">Duplex</option>
+                      <option value="Full Floor">Full Floor</option>
+                      <option value="Half Floor">Half Floor</option>
+                      <option value="Whole Building">Whole Building</option>
+                      <option value="Land">Land</option>
+                      <option value="Bulk Sale Unit">Bulk Sale Unit</option>
+                      <option value="Bungalow">Bungalow</option>
+                      <option value="iVilla">iVilla</option>
+                    </select>
+                    <select class="form-select"id="first-price" aria-label="Default select example"onchange="updateMaxSelect()">
+                      <option selected value="0">minim. price:</option>
+                      <option value="1000">1,000</option>
+                      <option value="10000">10,000</option>
+                      <option value="20000">20,000</option>
+                      <option value="30000">30,000</option>
+                      <option value="40000">40,000</option>
+                      <option value="50000">50,000</option>
+                      <option value="60000">60,000</option>
+                      <option value="70000">70,000</option>
+                      <option value="80000">80,000</option>
+                      <option value="90000">90,000</option>
+                      <option value="100000">100,000</option>
+                      <option value=">">>100,000</option>
+                    </select>
+                    <select class="form-select" id="second-price"aria-label="Default select example">
+                      <option selected value="0">price range end:</option>
+                    </select>
+                    <script>
+                      function updateMaxSelect() {
+                        // Get the selected minimum value
+                        var minSelect = document.getElementById('first-price');
+                        var selectedMin = parseInt(minSelect.value);
+                  
+                        // Clear previous options in maxSelect
+                        var maxSelect = document.getElementById('second-price');
+                        maxSelect.innerHTML = '';
+                        var option = document.createElement('option');
+                        option.value = 0;
+                        option.text = "maxim. price"; // Format the number with commas
                         maxSelect.add(option);
+                  
+                        // Add options to maxSelect starting from selectedMin + 1
+                        for (var i = selectedMin +10000; i <= 100000; i+=10000) {
+                            var option = document.createElement('option');
+                          option.value = i;
+                          option.text = i.toLocaleString(); // Format the number with commas
+                          maxSelect.add(option);
+                        }
+                        var option = document.createElement('option');
+                         x=100000;
+                        option.value = x;
+                        option.text = ">100,000";
+                  
+                       maxSelect.add(option);
+                  
                       }
-                      var option = document.createElement('option');
-                       x=100000;
-                      option.value = x;
-                      option.text = ">100,000";
-                
-                     maxSelect.add(option);
-                
-                    }
-                
-                    // Initialize maxSelect options on page load
-                    updateMaxSelect();
-                  </script>
-                 
-                  <button class=" btn-search" id="search-submit" type="submit" >              
-                    <ion-icon name="search" style="display: inline-block;"></ion-icon><h1  class="searcht">Search</h1>
-                  </button>
+                  
+                      // Initialize maxSelect options on page load
+                      updateMaxSelect();
+                    </script>
+                   <button class=" btn-search" id="search-submit" type="submit" >              
+                     <ion-icon name="search" style="display: inline-block;"></ion-icon><h1  class="searcht">Search</h1></button>
+                  </div>
+                  </div>
                 </div>
               </div>
             </div>

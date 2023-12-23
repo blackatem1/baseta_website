@@ -124,7 +124,8 @@ function displayPropertyCardss(querySnapshot) {
     //   </div>
     // </div>
     // `
-    cardBanner.innerHTML=` <section class="search-result-item p-3">
+    cardBanner.innerHTML=`
+     <section class="search-result-item p-3">
     <img class="image" src="${propertyData.photos[0]}">
     <div class="search-result-item-body">
         <div class="row">

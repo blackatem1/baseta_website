@@ -20,7 +20,25 @@ function hideProressBar() {
 firebase.initializeApp(firebaseConfig);
 var db = firebase.firestore();
 const auth = firebase.auth();
-function get(gets) {
+const analytics = firebase.analytics();
+  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      // you can now add any event you like by just typing this code do it by your self
+      // firebase.analytics().logEvent('event_name', { param1: 'value1', param2: 'value2' });
+      // firebase.analytics().logEvent('notification_received');
+  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  function get(gets) {
   showProgressBar();
   db.collection(gets).get().then((querySnapshot) => {    
     displayPropertyCards(querySnapshot)
@@ -39,30 +57,6 @@ function get(gets) {
 // }
 
 
-document.addEventListener('click', function ss() {
-  document.getElementById("suggestions").style.display="none";
-  console.log("saffs");
-  
-});
-// var searchInput = document.getElementById('searchbar');
-// console.log("ddsds");
-// document.getElementById('searchbar').addEventListener('keyup', function() {
-//   document.getElementById('suggestion').style.display = 'flex';
-
-
-// });
-// document.getElementById('searchbar').addEventListener('keyup', function() {
-//   document.getElementById('suggestion-ul').style.display = 'none';
-
-
-// });
-
-document.getElementById("searchbar").addEventListener("keyup", function () {
-  var suggestions = document.getElementById("searchbar");
-  console.log("suggestions");
-
-  
-});
 document.body.addEventListener("click", function (evt) {
   console.dir(this);
   //note evt.target can be a nested element, not the body element, resulting in misfires
@@ -75,38 +69,53 @@ function deleteContents() {
 }
 
 function searchchnaged() {
-   document.getElementById("suggestions").style.display="flex";
-   val=document.getElementById("searchbar").value;
+  var lociconDiv = document.querySelector('.locicon');
+  
+  document.getElementById('suffix').style.display="flex";
+  var type_unit = document.getElementById("type-unit").value;
+  val=document.getElementById("searchbar").value;
   var val2 = document.querySelector('input[name="type-btn"]:checked').value;
-   console.log(val2);
-   db.collection("units").get().then((querySnapshot) => {    
+  db.collection("units").get().then((querySnapshot) => {    
     document.getElementById("suggestion-ul").innerHTML="";
+    document.querySelector('.locicon').innerHTML="";
     let currentIndex = 0;
-
+    
     querySnapshot.forEach((doc) => {
-        const propertyData = doc.data();
-        if (currentIndex <= 5) {
-            if (propertyData.area.toLowerCase().includes(val.toLowerCase())) {
-              if (propertyData.typeofunit==val2) {
-                var sugg_li = document.createElement("li");
+      const propertyData = doc.data();
+      if (currentIndex <= 5) {
+        if (type_unit == propertyData.title || type_unit ==0) {
+          if (propertyData.area.toLowerCase().includes(val.toLowerCase())) {
+            if (propertyData.typeofunit==val2) {
+              var sugg_li = document.createElement("li");
+                var liElement = document.createElement('li');
+                var ionIcon = document.createElement('ion-icon');
+                ionIcon.setAttribute('name', 'location-outline');
+                ionIcon.setAttribute('class', 'li');
+                sugg_li.setAttribute('class', 'li');
                 sugg_li.onclick=function sssss() {
                   document.getElementById("searchbar").value = sugg_li.innerText ;
                   searchchnaged();
                 }
                 sugg_li.innerText = propertyData.area;
+                liElement.appendChild(ionIcon);
+                lociconDiv.appendChild(liElement);
                 document.getElementById("suggestion-ul").appendChild(sugg_li);
             }
-        }
+          }
       }
-
-        currentIndex++;
+      }
+      
+      currentIndex++;
     });
+    if (currentIndex != 0) {
+      document.getElementById("suggestions").style.display="flex";
+      
+    }
 });
-
-
-
-
 }
+
+
+
 function performSearch() {
   event.preventDefault();
   // Get the search query from the input field
@@ -127,7 +136,9 @@ function performSearch() {
       "&unit=" + encodeURIComponent(type_unit);
   
 }
-
+function CardGO(id) {
+  window.location.href = "./product/product.html?Product_ID=" + encodeURIComponent(id); 
+}
 function displayPropertyCards(querySnapshot) {
   // Clear the previous data
   document.getElementsByClassName("property-list").innerHTML ="";
@@ -155,8 +166,8 @@ function displayPropertyCards(querySnapshot) {
     </div>
         
       
-      <div class="card-badge ${propertyData.typeofunit === 'rent' ? 'green' : 'blue'}">For ${propertyData.typeofunit}</div>
-      <div class="banner-actions">
+      <div onclick="CardGO('${doc.id}')" class="card-badge ${propertyData.typeofunit === 'rent' ? 'green' : 'blue'}">For ${propertyData.typeofunit}</div>
+      <div class="banner-actions"onclick="CardGO('${doc.id}')">
         <button class="banner-actions-btn">
           <ion-icon name="location"></ion-icon>
           <address>${propertyData.area}</address>
@@ -168,12 +179,12 @@ function displayPropertyCards(querySnapshot) {
        
       </div>
     </figure>
-    <div class="card-content">
+    <div class="card-content" onclick="CardGO('${doc.id}')" >
       <div class="card-price">
        <strong>${propertyData.price}</strong>/${propertyData.typeofunit === 'rent' ? 'MONTHLY' : 'TOTAL PRICE'}
       </div>
       <h3 class="h3 card-title">
-        <a href="#">${propertyData.title}</a>
+        <a >${propertyData.title}</a>
       </h3>
       <p class="card-text">
       ${propertyData.description}
@@ -197,8 +208,8 @@ function displayPropertyCards(querySnapshot) {
       </ul>
     </div>
     <div class="card-footer">
-    <button type="button" class="btn btn-primary call-btn"><ion-icon name="call-outline" class="btn-wtsapp"></ion-icon><a href="tel:01111111111111"style="font-size: 16px; font-weight: bold; color: white;"> Call</a></button>
-    <button type="button" class="btn whatsapp-btn" style="font-size: 16px; font-weight: bold;">
+    <button type="button" class="butn  call-btn"><ion-icon name="call-outline" class="btn-wtsapp"></ion-icon><a href="tel:01111111111111"style="font-size: 16px; font-weight: bold; color: white;"> Call</a></button>
+    <button type="button" class="butn whatsapp-btn" style="font-size: 16px; font-weight: bold;">
     <ion-icon name="logo-whatsapp" class="btn-wtsapp"></ion-icon> 
     <a href="https://wa.me/1XXXXXXXXXX" style="font-size: 15px; font-weight: bold; color: white;">WhatsApp</a>
   </button>
