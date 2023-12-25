@@ -221,6 +221,7 @@ button, a { transition: var(--transition); }
 
 .btn,.butn {
   position: relative;
+  border-radius: 10px !important;
   background: var(--orange-soda);
   color: var(--white);
   font-family: var(--ff-poppins);
@@ -2409,4 +2410,15 @@ footer{
 } */
 .cursor{
   cursor: pointer;
+}
+.consa{
+  width: 80vw !important;
+}
+.buttons{
+  gap: .5rem !important;
+}
+
+
+.selectsbuy{
+  display: none ;
 }

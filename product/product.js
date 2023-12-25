@@ -87,8 +87,9 @@ function displayPropertyCardss(querySnapshot) {
       <li class="card-item" style="display: flex;
       gap: 0.1rem;
       align-items: center;
-      justify-content: space-evenly;
-      width: 25%; padding: .5rem 0">
+      justify-content: flex-start;
+      width: 60%;
+      padding: 0.5rem 0;">
         <strong>${propertyData.Bedrooms}</strong>
         <ion-icon name="bed-outline"></ion-icon>
         <span>Bedrooms</span>
@@ -96,8 +97,9 @@ function displayPropertyCardss(querySnapshot) {
       <li class="card-item" style="display: flex;
       gap: 0.1rem;
       align-items: center;
-      justify-content: space-evenly;
-      width: 25%; padding: .5rem 0">
+      justify-content: flex-start;
+      width: 60%;
+      padding: 0.5rem 0;">
         <strong>${propertyData.Bathrooms}</strong>
         <ion-icon name="man-outline"></ion-icon>
         <span>Bathrooms</span>
@@ -105,8 +107,9 @@ function displayPropertyCardss(querySnapshot) {
       <li class="card-item" style="display: flex;
       gap: 0.1rem;
       align-items: center;
-      justify-content: space-evenly;
-      width: 25%; padding: .5rem 0">
+      justify-content: flex-start;
+      width: 60%;
+      padding: 0.5rem 0;">
         <strong>${propertyData.Square_ft}</strong>
         <ion-icon name="square-outline"></ion-icon>
         <span>Square Ft</span>

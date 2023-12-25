@@ -91,9 +91,9 @@
               <p class="hero-tistle">Find Your Dream House By Us</p>
               <div class="row rentsandsales d-flex  w-100">
                 
-                <input type="radio" id="rent" name="type-btn" value="rent"class="vnone" checked="checked">
+                <input type="radio" onchange="selectsch()" id="rent" name="type-btn" value="rent"class="vnone" checked="checked">
                 <label class="btn-re" for="rent" id="setDatalabel">Rent</label>
-                <input type="radio" class="vnone"ed id="sale" name="type-btn" value="sale">
+                <input type="radio" onchange="selectsch()" class="vnone"ed id="sale" name="type-btn" value="sale">
                 <label class="btn-re" for="sale" id="setDatalabel">Buy</label>
       
               </div>
@@ -122,12 +122,12 @@
 
                     <ion-icon name="search" class="prefix"></ion-icon>
                     <input type="text" class=" searchbarinput" autocomplete="off" oninput="searchchnaged()" id="searchbar" placeholder="Search By Area">
-                    <p onclick="deleteContents()">
+                    <p id="deleteconts" onclick="deleteContents()">
                       <ion-icon name="close-circle-outline" class="suffix" id="suffix" ></ion-icon>
                     </p>
                   </div> 
-                  <div class="selects  position-relative w-100 ">
-                    <select class="form-select" id="type-unit" aria-label="Default select example">
+                  <div class="selects selectsrent position-relative w-100 " id="selectsrent">
+                    <select class="form-select" id="type-unit1" aria-label="Default select example">
                       <option  class="option" value="0"selected>Property type</option>
                       <option value="Apartment" >Apartment</option>
                       <option value="Villa">Villa</option>
@@ -145,7 +145,7 @@
                       <option value="Bungalow">Bungalow</option>
                       <option value="iVilla">iVilla</option>
                     </select>
-                    <select class="form-select"id="first-price" aria-label="Default select example"onchange="updateMaxSelect()">
+                    <select class="form-select"id="first-price1" aria-label="Default select example"onchange="updateMaxSelect()">
                       <option selected value="0">minim. price:</option>
                       <option value="1000">1,000</option>
                       <option value="10000">10,000</option>
@@ -160,17 +160,17 @@
                       <option value="100000">100,000</option>
                       <option value=">">>100,000</option>
                     </select>
-                    <select class="form-select" id="second-price"aria-label="Default select example">
+                    <select class="form-select" id="second-price1"aria-label="Default select example">
                       <option selected value="0">price range end:</option>
                     </select>
                     <script>
                       function updateMaxSelect() {
                         // Get the selected minimum value
-                        var minSelect = document.getElementById('first-price');
+                        var minSelect = document.getElementById('first-price1');
                         var selectedMin = parseInt(minSelect.value);
                   
                         // Clear previous options in maxSelect
-                        var maxSelect = document.getElementById('second-price');
+                        var maxSelect = document.getElementById('second-price1');
                         maxSelect.innerHTML = '';
                         var option = document.createElement('option');
                         option.value = 0;
@@ -185,9 +185,79 @@
                           maxSelect.add(option);
                         }
                         var option = document.createElement('option');
-                         x=100000;
                         option.value = ">";
                         option.text = ">100,000";
+                  
+                       maxSelect.add(option);
+                  
+                      }
+                  
+                      // Initialize maxSelect options on page load
+                      updateMaxSelect();
+                    </script>
+                   <button class=" btn-search" id="search-submit" type="submit" >              
+                     <ion-icon name="search" style="display: inline-block;"></ion-icon><h1  class="searcht">Search</h1></button>
+                  </div>
+                  <div class="selects selectsbuy position-relative w-100 " id="selectsbuy">
+                    <select class="form-select" id="type-unit2" aria-label="Default select example">
+                      <option  class="option" value="0"selected>Property type</option>
+                      <option value="Apartment" >Apartment</option>
+                      <option value="Villa">Villa</option>
+                      <option value="Townhouse">Townhouse</option>
+                      <option value="penthouse">penthouse</option>
+                      <option value="Compound">Compound</option>
+                      <option value="chalet">chalet</option>
+                      <option value="Twin House">Twin House</option>
+                      <option value="Duplex">Duplex</option>
+                      <option value="Full Floor">Full Floor</option>
+                      <option value="Half Floor">Half Floor</option>
+                      <option value="Whole Building">Whole Building</option>
+                      <option value="Land">Land</option>
+                      <option value="Bulk Sale Unit">Bulk Sale Unit</option>
+                      <option value="Bungalow">Bungalow</option>
+                      <option value="iVilla">iVilla</option>
+                    </select>
+                    <select class="form-select"id="first-price2" aria-label="Default select example"onchange="updateMaxSelect()">
+                      <option selected value="0">minim. price:</option>
+                      <option value="100000">100,000</option>
+                      <option value="200000">200,000</option>
+                      <option value="300000">300,000</option>
+                      <option value="400000">400,000</option>
+                      <option value="500000">500,000</option>
+                      <option value="600000">600,000</option>
+                      <option value="700000">700,000</option>
+                      <option value="800000">800,000</option>
+                      <option value="900000">900,000</option>
+                      <option value="1000000">1,000,000</option>
+                      <option value=">">>1,000,000</option>
+                    </select>
+                    <select class="form-select" id="second-price2"aria-label="Default select example">
+                      <option selected value="0">price range end:</option>
+                    </select>
+                    <script>
+                      function updateMaxSelect() {
+                        // Get the selected minimum value
+                        var minSelect = document.getElementById('first-price2');
+                        var selectedMin = parseInt(minSelect.value);
+                  
+                        // Clear previous options in maxSelect
+                        var maxSelect = document.getElementById('second-price2');
+                        maxSelect.innerHTML = '';
+                        var option = document.createElement('option');
+                        option.value = 0;
+                        option.text = "maxim. price"; // Format the number with commas
+                        maxSelect.add(option);
+                  
+                        // Add options to maxSelect starting from selectedMin + 1
+                        for (var i = selectedMin +100000; i <= 1000000; i+=100000) {
+                            var option = document.createElement('option');
+                          option.value = i;
+                          option.text = i.toLocaleString(); // Format the number with commas
+                          maxSelect.add(option);
+                        }
+                        var option = document.createElement('option');
+                        option.value = ">";
+                        option.text = ">1,000,000";
                   
                        maxSelect.add(option);
                   

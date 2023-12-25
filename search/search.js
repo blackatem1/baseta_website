@@ -114,8 +114,10 @@ function displayPropertyCardss(querySnapshot,id) {
               </div>
                 <div class="card-footer" style="justify-content:normal;gap:10px;">
 
-                <button type="button" class="butn btn-primary wts-btn call-btn"><ion-icon name="call-outline" class="btn-wtsapp"></ion-icon><a href="tel:01111111111111"style="font-size: 16px; font-weight: bold; color: white;"> Call</a></button>
-                <button type="button" class="butn whatsapp-btn wts-btn" style="font-size: 16px; font-weight: bold;">
+                <a href="tel:01119734953"class="butn  call-btn"> 
+                <button type="button" class="call-btn"style="font-size: 16px; font-weight: bold; color: white;"><ion-icon name="call-outline" class="btn-wtsapp"></ion-icon>Call</button>
+                </a>
+                                <button type="button" class="butn whatsapp-btn wts-btn" style="font-size: 16px; font-weight: bold;">
                 <ion-icon name="logo-whatsapp" class="btn-wtsapp"></ion-icon> 
                 <a href="https://wa.me/1XXXXXXXXXX" style="font-size: 15px; font-weight: bold; color: white;">WhatsApp</a>
               </button>

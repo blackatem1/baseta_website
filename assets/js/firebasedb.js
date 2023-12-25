@@ -43,32 +43,17 @@ const analytics = firebase.analytics();
   db.collection(gets).get().then((querySnapshot) => {    
     displayPropertyCards(querySnapshot)
 });}
-// function sett() {
-//   db.collection("units").set({
-//   username: "blackatem",
-//   password: "Lovelace",
-//   })
-//   .then((docRef) => {
-//       console.log("Document written with ID: ", docRef.id);
-//   })
-//   .catch((error) => {
-//       console.error("Error adding document: ", error);
-//   });
-// }
 
-
-// document.body.addEventListener("click", function (evt) {
-//   console.dir(this);
-//   //note evt.target can be a nested element, not the body element, resulting in misfires
-//   console.log(evt.target);
-//   alert("body clicked");
-// }); 
 
 function deleteContents() {
   document.getElementById("searchbar").value="";
+  document.getElementById('deleteconts').style.display="none";
+  
 }
 
 function searchchnaged() {
+  document.getElementById('deleteconts').style.display="flex";
+
   var lociconDiv = document.querySelector('.locicon');
   
   document.getElementById('suffix').style.display="flex";
@@ -94,6 +79,8 @@ function searchchnaged() {
                 sugg_li.setAttribute('class', 'li');
                 sugg_li.onclick=function sssss() {
                   document.getElementById("searchbar").value = sugg_li.innerText ;
+                  document.getElementById('suggestion').style.display="none";
+
                   searchchnaged();
                 }
                 sugg_li.innerText = propertyData.area;
@@ -208,7 +195,9 @@ function displayPropertyCards(querySnapshot) {
       </ul>
     </div>
     <div class="card-footer ">
-    <button type="button" class="butn  call-btn"><ion-icon name="call-outline" class="btn-wtsapp"></ion-icon><a href="tel:01111111111111"style="font-size: 16px; font-weight: bold; color: white;"> Call</a></button>
+    <a href="tel:01119734953"class="butn  call-btn"> 
+    <button type="button" class="call-btn"style="font-size: 16px; font-weight: bold; color: white;"><ion-icon name="call-outline" class="btn-wtsapp"></ion-icon>Call</button>
+    </a>
     <button type="button" class="butn whatsapp-btn" style="font-size: 16px; font-weight: bold;">
     <ion-icon name="logo-whatsapp" class="btn-wtsapp"></ion-icon> 
     <a href="https://wa.me/1XXXXXXXXXX" style="font-size: 15px; font-weight: bold; color: white;">WhatsApp</a>
@@ -243,3 +232,15 @@ function displayPropertyCards(querySnapshot) {
 }
 
 
+function selectsch() {
+  // document.getElementById('deleteconts').style.display="flex";
+  // console.log(document.querySelector('input[name="type-btn"]:checked').value);
+  if (document.querySelector('input[name="type-btn"]:checked').value == "rent") {
+  document.getElementById('selectsrent').style.display="flex";
+  document.getElementById('selectsbuy').style.display="none";
+}if(document.querySelector('input[name="type-btn"]:checked').value == "sale"){
+  document.getElementById('selectsbuy').style.display="flex";
+  document.getElementById('selectsrent').style.display="none";
+  }
+  
+}
