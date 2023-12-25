@@ -845,7 +845,7 @@ button, a { transition: var(--transition); }
   display: flex;
 
   justify-content: space-evenly;
-
+  gap: .5rem !important;
 }
 
 .card-author {
