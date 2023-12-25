@@ -27,16 +27,21 @@ function getSR() {
         querySnapshot.forEach(doc => {
         const data = doc.data();
         // Perform client-side filtering
-        //  console.log(data.area);
         data.area =data.area.toLowerCase();
         if (data.area.includes(searchQuery)) {
-          // console.log("here");
+          if (secondPrice != ">") {
+            secondPrice=parseInt(secondPrice);
+          }
+          if (firstPrice != ">") {
+            firstPrice=parseInt(firstPrice);
+          }
+          data.price=parseInt(data.price);
           if (data.typeofunit==typeBtn) {
-            if (firstPrice==">" && data.price<=100000 || data.price>=firstPrice || firstPrice==0) {
-          if (secondPrice==">" && data.price<=100000 ||data.price<=secondPrice||secondPrice==0) {
-            if (data.title==unit || unit==0) {
-              displayPropertyCardss(data,doc.id);
-              cardNumber++;
+            if (firstPrice ==">" && data.price>=100000 || firstPrice==0|| data.price>=firstPrice ) {
+              if (secondPrice==">" && data.price>=100000 ||secondPrice==0|| data.price<=secondPrice) {
+                if (data.title==unit || unit==0) {
+                  displayPropertyCardss(data,doc.id);
+                  cardNumber++;
 
           }
         }
@@ -71,7 +76,7 @@ function displayPropertyCardss(querySnapshot,id) {
     cardBanner.innerHTML=`
      <section class="search-result-item p-3">
 
-    <div class="search-result-item-body" onclick="CardGOF('${id}')">
+    <div class="search-result-item-body">
         <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-5 ">
             <div id="carouselExample-${id}" class="carousel slide img-ser-caro">
@@ -87,7 +92,7 @@ function displayPropertyCardss(querySnapshot,id) {
             </button>
           </div>
             </div>
-            <div class="col-sm-12 col-md-12 col-lg-7">
+            <div class="col-sm-12 col-md-12 col-lg-7 cursor" onclick="CardGOF('${id}')">
             <h4 class="search-result-item-heading"><a href="#">${propertyData.title}</a></h4>
             <p class="info">${propertyData.area}</p>
             <p class="description">${propertyData.description}</p>
@@ -109,8 +114,8 @@ function displayPropertyCardss(querySnapshot,id) {
               </div>
                 <div class="card-footer" style="justify-content:normal;gap:10px;">
 
-                <button type="button" class="btn btn-primary wts-btn call-btn"><ion-icon name="call-outline" class="btn-wtsapp"></ion-icon><a href="tel:01111111111111"style="font-size: 16px; font-weight: bold; color: white;"> Call</a></button>
-                <button type="button" class="btn whatsapp-btn wts-btn" style="font-size: 16px; font-weight: bold;">
+                <button type="button" class="butn btn-primary wts-btn call-btn"><ion-icon name="call-outline" class="btn-wtsapp"></ion-icon><a href="tel:01111111111111"style="font-size: 16px; font-weight: bold; color: white;"> Call</a></button>
+                <button type="button" class="butn whatsapp-btn wts-btn" style="font-size: 16px; font-weight: bold;">
                 <ion-icon name="logo-whatsapp" class="btn-wtsapp"></ion-icon> 
                 <a href="https://wa.me/1XXXXXXXXXX" style="font-size: 15px; font-weight: bold; color: white;">WhatsApp</a>
               </button>

@@ -2407,3 +2407,6 @@ footer{
 .dropdown-menu{
   width: 50%;
 } */
+.cursor{
+  cursor: pointer;
+}

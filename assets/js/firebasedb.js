@@ -166,7 +166,7 @@ function displayPropertyCards(querySnapshot) {
     </div>
         
       
-      <div onclick="CardGO('${doc.id}')" class="card-badge ${propertyData.typeofunit === 'rent' ? 'green' : 'blue'}">For ${propertyData.typeofunit}</div>
+      <div onclick="CardGO('${doc.id}')" class="card-badge cursor ${propertyData.typeofunit === 'rent' ? 'green' : 'blue'}">For ${propertyData.typeofunit}</div>
       <div class="banner-actions"onclick="CardGO('${doc.id}')">
         <button class="banner-actions-btn">
           <ion-icon name="location"></ion-icon>
@@ -179,7 +179,7 @@ function displayPropertyCards(querySnapshot) {
        
       </div>
     </figure>
-    <div class="card-content" onclick="CardGO('${doc.id}')" >
+    <div class="card-content cursor" onclick="CardGO('${doc.id}')" >
       <div class="card-price">
        <strong>${propertyData.price}</strong>/${propertyData.typeofunit === 'rent' ? 'MONTHLY' : 'TOTAL PRICE'}
       </div>
@@ -207,7 +207,7 @@ function displayPropertyCards(querySnapshot) {
         </li>
       </ul>
     </div>
-    <div class="card-footer">
+    <div class="card-footer ">
     <button type="button" class="butn  call-btn"><ion-icon name="call-outline" class="btn-wtsapp"></ion-icon><a href="tel:01111111111111"style="font-size: 16px; font-weight: bold; color: white;"> Call</a></button>
     <button type="button" class="butn whatsapp-btn" style="font-size: 16px; font-weight: bold;">
     <ion-icon name="logo-whatsapp" class="btn-wtsapp"></ion-icon> 
