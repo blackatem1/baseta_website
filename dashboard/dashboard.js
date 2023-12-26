@@ -80,8 +80,212 @@ function searchchnagedash() {
       // displayUnitCards(querySnapshot)
     }
 // });
-// }  
+// }
+// var selectedFiles = [];
 
+var loadFiles = function(event) {
+  var previewContainer = document.getElementById('preview-container');
+  var photosInput = document.getElementById("photos");
+  
+  // Remove existing previews
+  previewContainer.innerHTML = '';
+
+  var selectedFiles = event.target.files;
+
+  for (var i = 0; i < selectedFiles.length; i++) {
+      var file = selectedFiles[i];
+
+      var image = document.createElement('img');
+      image.src = URL.createObjectURL(file);
+      image.className = "imgin";
+      image.onload = function() {
+          URL.revokeObjectURL(this.src); // free memory
+      };
+
+      // Create a delete button for each image
+      var deleteButton = document.createElement('button');
+      deleteButton.innerHTML = '<ion-icon name="close-outline"></ion-icon>';
+      deleteButton.className = 'butn';
+      deleteButton.onclick = function() {
+          // Remove the image and button when delete is clicked
+          var container = this.parentNode;
+          container.remove();
+
+          // Get the current file list from the input
+          var currentFiles = Array.from(photosInput.files);
+
+          // Remove the deleted file from the file list
+          currentFiles = currentFiles.filter(function(f) {
+              return f !== file; // compare objects
+          });
+
+          // Update the input element with the remaining files
+          photosInput.value = null; // Clear the input
+          currentFiles.forEach(function(f) {
+            const dataTransfer = new DataTransfer();
+            dataTransfer.items.add(f);
+            photosInput.files = dataTransfer.files;
+            // photosInput.files.add(f);
+          });
+      };
+
+      // Create a container div for each image and button
+      var container = document.createElement('div');
+      container.appendChild(image);
+      container.className = "divin";
+
+      container.appendChild(deleteButton);
+
+      // Append the container to the preview container
+      previewContainer.appendChild(container);
+  }
+};
+// var loadFiles = function(event) {
+//   var previewContainer = document.getElementById('preview-container');
+//   var photosInput = document.getElementById("photos");
+
+//   // Remove existing previews
+//   previewContainer.innerHTML = '';
+
+//   var selectedFiles = event.target.files;
+
+//   for (var i = 0; i < selectedFiles.length; i++) {
+//       var file = selectedFiles[i];
+
+//       var image = document.createElement('img');
+//       image.src = URL.createObjectURL(file);
+//       image.onload = function() {
+//           URL.revokeObjectURL(this.src); // free memory
+//       };
+
+//       // Create a delete button for each image
+//       var deleteButton = document.createElement('button');
+//       deleteButton.innerText = 'Delete';
+//       deleteButton.onclick = function() {
+//           // Remove the image and button when delete is clicked
+//           var container = this.parentNode;
+//           container.remove();
+          
+//           // Get the current file list from the input
+//           var currentFiles = Array.from(photosInput.files);
+          
+//           // Remove the deleted file from the file list
+//           currentFiles = currentFiles.filter(function(f) {
+//             return f !== file; // compare objects
+//         });
+//           // Update the input element with the remaining files
+//           photosInput.files = null; // Clear the input
+//           // console.log(currentFiles)
+          
+//             currentFiles.forEach(function(f) {
+//               const dataTransfer = new DataTransfer();
+//               dataTransfer.items.add(f);
+//               photosInput.files = dataTransfer.files;
+//               // photosInput.files.add(f);
+//             });
+          
+
+//       };
+
+//       // Create a container div for each image and button
+//       var container = document.createElement('div');
+//       container.appendChild(image);
+//       container.appendChild(deleteButton);
+
+//       // Append the container to the preview container
+//       previewContainer.appendChild(container);
+//   }
+// };
+// var loadFiles = function(event) {
+//   var previewContainer = document.getElementById('preview-container');
+  
+//   // Remove existing previews
+//   previewContainer.innerHTML = '';
+
+//   var selectedFiles = event.target.files;
+
+//   for (var i = 0; i < selectedFiles.length; i++) {
+//       var file = selectedFiles[i];
+
+//       var image = document.createElement('img');
+//       image.src = URL.createObjectURL(file);
+//       image.onload = function() {
+//           URL.revokeObjectURL(this.src); // free memory
+//       };
+
+//       // Create a delete button for each image
+//       var deleteButton = document.createElement('button');
+//       deleteButton.innerText = 'Delete';
+//       deleteButton.onclick = function() {
+//           // Remove the image and button when delete is clicked
+//           this.previousSibling.remove(); // remove the image
+//           this.remove(); // remove the button
+
+//           // Create a new input element to update the file list
+//           var newInput = document.createElement('input');
+//           newInput.type = 'file';
+//           newInput.id = 'input';
+//           newInput.multiple = true;
+//           newInput.style.display = 'none';
+
+//           // Append the new input element to the body
+//           document.body.appendChild(newInput);
+
+//           // Assign the updated files to the new input element
+//           newInput.files = new FileList(Array.from(selectedFiles).filter(f => f !== file));
+
+//           // Replace the old input element with the new one
+//           var oldInput = photosInput;
+//           oldInput.parentNode.replaceChild(newInput, oldInput);
+//       };
+
+//       // Create a container div for each image and button
+//       var container = document.createElement('div');
+//       container.appendChild(image);
+//       container.appendChild(deleteButton);
+
+//       // Append the container to the preview container
+//       previewContainer.appendChild(container);
+//   }
+// };
+// var loadFiles = function(event) {
+//   var previewContainer = document.getElementById('preview-container');
+  
+//   // Remove existing previews
+//   previewContainer.innerHTML = '';
+
+//   for (var i = 0; i < event.target.files.length; i++) {
+//       var image = document.createElement('img');
+//       image.src = URL.createObjectURL(event.target.files[i]);
+//       image.onload = function() {
+//           URL.revokeObjectURL(this.src); // free memory
+//       };
+
+//       // Create a delete button for each image
+//       var deleteButton = document.createElement('button');
+//       deleteButton.innerText = 'Delete';
+//       deleteButton.onclick = function() {
+//           // Remove the image and button when delete is clicked
+//           this.previousSibling.remove(); // remove the image
+//           this.remove(); // remove the button
+//       };
+
+//       // Create a container div for each image and button
+//       var container = document.createElement('div');
+//       container.appendChild(image);
+//       container.appendChild(deleteButton);
+
+//       // Append the container to the preview container
+//       previewContainer.appendChild(container);
+//   }
+// };  
+// var loadFile = function(event) {
+//   var output = document.getElementById('output');
+//   output.src = URL.createObjectURL(event.target.files[0]);
+//   output.onload = function() {
+//     URL.revokeObjectURL(output.src) // free memory
+//   }
+// };
 
   // Hide the progress bar
 function hideProressBar() {
