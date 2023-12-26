@@ -6,6 +6,9 @@ var secondPrice = urlParams.get('second_price');
 var firstPrice = urlParams.get('first_price');
 var typeBtn = urlParams.get('type_btn');
 var unit = urlParams.get('unit');
+window.onpopstate = function(event) {
+  location.reload();
+}
 
 searchQuery=searchQuery.toLowerCase();
 document.addEventListener("DOMContentLoaded", function() {
@@ -16,6 +19,7 @@ document.addEventListener("DOMContentLoaded", function() {
 })
 
 function getSR() {    
+  
   showProgressBar();
   let cardNumber = 0; 
   

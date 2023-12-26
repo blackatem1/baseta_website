@@ -15,12 +15,11 @@ function hideProressBar() {
   document.getElementById('progress-container').style.display = 'none';
 }
 
-
-
 firebase.initializeApp(firebaseConfig);
 var db = firebase.firestore();
 const auth = firebase.auth();
 const analytics = firebase.analytics();
+
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -57,8 +56,12 @@ function searchchnaged() {
   var lociconDiv = document.querySelector('.locicon');
   
   document.getElementById('suffix').style.display="flex";
-  var type_unit = document.getElementById("type-unit").value;
-  val=document.getElementById("searchbar").value;
+  if (document.querySelector('input[name="type-btn"]:checked').value == "rent") {
+    var type_unit = document.getElementById("type-unit1").value;
+  }
+  if (document.querySelector('input[name="type-btn"]:checked').value == "sale") {
+    var type_unit = document.getElementById("type-unit2").value;
+  }  val=document.getElementById("searchbar").value;
   var val2 = document.querySelector('input[name="type-btn"]:checked').value;
   db.collection("units").get().then((querySnapshot) => {    
     document.getElementById("suggestion-ul").innerHTML="";
@@ -107,13 +110,20 @@ function performSearch() {
   event.preventDefault();
   // Get the search query from the input field
   var searchQuery = document.getElementById("searchbar").value;
-  var second_price = document.getElementById("second-price").value;
-  var first_price = document.getElementById("first-price").value;
+  if (document.querySelector('input[name="type-btn"]:checked').value == "rent") {
+    var second_price = document.getElementById("second-price1").value;
+    var type_unit = document.getElementById("type-unit1").value;
+    var first_price = document.getElementById("first-price1").value;
+  }
+  if (document.querySelector('input[name="type-btn"]:checked').value == "sale") {
+    var second_price = document.getElementById("second-price2").value;
+    var type_unit = document.getElementById("type-unit2").value;
+    var first_price = document.getElementById("first-price2").value;
+  }
   
   // Get the selected value from the radio button with the name "type-btn"
   var type_btn = document.querySelector('input[name="type-btn"]:checked').value;
   
-  var type_unit = document.getElementById("type-unit").value;
   
   // Navigate to the search page with the search query and other parameters
   window.location.href = "./search/search.html?search=" + encodeURIComponent(searchQuery) +
@@ -122,6 +132,7 @@ function performSearch() {
       "&type_btn=" + encodeURIComponent(type_btn) +
       "&unit=" + encodeURIComponent(type_unit);
   
+
 }
 function CardGO(id) {
   window.location.href = "./product/product.html?Product_ID=" + encodeURIComponent(id); 
@@ -233,8 +244,6 @@ function displayPropertyCards(querySnapshot) {
 
 
 function selectsch() {
-  // document.getElementById('deleteconts').style.display="flex";
-  // console.log(document.querySelector('input[name="type-btn"]:checked').value);
   if (document.querySelector('input[name="type-btn"]:checked').value == "rent") {
   document.getElementById('selectsrent').style.display="flex";
   document.getElementById('selectsbuy').style.display="none";

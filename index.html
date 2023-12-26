@@ -51,14 +51,9 @@
 
         <div class="wrapper">
         
-          <div class="dropdown">
-            <button class="butn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-              English
+            <button class="butn btn-secondary" type="button" >
+              عربي
             </button>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">عربي</a></li>
-            </ul>
-          </div>
             
 
 
@@ -91,11 +86,11 @@
               <p class="hero-tistle">Find Your Dream House By Us</p>
               <div class="row rentsandsales d-flex  w-100">
                 
-                <input type="radio" onchange="selectsch()" id="rent" name="type-btn" value="rent"class="vnone" checked="checked">
+                <input type="radio" onchange="selectsch()" id="rent" name="type-btn" value="rent"class="vnone" checked>
                 <label class="btn-re" for="rent" id="setDatalabel">Rent</label>
-                <input type="radio" onchange="selectsch()" class="vnone"ed id="sale" name="type-btn" value="sale">
+                <input type="radio" onchange="selectsch()" class="vnone" id="sale" name="type-btn" value="sale">
                 <label class="btn-re" for="sale" id="setDatalabel">Buy</label>
-      
+
               </div>
               <div class="row cont searchdet w-100">
                 <div class="row cont w-100">
@@ -372,7 +367,18 @@
   
   </footer>
 
+  <script>
 
+    // console.log(document.querySelector('input[name="type-btn"]:checked').value);
+  if (document.querySelector('input[name="type-btn"]:checked').value == "rent") {
+    document.getElementById("selectsrent").style.display="flex";
+    document.getElementById("selectsbuy").style.display="none";
+  }
+  if (document.querySelector('input[name="type-btn"]:checked').value == "sale") {
+    document.getElementById("selectsbuy").style.display="flex";
+    document.getElementById("selectsrent").style.display="none";
+  }
+  </script>
   <script src="./assets/js/script.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
