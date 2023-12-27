@@ -184,15 +184,42 @@ a{
 }
 #preview-container{
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-start;
+  gap: 1rem;
+  padding-top: 2rem  ;
 }
 .butn{
   position: absolute;
   right: 0;
   border-radius: 50%;
-  opacity: 0.5;
+  /* opacity: 0.5; */
   border: none;
   font-size: 1.5rem;
   background: none;
   font-weight: bold;
+}
+.closebtn {
+  color: red;
+  font-size: 14px;
+  position: absolute;
+  /* right: 0; */
+  display: flex;
+  right: 0.8rem;
+  width: fit-content;
+  top: 0;
+  justify-content: flex-end;
+}
+
+.show_id{
+  height: 1rem;
+  width: 1rem;
+  left: -2%;
+  /* he: fit-content; */
+  /* border: 1px black solid; */
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  background: none;
+  font-size: 17px;
+  color: black;
 }
