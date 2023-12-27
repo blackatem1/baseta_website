@@ -764,14 +764,17 @@ a {
 
 
 
-
+.form-select, input{
+  text-align: end !important;
+}
 
 /*-----------------------------------*\
   #PROPERTY
 \*-----------------------------------*/
 
 .property {
-  padding-block: 2rem
+  padding-block: 2rem;
+  text-align: end;
 }
 
 .property-card {
@@ -870,6 +873,11 @@ a {
 .property-card .card-title>a:is(:hover, :focus) {
   color: var(--orange-soda);
 }
+.headn {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
 
 .property-card .card-text {
   color: var(--cadet);
@@ -880,10 +888,9 @@ a {
 
 .property-card .card-list {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
   align-items: center;
   row-gap: 15px;
+  justify-content: space-evenly;
 }
 
 .property-card .card-item {
@@ -2318,7 +2325,18 @@ a {
   width: fit-content;
   padding-right: 2rem;
 }
-
+.card-item , .banner-actions{
+  text-align: end !important;
+  width: 100% !important;
+  justify-content: end !important;
+}
+body{
+  display: flex;
+  flex-direction: column;
+}
+nav{
+  margin-top: auto !important;
+}
 .input-box {
   display: flex;
   align-items: center;
@@ -2330,7 +2348,10 @@ a {
   overflow: hidden;
   font-family: sans-serif;
 }
-
+.align-text-end{
+  justify-content: flex-end !important;
+  text-align: end;
+}
 .input-box .prefix {
   font-weight: 300;
   /* position: absolute;
@@ -2340,7 +2361,9 @@ a {
   font-size: 25px;
   color: #999;
 }
-
+.prefix{
+  padding-right: 1rem;
+}
 .input-box .suffix {
   font-weight: 300;
   display: none;

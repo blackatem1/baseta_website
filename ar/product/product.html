@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baseta - </title>
+    <link rel="shortcut icon" href="../favicon.svg" type="image/svg+xml">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.8.0/css/bulma.min.css" />
+  
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <script src="https://www.gstatic.com/firebasejs/10.6.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore-compat.js"></script>
+  <script src='https://www.gstatic.com/firebasejs/10.6.0/firebase-analytics-compat.js'></script>
+
+    <link
+    href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&family=Poppins:wght@400;500;600;700&display=swap"
+    rel="stylesheet">  
+
+</head>
+<body>
+    <div id="progress-container" class="progress-container">
+        <div id="progress-bar">
+          <div id="loading"></div>
+        </div>
+      </div>
+      <navbar>
+        <div class="header-top" style="">
+          <div class="constainer headn">
+            <a href="../../index.html">
+              <button class="butn btn-secondary" type="button">
+                English
+              </button>
+            </a>
+            <div class="wrapper">
+              <ul class="header-top-list">
+                <li>
+                  <img src="../assets/images/main_logo_lg.png" alt="Girl in a jacket" width="150" height="100">
+                </li>
+              </ul>
+    
+            </div>
+          </div>
+        </div>
+      </navbar>
+    
+    
+  
+        
+<!-- content -->
+
+<section class="py-4 product-section " style="margin-top: 5rem;">
+    <div class="consa">
+      <div class="row gx-5">
+        <main class="col-lg-6" style="margin-top: 0 !important;">
+          <div class="ps-lg-3 align-text-end">
+            <h4 class="title text-dark" id="title-pro">
+              Quality Men's Hoodie for Winter, Men's Fashion <br />
+              Casual Hoodie
+            </h4>
+            <!-- <div class="d-flex flex-row my-3">
+              <div class="text-warning mb-1 me-2">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+                <span class="ms-1">
+                  4.5
+                </span>
+              </div>
+              <span class="text-muted"><i class="fas fa-shopping-basket fa-sm mx-1"></i>154 orders</span>
+              <span class="text-success ms-2">In stock</span>
+            </div> -->
+<!--   
+            <div class="mb-3">
+              <span class="h5 price" id="price-pro">$75.00</span>
+              <span class="text-muted perwhat" id="perwhat">/per box</span>
+            </div> -->
+  
+            <p id="desc-prod">
+              Modern look and quality demo item is a streetwear-inspired collection that continues to break away from the conventions of mainstream fashion. Made in Italy, these black and brown clothing low-top shirts for
+              men.
+            </p>
+  
+  
+            <!-- <hr /> -->
+            <div id="conss">
+
+            </div>
+            <div class="buttons">
+              <a href="tel:01090009000"class="butn  call-btn"> 
+                <button type="button" class="call-btn"style="font-size: 16px; font-weight: bold; color: white;"><ion-icon name="call-outline" class="btn-wtsapp"></ion-icon>Call</button>
+                </a>
+                                <button type="button" class="butn whatsapp-btn" style="font-size: 16px; font-weight: bold;">
+                <ion-icon name="logo-whatsapp" class="btn-wtsapp"></ion-icon> 
+                <a href="https://wa.me/01090009000" style="font-size: 15px; font-weight: bold; color: white;">WhatsApp</a>
+              </button>
+            </div>
+          </div>
+        </main>
+        <aside class="col-lg-6 images-prod">
+          <div class="border rounded-4 mb-3 d-flex justify-content-center">
+            <div id="carouselExample" class="carousel slide">
+              <div class="carousel-inner">
+                <!-- <div class="carousel-item active">
+                  <img src="https://firebasestorage.googleapis.com/v0/b/baseta-60b4d.appspot.com/o/images%2F1701316871464_s7jxfmhvad?alt=media&token=85ad7768-19ab-4c05-8b85-e70efbbef709" " class="d-block w-100" alt="...">
+                </div> -->
+              </div>
+              <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>
+            <!-- <a data-fslightbox="mygalley" class="rounded-4 images-place" target="_blank" data-type="image" href="https://bootstrap-ecommerce.com/bootstrap5-ecommerce/images/items/detail1/big.webp">
+              <img style="max-width: 100%; max-height: 100vh; margin: auto;" class="rounded-4 fit" src="https://firebasestorage.googleapis.com/v0/b/baseta-60b4d.appspot.com/o/images%2F1701316871464_s7jxfmhvad?alt=media&token=85ad7768-19ab-4c05-8b85-e70efbbef709" />
+            </a> -->
+          </div>
+          <!-- thumbs-wrap.// -->
+          <!-- gallery-wrap .end// -->
+        </aside>
+      
+      </div>
+    </div>
+  </section>
+  <!-- content -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <nav class="navbar foot-st header-top navbar-expand-lg ">
+    <div class="container-fluid">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 gap-3 mb-lg-0">
+          <ul class="header-top-social-list">
+            <li class="fb-li">
+              <a href="https://www.facebook.com/mybaseta/" class="header-top-social-link">
+                <ion-icon name="logo-facebook"></ion-icon>
+                <a href="https://www.facebook.com/mybaseta/" class="header-top-link">
+                  <p>Facebook</p>
+                </a>
+              </a>
+            </li>
+          </ul>
+          <button class="header-top-btn" onclick="change_page()">المزظفين</button>
+        </ul>
+        <div class="d-flex gap-3">
+          <li>
+            <a href="mailto:info@homeverse.com" class="header-top-link">
+              <ion-icon name="mail-outline"></ion-icon>
+              <span>info@baseta.com</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="header-top-link">
+              <ion-icon name="location-outline"></ion-icon>
+              <p>105/A, Maadi Tower, MAADI</p>
+            </a>
+          </li>
+
+        </div>
+      </div>
+    </div>
+  </nav>
+</body>
+<script src="../assets/js/firebasedb.js"></script>
+<script src="product.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</html>
