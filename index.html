@@ -40,7 +40,7 @@
 
         
             <li>
-              <img src="assets/images/main_logo_lg.png" alt="Girl in a jacket" width="350" height="400">
+              <img src="assets/images/main_logo_lg.png" alt="Girl in a jacket" width="150" height="100">
 
             </li>
 
@@ -141,7 +141,7 @@
                       <option value="iVilla">iVilla</option>
                     </select>
                     <select class="form-select"id="first-price1" aria-label="Default select example"onchange="updateMaxSelect()">
-                      <option selected value="0">minim. price:</option>
+                      <option selected value="0">Min Price</option>
                       <option value="1000">1,000</option>
                       <option value="10000">10,000</option>
                       <option value="20000">20,000</option>
@@ -169,7 +169,7 @@
                         maxSelect.innerHTML = '';
                         var option = document.createElement('option');
                         option.value = 0;
-                        option.text = "maxim. price"; // Format the number with commas
+                        option.text = "Max Price"; // Format the number with commas
                         maxSelect.add(option);
                   
                         // Add options to maxSelect starting from selectedMin + 1
@@ -213,7 +213,7 @@
                       <option value="iVilla">iVilla</option>
                     </select>
                     <select class="form-select"id="first-price2" aria-label="Default select example"onchange="updateMaxSelect()">
-                      <option selected value="0">minim. price:</option>
+                      <option selected value="0">Min Price</option>
                       <option value="100000">100,000</option>
                       <option value="200000">200,000</option>
                       <option value="300000">300,000</option>
@@ -240,7 +240,7 @@
                         maxSelect.innerHTML = '';
                         var option = document.createElement('option');
                         option.value = 0;
-                        option.text = "maxim. price"; // Format the number with commas
+                        option.text = "Max Price"; // Format the number with commas
                         maxSelect.add(option);
                   
                         // Add options to maxSelect starting from selectedMin + 1
