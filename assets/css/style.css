@@ -63,8 +63,8 @@
 .btn{
   border-radius: 10px !important;
 }
-main{
-  margin-top: 5rem !important;
+.constainer {
+    padding: 0 5% 0 3% !important;
 }
 button{
   border-radius: 10px;
@@ -686,7 +686,7 @@ button, a { transition: var(--transition); }
   #PROPERTY
 \*-----------------------------------*/
 
-.property { padding-block: var(--section-padding); }
+.property { padding-block: 5rem }
 .property-card {
   border: 1px solid var(--alice-blue);
   box-shadow: var(--shadow-2);
@@ -2421,4 +2421,9 @@ footer{
 
 .selectsbuy,.selectsrent{
   display: none ;
+}
+.fb-li{
+  gap: 0.2rem;
+    display: flex;
+    flex-direction: row;
 }
