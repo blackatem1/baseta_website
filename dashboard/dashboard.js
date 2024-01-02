@@ -371,54 +371,19 @@ function Update(docId) {
 
 
   }
-
-  function Delete(params) {
-    // Assume you have the document ID
-    showProgressBar();
-    const documentIdToDelete = params;
+  function deleteImageFromStorage(imageUrls) {
+    var storage = firebase.storage();
+    imageUrls.forEach(imageUrl => {
+      var pathOrFilename = extractPathOrFilename(imageUrl);
+      var img = "/images/";
+      var fullp = img.concat(pathOrFilename);
+      const storageRef = storage.ref("/images/" + pathOrFilename);
   
-    // Reference to the document
-    const docRefToDelete = db.collection("units").doc(documentIdToDelete);
-  
-    // Get the document data before deletion
-    docRefToDelete.get()
-      .then((docSnapshot) => {
-        if (docSnapshot.exists) {
-          const productData = docSnapshot.data();
-  
-          // Delete the document
-          return docRefToDelete.delete().then(() => productData);
-        } else {
-          console.log("Document does not exist");
-          return null;
-        }
-      })
-      .then((productData) => {
-        
-        deleteImagesFromStorage(productData.photos);
-        hideProressBar();
-  
-        alert("Document successfully deleteaaad!");
-        window.location.reload();
-      })
-      .catch((error) => {
-        console.error("Error deleting document: ", error);
-      hideProressBar();
-
-      });
-  }
-  function deleteImagesFromStorage(imageUrls) {
-    const storage = firebase.storage();
-  
-    imageUrls.forEach((imageUrl) => {
-      const pathOrFilename = extractPathOrFilename(imageUrl);
-
-      const storageRef = storage.ref().child("/images/"+pathOrFilename);
-  
-      // Delete the file
-      storageRef.delete()
+      storageRef
+        .delete()
         .then(() => {
-          console.log('Image deleted successfully');
+          d += 1;
+          console.log('Image deleted successfully', d);
         })
         .catch((error) => {
           console.error('Error deleting image', error);
@@ -427,13 +392,145 @@ function Update(docId) {
   }
   
   function extractPathOrFilename(imageUrl) {
-  const decodedUrl = decodeURIComponent(imageUrl);
-  const startIdx = decodedUrl.lastIndexOf('/') + 1;
-  const endIdx = decodedUrl.indexOf('?');
-
-  return decodedUrl.slice(startIdx, endIdx);
+    try {
+      const url = new URL(decodeURIComponent(imageUrl));
+      const pathSegments = url.pathname.split('/');
+      const validSegments = pathSegments.filter(segment => segment !== '');
+      return validSegments.length > 0 ? validSegments[validSegments.length - 1] : null;
+    } catch (error) {
+      console.error('Error extracting path or filename:', error);
+      return null;
+    }
   }
   
+  var d = 0;
+  
+  function Delete(params) {
+    const confirmed = confirm("Are you sure you want to delete this image?");
+  
+    if (!confirmed) {
+      console.log("Deletion canceled by user.");
+      return;
+    }
+  
+    showProgressBar();
+  
+    const documentIdToDelete = params;
+    const docRefToDelete = db.collection("units").doc(documentIdToDelete);
+  
+    docRefToDelete.get()
+      .then((docSnapshot) => {
+        if (docSnapshot.exists) {
+          const productData = docSnapshot.data();
+          return docRefToDelete.delete().then(() => productData);
+        } else {
+          console.log("Document does not exist");
+          hideProressBar();
+          window.location.reload();
+          return null;
+        }
+      })
+      .then((productData) => {
+        if (productData) {
+          deleteImageFromStorage(productData.photos);
+          hideProressBar();
+          console.log(d, productData.photos.length);
+  
+          if (d == productData.photos.length) {
+            window.location.reload();
+          }
+        }
+      })
+      .catch((error) => {
+        console.error("Error deleting document:", error);
+        hideProressBar();
+        window.location.reload();
+      });
+  }
+  
+//   function deleteImageFromStorage(imageUrls) {
+//     var storage = firebase.storage();
+//     imageUrls.forEach(imageUrl => {
+//       var pathOrFilename = extractPathOrFilename(imageUrl);
+  
+    
+//       // Create a non-root reference using .child()
+//       img= "/images/";
+//       fullp = img.concat(pathOrFilename)
+//       const storageRef = storage.ref("/images/"+pathOrFilename);
+    
+//       // Delete the file
+//       storageRef
+//         .delete()
+//         .then(() => {
+//           d+=1 ;
+//           console.log('Image deleted successfully',d);
+//         })
+//         .catch((error) => {
+//           console.error('Error deleting image', error);
+//         });
+//     });
+//   }
+// function extractPathOrFilename(imageUrl) {
+//   try {
+//     const url = new URL(decodeURIComponent(imageUrl));
+//     const pathSegments = url.pathname.split('/');
+//     const validSegments = pathSegments.filter(segment => segment !== '');
+//     return validSegments.length > 0 ? validSegments[validSegments.length - 1] : null;
+//   } catch (error) {
+//     console.error('Error extracting path or filename:', error);
+//     return null;
+//   }
+// }
+//   d=0;
+//   function Delete(params) {
+//     const confirmed = confirm("Are you sure you want to delete this image?");
+
+//     if (!confirmed) {
+//       console.log("Deletion canceled by user.");
+//       return;
+//     }
+//     showProgressBar();
+//     const documentIdToDelete = params;
+  
+//     const docRefToDelete = db.collection("units").doc(documentIdToDelete);
+  
+//     docRefToDelete.get()
+//       .then((docSnapshot) => {
+//         if (docSnapshot.exists) {
+//           const productData = docSnapshot.data();
+//           return docRefToDelete.delete().then(() => productData);
+//         } else {
+//           console.log("Document does not exist");
+//           window.location.reload();
+
+//           hideProressBar();
+
+//           return null;
+//         }
+
+//         if (d == productData.photos.length) {
+            
+//           window.location.reload();
+//         }
+//       })
+//       .then((productData) => {
+//         if (productData) {
+//           deleteImageFromStorage(productData.photos);
+//           hideProressBar();
+//           console.log(d ,productData.photos.length );
+
+//         }
+
+//       })
+//       .catch((error) => {
+//         console.error("Error deleting document:", error);
+//         hideProressBar();
+//         window.location.reload();
+
+//       });
+
+//   }
   function Add_unit() {
     showProgressBar();
     event.preventDefault();
@@ -443,7 +540,6 @@ function Update(docId) {
     var squar = document.getElementById("square_ft").value;
     var area = document.getElementById("area").value;
     var area_ar = document.getElementById("area_ar").value;
-    console.log(area_ar);
     var price = document.getElementById("price").value;
     var bathr = document.getElementById("bathroom").value;
     var bedr = document.getElementById("bedroom").value;
