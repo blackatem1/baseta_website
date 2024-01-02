@@ -816,7 +816,7 @@ a {
   position: absolute;
   bottom: 15px;
   left: 15px;
-  right: 15px;
+  right: 0;
   display: flex;
   flex-wrap: wrap-reverse;
   align-items: center;
