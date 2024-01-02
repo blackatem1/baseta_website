@@ -371,8 +371,10 @@ function Update(docId) {
 
 
   }
+  var d = 0;
+
   var storage = firebase.storage();
-  function deleteImageFromStorage(imageUrls) {
+  function deleteImageFromStorage(imageUrls,len) {
     imageUrls.forEach(imageUrl => {
       var pathOrFilename = extractPathOrFilename(imageUrl);
       const storageRef = storage.ref("/images/" + pathOrFilename);
@@ -382,11 +384,16 @@ function Update(docId) {
         .then(() => {
           d += 1;
           console.log('Image deleted successfully', d);
+          if (d == len) {
+            window.location.reload();
+          }
         })
         .catch((error) => {
           console.error('Error deleting image', error);
         });
     });
+      console.log(d,len);
+ 
   }
   
   function extractPathOrFilename(imageUrl) {
@@ -401,7 +408,6 @@ function Update(docId) {
     }
   }
   
-  var d = 0;
   
   function Delete(params) {
     const confirmed = confirm("Are you sure you want to delete this image?");
@@ -430,13 +436,10 @@ function Update(docId) {
       })
       .then((productData) => {
         if (productData) {
-          deleteImageFromStorage(productData.photos);
+          deleteImageFromStorage(productData.photos,productData.photos.length);
           hideProressBar();
           // console.log(d, productData.photos.length);
-  
-          if (d == productData.photos.length) {
-            window.location.reload();
-          }
+
         }
       })
       .catch((error) => {
