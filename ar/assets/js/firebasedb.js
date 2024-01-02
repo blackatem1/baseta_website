@@ -183,7 +183,7 @@ function displayPropertyCards(querySnapshot) {
     </div>
         
       
-      <div onclick="CardGO('${doc.id}')" class="card-badge cursor ${propertyData.typeofunit === 'rent' ? 'green' : 'blue'}">For ${propertyData.typeofunit}</div>
+      <div onclick="CardGO('${doc.id}')" class="card-badge cursor ${propertyData.typeofunit === 'rent' ? 'green' : 'blue'}">${propertyData.typeofunit === 'rent' ? 'للايجار' : 'للبيع'}</div>
       <div class="banner-actions"onclick="CardGO('${doc.id}')">
         <button class="banner-actions-btn">
           <ion-icon name="location"></ion-icon>
@@ -198,7 +198,7 @@ function displayPropertyCards(querySnapshot) {
     </figure>
     <div class="card-content cursor" onclick="CardGO('${doc.id}')" >
       <div class="card-price">
-       <strong>${propertyData.price}</strong>/${propertyData.typeofunit === 'rent' ? 'في الشهر' : 'السعر الكلي'}
+      ${propertyData.typeofunit === 'rent' ? 'في الشهر' : 'السعر الكلي'}/<strong>${propertyData.price}</strong>
       </div>
       <h3 class="h3 card-title">
         <a >${propertyData.title}</a>
@@ -226,11 +226,14 @@ function displayPropertyCards(querySnapshot) {
     </div>
     <div class="card-footer ">
     <a href="tel:01090009000"class="butn  call-btn"> 
-    <button type="button" class="call-btn"style="font-size: 16px; font-weight: bold; color: white;"><ion-icon name="call-outline" class="btn-wtsapp"></ion-icon>Call</button>
+    <button type="button" class="call-btn"style="font-size: 16px; font-weight: bold; color: white;">
+    اتصال 
+    <ion-icon name="call-outline" class="btn-wtsapp"></ion-icon>
+    </button>
     </a>
     <button type="button" class="butn whatsapp-btn" style="font-size: 16px; font-weight: bold;">
+    <a href="https://wa.me/01090009000" style="font-size: 15px; font-weight: bold; color: white;">واتساب</a>
     <ion-icon name="logo-whatsapp" class="btn-wtsapp"></ion-icon> 
-    <a href="https://wa.me/01090009000" style="font-size: 15px; font-weight: bold; color: white;">WhatsApp</a>
   </button>
     </div>
     </div>
