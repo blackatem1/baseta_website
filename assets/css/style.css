@@ -2705,7 +2705,10 @@ address {
   width: 100%;
 }
 
-.banner-actions-btn {}
+.banner-actions-btn {
+  margin-right: 1.5rem;
+
+}
 
 body {
   min-height: 100vh;

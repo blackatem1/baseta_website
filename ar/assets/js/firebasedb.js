@@ -17,26 +17,7 @@ function hideProressBar() {
 
 firebase.initializeApp(firebaseConfig);
 var db = firebase.firestore();
-const auth = firebase.auth();
 const analytics = firebase.analytics();
-
-  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-      // you can now add any event you like by just typing this code do it by your self
-      // firebase.analytics().logEvent('event_name', { param1: 'value1', param2: 'value2' });
-      // firebase.analytics().logEvent('notification_received');
-  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   function get(gets) {
   showProgressBar();
   db.collection(gets).get().then((querySnapshot) => {    
@@ -61,8 +42,9 @@ function searchchnaged() {
   }
   if (document.querySelector('input[name="type-btn"]:checked').value == "sale") {
     var type_unit = document.getElementById("type-unit2").value;
-  }  val=document.getElementById("searchbar").value;
-  var val2 = document.querySelector('input[name="type-btn"]:checked').value;
+  }  
+  val2=document.getElementById("searchbar").value;
+  val3 = document.querySelector('input[name="type-btn"]:checked').value;
   db.collection("units").get().then((querySnapshot) => {    
     document.getElementById("suggestion-ul").innerHTML="";
     document.querySelector('.locicon').innerHTML="";
@@ -72,9 +54,10 @@ function searchchnaged() {
       const propertyData = doc.data();
       if (currentIndex <= 5) {
         if (type_unit == propertyData.title || type_unit ==0) {
-          if (propertyData.area.toLowerCase().includes(val.toLowerCase())) {
-            if (propertyData.typeofunit==val2) {
-              var sugg_li = document.createElement("li");
+          console.log(propertyData.area_ar,val2 ,type_unit)
+          if (propertyData.area_ar.includes(val2)) {
+            if (propertyData.typeofunit==val3) {
+                var sugg_li = document.createElement("li");
                 var liElement = document.createElement('li');
                 var ionIcon = document.createElement('ion-icon');
                 ionIcon.setAttribute('name', 'location-outline');
@@ -83,12 +66,11 @@ function searchchnaged() {
                 sugg_li.onclick=function sssss() {
                   document.getElementById("searchbar").value = sugg_li.innerText ;
                   document.getElementById('suggestion').style.display="none";
-
                   searchchnaged();
                 }
-                sugg_li.innerText = propertyData.area;
-                liElement.appendChild(ionIcon);
+                sugg_li.innerText = propertyData.area_ar;
                 lociconDiv.appendChild(liElement);
+                liElement.appendChild(ionIcon);
                 document.getElementById("suggestion-ul").appendChild(sugg_li);
             }
           }
@@ -134,6 +116,42 @@ function performSearch() {
   
 
 }
+function getArabicTranslation(englishText) {
+  switch (englishText) {
+    case 'Apartment':
+      return 'شقة';
+    case 'Villa':
+      return 'فيلا';
+    case 'Townhouse':
+      return 'تاون هاوس';
+    case 'penthouse':
+      return 'بنتهاوس';
+    case 'Compound':
+      return 'كمبوند';
+    case 'chalet':
+      return 'شاليه';
+    case 'Twin House':
+      return 'توين هاوس';
+    case 'Duplex':
+      return 'دوبلكس';
+    case 'Full Floor':
+      return 'الطابق الكامل';
+    case 'Half Floor':
+      return 'الطابق النصف';
+    case 'Whole Building':
+      return 'المبنى بأكمله';
+    case 'Land':
+      return 'أرض';
+    case 'Bulk Sale Unit':
+      return 'وحدة البيع بالجملة';
+    case 'Bungalow':
+      return 'بنغلو';
+    case 'iVilla':
+      return 'أي فيلا';
+    default:
+      return englishText;
+  }
+}
 function CardGO(id) {
   window.location.href = "./product/product.html?Product_ID=" + encodeURIComponent(id); 
 }
@@ -148,6 +166,7 @@ function displayPropertyCards(querySnapshot) {
 
     const propertyData = doc.data();
     const cardBanner = document.createElement("li");
+    propertyData.title = getArabicTranslation(propertyData.title);
     cardBanner.innerHTML = `
     <div class="property-card" >
     <figure class="card-banner h-100">
@@ -168,7 +187,7 @@ function displayPropertyCards(querySnapshot) {
       <div class="banner-actions"onclick="CardGO('${doc.id}')">
         <button class="banner-actions-btn">
           <ion-icon name="location"></ion-icon>
-          <address>${propertyData.area}</address>
+          <address>${propertyData.area_ar}</address>
         </button>
         <button class="banner-actions-btn">
           <ion-icon name="camera"></ion-icon>
@@ -185,7 +204,7 @@ function displayPropertyCards(querySnapshot) {
         <a >${propertyData.title}</a>
       </h3>
       <p class="card-text">
-      ${propertyData.description}
+      ${propertyData.desc_ar}
       </p>
       <ul class="card-list">
         <li class="card-item">

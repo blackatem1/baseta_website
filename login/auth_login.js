@@ -1,4 +1,7 @@
 // JavaScript code (script.js)
+if (sessionStorage.getItem('userUid')) {
+  window.location.replace("../dashboard/dashboard.html") 
+}
 document.addEventListener('DOMContentLoaded', function() {
 // Retrieve the form element
 const loginForm = document.getElementById('login-form');
@@ -25,6 +28,9 @@ loginForm.addEventListener('submit', function(event) {
   // Perform any additional validation or processing here
   auth.signInWithEmailAndPassword(document.getElementById('email-input').value,document.getElementById('password-input').value)
   .then((result) => {
+    const user = result.user;
+    const userId = user.uid;
+    sessionStorage.setItem('userUid', userId);
     window.location.replace("../dashboard/dashboard.html")
     hideProressBar();
   }).catch((error) => {

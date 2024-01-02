@@ -1,3 +1,8 @@
+if (!sessionStorage.getItem('userUid')) {
+  window.location.replace("../login/login.html")
+
+  
+}
 function toggleContent(showId, hideId) {
   var showContent = document.getElementsByClassName(showId);
   var hideContent = document.getElementsByClassName(hideId);
@@ -154,70 +159,6 @@ function searchchnagedash() {
         previewContainer.appendChild(container);
       }
     };
-    
-// var loadFiles = function (event) {
-//   var previewContainer = document.getElementById('preview-container');
-//   var photosInput = document.getElementById('photos');
-
-//   // Remove existing previews
-//   previewContainer.innerHTML = '';
-
-//   var selectedFiles = event.target.files;
-
-//   for (var i = 0; i < selectedFiles.length; i++) {
-//     var file = selectedFiles[i];
-
-//     var image = document.createElement('img');
-//     image.src = URL.createObjectURL(file);
-//     image.className = 'imgin';
-//     image.onload = function () {
-//       URL.revokeObjectURL(this.src); // free memory
-//     };
-
-//     // Create a delete button for each image
-//     var deleteButton = document.createElement('button');
-//     deleteButton.innerHTML = '<ion-icon name="close-outline"></ion-icon>';
-//     deleteButton.className = 'butn';
-
-//     // Use a closure to capture the correct file for each iteration
-//     deleteButton.onclick = (function (fileToDelete) {
-//       return function () {
-//         // Remove the image and button when delete is clicked
-//         var container = this.parentNode;
-//         container.remove();
-
-//         // Get the current file list from the input
-//         var currentFiles = Array.from(photosInput.files);
-
-//         // Remove the deleted file from the file list
-//         currentFiles = currentFiles.filter(function (f) {
-//           return f !== fileToDelete; // compare objects
-//         });
-
-//         // Update the input element with the remaining files
-//         var dataTransfer = new DataTransfer();
-
-//         currentFiles.forEach(function (f) {
-//           dataTransfer.items.add(f);
-//         });
-
-//         // Set the updated files to the input
-//         photosInput.files = dataTransfer.files;
-//       };
-//     })(file); // Pass the current file to the closure
-
-//     // Create a container div for each image and button
-//     var container = document.createElement('div');
-//     container.appendChild(image);
-//     container.className = 'divin col-4';
-//     container.appendChild(deleteButton);
-
-//     // Append the container to the preview container
-//     previewContainer.appendChild(container);
-//   }
-// };
-
-
   function hideProressBar() {
   // console.log("hide");
   document.getElementById('progress-container').style.display = 'none';
@@ -244,7 +185,9 @@ function displayUnitCards(params) {
     <th scope="row">${cardNumber}</th>
     <td>${propertyData.title}</td>
     <td>${propertyData.description}</td>
+    <td>${propertyData.desc_ar}</td>
     <td>${propertyData.area}</td>
+    <td>${propertyData.area_ar}</td>
     <td>${propertyData.price}</td>
     <td>${propertyData.Square_ft}</td>
     <td>${propertyData.Bathrooms}</td>
@@ -288,8 +231,10 @@ function Update(docId) {
       // Get the updated values from the form elements
       var title = document.getElementById("title2").value;
       var desc = document.getElementById("desc2").value;
+      var desc_ar = document.getElementById("desc-ar2").value;
       var squar = document.getElementById("square_ft2").value;
       var area = document.getElementById("area2").value;
+      var area_ar = document.getElementById("area_ar2").value;
       var price = document.getElementById("price2").value;
       var bathr = document.getElementById("bathroom2").value;
       var bedr = document.getElementById("bedroom2").value;
@@ -298,9 +243,11 @@ function Update(docId) {
       // Replace the fields you want to update with new data
       data.title = title || data.title;
       data.description = desc || data.description;
+      data.desc_ar = desc_ar || data.desc_ar;
       data.price = price || data.price;
       data.typeofunit = type || data.typeofunit;
       data.area = area || data.area;
+      data.area_ar = area_ar || data.area_ar;
       data.Bedrooms = bedr || data.Bedrooms;
       data.Bathrooms = bathr || data.Bathrooms;
       data.Square_ft = squar || data.Square_ft;
@@ -394,9 +341,11 @@ function Update(docId) {
         // Populate form inputs with data from Firebase
         document.getElementById("title2").value = data.title || "";
         document.getElementById("desc2").value = data.description || "";
+        document.getElementById("desc-ar2").value = data.desc_ar || "";
         document.getElementById("price2").value = data.price || "";
         document.getElementById("unit-type2").value = data.typeofunit || "";
         document.getElementById("area2").value = data.area || "";
+        document.getElementById("area_ar2").value = data.area_ar || "";
         document.getElementById("bedroom2").value = data.Bedrooms || "";
         document.getElementById("bathroom2").value = data.Bathrooms || "";
         document.getElementById("square_ft2").value = data.Square_ft || "";
@@ -490,8 +439,10 @@ function Update(docId) {
     event.preventDefault();
     var title = document.getElementById("title").value;
     var desc = document.getElementById("desc").value;
+    var desc_ar = document.getElementById("desc-ar").value;
     var squar = document.getElementById("square_ft").value;
     var area = document.getElementById("area").value;
+    var area = document.getElementById("area_ar").value;
     var price = document.getElementById("price").value;
     var bathr = document.getElementById("bathroom").value;
     var bedr = document.getElementById("bedroom").value;
@@ -535,10 +486,12 @@ function Update(docId) {
             price: price,
             typeofunit: type,
             area: area,
+            area_ar:area_ar,
             Square_ft: squar,
             Bathrooms: bathr,
             Bedrooms: bedr,
             description: desc,
+            desc_ar: desc_ar,
             date: d,
             photos: [] // Initialize the photos array in the document
           })

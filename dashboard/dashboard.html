@@ -49,9 +49,9 @@
         </ul>
 
 
-
-        <button class="btn btn-secondary btn-sm " type="button" style="color: white; font-weight: bold ; "><a
-            href="../index.html" style="color: white;">Go To Main Page </a></button>
+        <a
+        href="../index.html" >
+        <button class="btn btn-secondary btn-sm " type="button" style="color: white; font-weight: bold ; ">Go To Main Page </button></a>
       </div>
     </div>
   </nav>
@@ -74,7 +74,9 @@
             <th scope="col">No.</th>
             <th scope="col">Title</th>
             <th scope="col">Description</th>
+            <th scope="col">الوصف</th>
             <th scope="col">Area</th>
+            <th scope="col">المنطقه</th>
             <th scope="col">Price</th>
             <th scope="col">Square_ft</th>
             <th scope="col">Bathroom</th>
@@ -133,6 +135,11 @@
                       placeholder="Like 'Chalet Sea View sale Marassi - Marina North Coast'" required>
                   </div>
                   <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Description (arabic)</label>
+                    <input type="text" class="form-control" id="desc-ar2"
+                      placeholder="Like 'Chalet Sea View sale Marassi - Marina North Coast'" required>
+                  </div>
+                  <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Add Price</label>
                     <input type="number" class="form-control" id="price2" placeholder="1000000 EGP" required>
                   </div>
@@ -147,6 +154,11 @@
                   <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Area</label>
                     <input type="text" class="form-control" id="area2" placeholder="Like 'CHALET FOR SALE IN MARASSI, SIDI ABDEL RAHMAN
+                  '" required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Area (arabic)</label>
+                    <input type="text" class="form-control" id="area_ar2" placeholder="Like 'CHALET FOR SALE IN MARASSI, SIDI ABDEL RAHMAN
                   '" required>
                   </div>
                   <div class="mb-3">
@@ -206,16 +218,6 @@
             <option value="iVilla">iVilla</option>
           </select>
         </div>
-
-        <div class="mb-3">
-          <label for="exampleFormControlInput1" class="form-label">Add Description</label>
-          <input type="text" class="form-control" id="desc"
-            placeholder="Like 'Chalet Sea View sale Marassi - Marina North Coast'" required>
-        </div>
-        <div class="mb-3">
-          <label for="exampleFormControlInput1" class="form-label">Add Price</label>
-          <input type="number" class="form-control" id="price" placeholder="1000000 EGP" required>
-        </div>
         <div class="mb-3">
           <label for="exampleFormControlInput1" class="form-label">Type Of Unit</label>
           <select class="form-select" id="unit-type" aria-label="Default select example" required>
@@ -225,8 +227,28 @@
           </select>
         </div>
         <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Add Description</label>
+          <input type="text" class="form-control" id="desc"
+            placeholder="Like 'Chalet Sea View sale Marassi - Marina North Coast'" required>
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Add Description (in Arabic)</label>
+          <input type="text" class="form-control" id="desc-ar"
+            placeholder="اللي تحبه" required>
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Add Price</label>
+          <input type="number" class="form-control" id="price" placeholder="1000000 EGP" required>
+        </div>
+        
+        <div class="mb-3">
           <label for="exampleFormControlInput1" class="form-label">Area</label>
           <input type="text" class="form-control" id="area" placeholder="Ex 'CHALET FOR SALE IN MARASSI, SIDI ABDEL RAHMAN
+      '" required>
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Area (arabic)</label>
+          <input type="text" class="form-control" id="area_ar" placeholder="Ex 'CHALET FOR SALE IN MARASSI, SIDI ABDEL RAHMAN
       '" required>
         </div>
         <div class="mb-3">

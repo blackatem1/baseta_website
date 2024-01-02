@@ -87,11 +87,10 @@
                     <div class="d-flex flex-row cont position-relative w-100" role="search">
                       <div class="suggestions" id="suggestions">
                         <div class="row w-100">
+                          <ul class="suggestio-ul" id="suggestion-ul">
+                          </ul>
                           <div class="locicon">
                           </div>
-                          <ul class="suggestio-ul" id="suggestion-ul">
-
-                          </ul>
                         </div>
                         <script>
                           document.body.addEventListener("click", function (evt) {
@@ -111,21 +110,21 @@
                         </button>
                         <select class="form-select" id="type-unit1" aria-label="Default select example">
                           <option class="option" value="0" selected>نوع الشقه</option>
-                          <option value="Apartment">Apartment</option>
-                          <option value="Villa">Villa</option>
-                          <option value="Townhouse">Townhouse</option>
-                          <option value="penthouse">penthouse</option>
-                          <option value="Compound">Compound</option>
-                          <option value="chalet">chalet</option>
-                          <option value="Twin House">Twin House</option>
-                          <option value="Duplex">Duplex</option>
-                          <option value="Full Floor">Full Floor</option>
-                          <option value="Half Floor">Half Floor</option>
-                          <option value="Whole Building">Whole Building</option>
-                          <option value="Land">Land</option>
-                          <option value="Bulk Sale Unit">Bulk Sale Unit</option>
-                          <option value="Bungalow">Bungalow</option>
-                          <option value="iVilla">iVilla</option>
+                          <option value="Apartment">شقة</option>
+                          <option value="Villa">فيلا</option>
+                          <option value="Townhouse">تاون هاوس</option>
+                          <option value="penthouse">بنتهاوس</option>
+                          <option value="Compound">كمبوند</option>
+                          <option value="chalet">شاليه</option>
+                          <option value="Twin House">توين هاوس</option>
+                          <option value="Duplex">دوبلكس</option>
+                          <option value="Full Floor">الطابق الكامل</option>
+                          <option value="Half Floor">الطابق النصف</option>
+                          <option value="Whole Building">المبنى بأكمله</option>
+                          <option value="Land">أرض</option>
+                          <option value="Bulk Sale Unit">وحدة البيع بالجملة</option>
+                          <option value="Bungalow">بنغلو</option>
+                          <option value="iVilla">أي فيلا</option>
                         </select>
                         <select class="form-select" id="first-price1" aria-label="Default select example"
                           onchange="updateMaxSelect()">

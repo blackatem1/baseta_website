@@ -10,6 +10,42 @@ var Product_ID = urlParams.get('Product_ID');
 //   document.getElementById('progress-container').style.display = 'flex';
 //   // console.log("showedddd");
 // }
+function getArabicTranslation(englishText) {
+  switch (englishText) {
+    case 'Apartment':
+      return 'شقة';
+    case 'Villa':
+      return 'فيلا';
+    case 'Townhouse':
+      return 'تاون هاوس';
+    case 'penthouse':
+      return 'بنتهاوس';
+    case 'Compound':
+      return 'كمبوند';
+    case 'chalet':
+      return 'شاليه';
+    case 'Twin House':
+      return 'توين هاوس';
+    case 'Duplex':
+      return 'دوبلكس';
+    case 'Full Floor':
+      return 'الطابق الكامل';
+    case 'Half Floor':
+      return 'الطابق النصف';
+    case 'Whole Building':
+      return 'المبنى بأكمله';
+    case 'Land':
+      return 'أرض';
+    case 'Bulk Sale Unit':
+      return 'وحدة البيع بالجملة';
+    case 'Bungalow':
+      return 'بنغلو';
+    case 'iVilla':
+      return 'أي فيلا';
+    default:
+      return englishText;
+  }
+}
 showProgressBar();
 const collectionRef = db.collection("units");
 collectionRef.get()
@@ -60,28 +96,30 @@ function displayPropertyCardss(querySnapshot) {
         osa[0].appendChild(diva);
     });
     // alert(document.getElementById("title-pro").innerHTML );
-    document.getElementById("title-pro").innerHTML=propertyData.title;
+    document.getElementById("title-pro").innerHTML=
+    propertyData.title = getArabicTranslation(propertyData.title);
+
     document.getElementById("conss").innerHTML=`      
-    <div class="banner-actions" style="display:flex !important;padding:2% 0">
-      <button class="banner-actions-btn"style="color:black !important;width:fit-content;margin-right:2rem">
-        <ion-icon name="location"></ion-icon>
-        <address>${propertyData.area}</address>
-      </button>
-      <button class="banner-actions-btn" style="color:black !important">
-        <ion-icon name="camera"></ion-icon>
-        <span>${propertyData.photos.length}</span>
-      </button>
-     
-    </div>
-  </figure>
+
   <div class="card-content" style="padding:0 !important"  >
     <div class="card-price">
      <strong>${propertyData.price}</strong>/${propertyData.typeofunit === 'rent' ? 'في الشهر' : 'السعر الكلي'}
     </div>
 
     <p class="card-text">
-    ${propertyData.description}
+    ${propertyData.desc_ar}
     </p>
+    <div class="banner-actions" style="display:flex !important;padding:2% 0">
+    <button class="banner-actions-btn"style="color:black !important;width:fit-content;margin-right:2rem">
+      <ion-icon name="location"></ion-icon>
+      <address>${propertyData.area_ar}</address>
+    </button>
+    <button class="banner-actions-btn" style="color:black !important">
+      <ion-icon name="camera"></ion-icon>
+      <span>${propertyData.photos.length}</span>
+    </button>
+   
+  </div>
     <ul class="card-list">
       <li class="card-item" style="display: flex;
       gap: 0.1rem;

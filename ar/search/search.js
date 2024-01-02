@@ -9,7 +9,42 @@ var unit = urlParams.get('unit');
 window.onpopstate = function(event) {
   location.reload();
 }
-
+function getArabicTranslation(englishText) {
+  switch (englishText) {
+    case 'Apartment':
+      return 'شقة';
+    case 'Villa':
+      return 'فيلا';
+    case 'Townhouse':
+      return 'تاون هاوس';
+    case 'penthouse':
+      return 'بنتهاوس';
+    case 'Compound':
+      return 'كمبوند';
+    case 'chalet':
+      return 'شاليه';
+    case 'Twin House':
+      return 'توين هاوس';
+    case 'Duplex':
+      return 'دوبلكس';
+    case 'Full Floor':
+      return 'الطابق الكامل';
+    case 'Half Floor':
+      return 'الطابق النصف';
+    case 'Whole Building':
+      return 'المبنى بأكمله';
+    case 'Land':
+      return 'أرض';
+    case 'Bulk Sale Unit':
+      return 'وحدة البيع بالجملة';
+    case 'Bungalow':
+      return 'بنغلو';
+    case 'iVilla':
+      return 'أي فيلا';
+    default:
+      return englishText;
+  }
+}
 searchQuery=searchQuery.toLowerCase();
 document.addEventListener("DOMContentLoaded", function() {
   document.getElementById("resaul").innerText = searchQuery;
@@ -77,6 +112,8 @@ function displayPropertyCardss(querySnapshot,id) {
       // Access data from each document
       const propertyData = querySnapshot;
       const cardBanner = document.createElement("li");
+     ar_title = getArabicTranslation(propertyData.title);
+
     cardBanner.innerHTML=`
      <section class="search-result-item p-3">
 
@@ -84,11 +121,10 @@ function displayPropertyCardss(querySnapshot,id) {
         <div class="row">
 
             <div class="col-sm-12 col-md-12 col-lg-7 cursor align-text-end " onclick="CardGOF('${id}')">
-            <h4 class="search-result-item-heading"><a href="#">${propertyData.title}</a></h4>
-            <p class="info align-text-end">${propertyData.area}</p>
-            <p class="description">${propertyData.description}</p>
-                <p class="value3 mt-sm">$${propertyData.price}</p>
-                <p class="fs-mini text-muted">For ${propertyData.typeofunit}</p>
+            <h4 class="search-result-item-heading"><a href="#">${ar_title}</a></h4>
+            <p class="info align-text-end">${propertyData.area_ar}</p>
+            <p class="description">${propertyData.desc_ar}</p>
+                <p class="value3 mt-sm">$${propertyData.typeofunit === 'rent' ? 'في الشهر' : 'السعر الكلي'} /  ${propertyData.price} </p>
                 <div class="info align-text-end">
                 <div class="infoyaya align-text-end">
                   <ion-icon name="bed-outline"></ion-icon>
