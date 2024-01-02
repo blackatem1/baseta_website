@@ -442,7 +442,7 @@ function Update(docId) {
     var desc_ar = document.getElementById("desc-ar").value;
     var squar = document.getElementById("square_ft").value;
     var area = document.getElementById("area").value;
-    var area = document.getElementById("area_ar").value;
+    var area_ar = document.getElementById("area_ar").value;
     var price = document.getElementById("price").value;
     var bathr = document.getElementById("bathroom").value;
     var bedr = document.getElementById("bedroom").value;
@@ -451,31 +451,19 @@ function Update(docId) {
     var photosInput = document.getElementById("photos");
 
       var photosFiles = photosInput.files;
-    
-      // Array to store Promises of image uploads
       var uploadPromises = [];
-    
-      // Function to generate a unique and random name for each image
       function generateRandomName() {
         const timestamp = new Date().getTime();
         const randomString = Math.random().toString(36).substring(2);
         return `${timestamp}_${randomString}`;
       }
-    
-      // Loop through each selected file
       for (var i = 0; i < photosFiles.length; i++) {
         var file = photosFiles[i];
         var imageName = generateRandomName(); // Use the generated name for the image
-    
-        // Upload the image to Firebase Storage
         var storageRef = firebase.storage().ref('images/' + imageName);
         var uploadTask = storageRef.put(file);
-    
-        // Store the promise of the upload task in the array
         uploadPromises.push(uploadTask.then(snapshot => snapshot.ref.getDownloadURL()));
       }
-    
-      // Wait for all image uploads to complete
       Promise.all(uploadPromises)
         .then(downloadURLs => {
           // Now, downloadURLs is an array of the download URLs for the uploaded images
