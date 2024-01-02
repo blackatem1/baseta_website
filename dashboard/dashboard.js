@@ -443,6 +443,7 @@ function Update(docId) {
     var squar = document.getElementById("square_ft").value;
     var area = document.getElementById("area").value;
     var area_ar = document.getElementById("area_ar").value;
+    console.log(area_ar);
     var price = document.getElementById("price").value;
     var bathr = document.getElementById("bathroom").value;
     var bedr = document.getElementById("bedroom").value;
