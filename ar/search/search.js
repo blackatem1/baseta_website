@@ -89,6 +89,13 @@ function getSR() {
         }
       });
   document.getElementById("counts").innerText = cardNumber;
+  if (cardNumber == 0) {
+    const NotfoundT = document.createElement("li");
+    NotfoundT.innerText= "لا يوجد نتائج لبحثك";
+    NotfoundT.className= "notfound";
+    x= document.getElementsByClassName("sreasults");
+    x[0].appendChild(NotfoundT);
+  }
   hideProressBar();
 
     
@@ -119,37 +126,51 @@ function displayPropertyCardss(querySnapshot,id) {
 
     <div class="search-result-item-body">
         <div class="row">
-
-            <div class="col-sm-12 col-md-12 col-lg-7 cursor align-text-end " onclick="CardGOF('${id}')">
-            <h4 class="search-result-item-heading"><a href="#">${ar_title}</a></h4>
-            <p class="info align-text-end">${propertyData.area_ar}</p>
-            <p class="description">${propertyData.desc_ar}</p>
-                <p class="value3 mt-sm">$${propertyData.typeofunit === 'rent' ? 'في الشهر' : 'السعر الكلي'} /  ${propertyData.price} </p>
-                <div class="info align-text-end">
-                <div class="infoyaya align-text-end">
-                  <ion-icon name="bed-outline"></ion-icon>
-                  <p>${propertyData.Bedrooms}</p>
-                </div>
-                <div class="infoyaya">
-                  <ion-icon name="man-outline"></ion-icon>
-                  <p>${propertyData.Bathrooms}</p>
-                </div>
-                <div class="infoyaya">
-                  <ion-icon name="square-outline"></ion-icon>
-                  <p>${propertyData.Square_ft}</p>
-                </div>
-              </div>
-                <div class="card-footer" style="justify-content:normal;gap:10px;">
-
-                <a href="tel:01119734953"class="butn  call-btn"> 
-                <button type="button" class="call-btn"style="font-size: 16px; font-weight: bold; color: white;"><ion-icon name="call-outline" class="btn-wtsapp"></ion-icon>Call</button>
-                </a>
-                                <button type="button" class="butn whatsapp-btn wts-btn" style="font-size: 16px; font-weight: bold;">
-                <ion-icon name="logo-whatsapp" class="btn-wtsapp"></ion-icon> 
-                <a href="https://wa.me/1XXXXXXXXXX" style="font-size: 15px; font-weight: bold; color: white;">WhatsApp</a>
+        <div class="col-sm-12 col-md-12 col-lg-7 align-texdt-end   prop-card"  >
+          
+        <div class="card-baddge  ${propertyData.typeofunit === 'rent' ? 'green' : 'blue'}">${propertyData.typeofunit === 'rent' ? 'للايجار' : 'للبيع'} </div>
+        <div class="titles-sea">
+        <h4 class="search-result-item-heading">${ar_title}</h4>
+        <ion-icon name="home" class="home_100"></ion-icon> 
+        </div>
+        
+          <div class="inf-are">
+          <p class="info inf-are"> ${propertyData.area_ar}</p>
+          <ion-icon name="location-outline"></ion-icon>
+          </div>       
+          <p class="description">${propertyData.desc_ar}</p>
+              <p class="value3 mt-sm">${propertyData.price} L.E \\ ${propertyData.typeofunit === 'rent' ? 'في الشهر' : 'السعر الكلي'} </p>
+            <ul class="card-list cl-sea">
+            <li class="card-item ci-sea">
+              <strong>${propertyData.Bedrooms}</strong>
+              <ion-icon name="bed-outline"></ion-icon>
+              <span>غرف النوم</span>
+            </li>
+            <li class="card-item ci-sea">
+              <strong>${propertyData.Bathrooms}</strong>
+              <ion-icon name="man-outline"></ion-icon>
+              <span>حمامات</span>
+            </li>
+            <li class="card-item ci-sea">
+              <strong>${propertyData.Square_ft}</strong>
+              <ion-icon name="square-outline"></ion-icon>
+              <span>قدم مربع</span>
+            </li>
+          </ul>
+              <div class="card-footer" style="justify-content:normal;gap:10px;">
+              <a href="tel:01090009000"class="butn  call-btn"> 
+              <button type="button" class="call-btn"style="font-size: 16px; font-weight: bold; color: white;">
+              اتصال 
+              <ion-icon name="call-outline" class="btn-wtsapp"></ion-icon>
               </button>
-                </div>
-            </div>
+              </a>
+              <button type="button" class="butn whatsapp-btn" style="font-size: 16px; font-weight: bold;">
+              <a href="https://wa.me/01090009000" style="font-size: 15px; font-weight: bold; color: white;">واتساب</a>
+              <ion-icon name="logo-whatsapp" class="btn-wtsapp"></ion-icon> 
+            </button>
+              </div>
+          </div>
+
             <div class="col-sm-12 col-md-12 col-lg-5 ">
             <div id="carouselExample-${id}" class="carousel slide img-ser-caro">
             <div class="carousel-inner h-100 carousel-inner-${id}">

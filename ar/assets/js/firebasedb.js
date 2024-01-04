@@ -54,7 +54,6 @@ function searchchnaged() {
       const propertyData = doc.data();
       if (currentIndex <= 5) {
         if (type_unit == propertyData.title || type_unit ==0) {
-          console.log(propertyData.area_ar,val2 ,type_unit)
           if (propertyData.area_ar.includes(val2)) {
             if (propertyData.typeofunit==val3) {
                 var sugg_li = document.createElement("li");
@@ -79,6 +78,13 @@ function searchchnaged() {
       
       currentIndex++;
     });
+    if (document.getElementById("suggestion-ul").innerHTML=="") {
+      var sugg_li = document.createElement("li");
+      var liElement = document.createElement('li');
+      sugg_li.innerText = "لا يمكننا العثور على استعلام البحث الخاص بك. من فضلك تحقق من مفرداتك أو جرب موقعًا مختلفًا.";
+      lociconDiv.appendChild(liElement);
+      document.getElementById("suggestion-ul").appendChild(sugg_li);
+    }  
     if (currentIndex != 0) {
       document.getElementById("suggestions").style.display="flex";
       
@@ -89,31 +95,45 @@ function searchchnaged() {
 
 
 function performSearch() {
+  var searchbarValue = document.getElementById('searchbar').value;
+  var typeUnit1Value = document.getElementById('type-unit1').value;
+  var firstPrice1Value = document.getElementById('first-price1').value;
   event.preventDefault();
-  // Get the search query from the input field
-  var searchQuery = document.getElementById("searchbar").value;
-  if (document.querySelector('input[name="type-btn"]:checked').value == "rent") {
-    var second_price = document.getElementById("second-price1").value;
-    var type_unit = document.getElementById("type-unit1").value;
-    var first_price = document.getElementById("first-price1").value;
+
+  var typeUnit2Value = document.getElementById('type-unit2').value;
+  var firstPrice2Value = document.getElementById('first-price2').value;
+
+  if (!searchbarValue && typeUnit1Value === '0' && firstPrice1Value === '0' && typeUnit2Value === '0' && firstPrice2Value === '0') {
+    // None of the input fields has a value
+    alert('Please enter at least one value before submitting the form.');
+     // Prevent form submission
+  }else{
+
+    // Get the search query from the input field
+    var searchQuery = document.getElementById("searchbar").value;
+    if (document.querySelector('input[name="type-btn"]:checked').value == "rent") {
+      var second_price = document.getElementById("second-price1").value;
+      var type_unit = document.getElementById("type-unit1").value;
+      var first_price = document.getElementById("first-price1").value;
+    }
+    if (document.querySelector('input[name="type-btn"]:checked').value == "sale") {
+      var second_price = document.getElementById("second-price2").value;
+      var type_unit = document.getElementById("type-unit2").value;
+      var first_price = document.getElementById("first-price2").value;
+    }
+    
+    // Get the selected value from the radio button with the name "type-btn"
+    var type_btn = document.querySelector('input[name="type-btn"]:checked').value;
+    
+    
+    // Navigate to the search page with the search query and other parameters
+    window.location.href = "./search/search.html?search=" + encodeURIComponent(searchQuery) +
+        "&second_price=" + encodeURIComponent(second_price) +
+        "&first_price=" + encodeURIComponent(first_price) +
+        "&type_btn=" + encodeURIComponent(type_btn) +
+        "&unit=" + encodeURIComponent(type_unit);
+    
   }
-  if (document.querySelector('input[name="type-btn"]:checked').value == "sale") {
-    var second_price = document.getElementById("second-price2").value;
-    var type_unit = document.getElementById("type-unit2").value;
-    var first_price = document.getElementById("first-price2").value;
-  }
-  
-  // Get the selected value from the radio button with the name "type-btn"
-  var type_btn = document.querySelector('input[name="type-btn"]:checked').value;
-  
-  
-  // Navigate to the search page with the search query and other parameters
-  window.location.href = "./search/search.html?search=" + encodeURIComponent(searchQuery) +
-      "&second_price=" + encodeURIComponent(second_price) +
-      "&first_price=" + encodeURIComponent(first_price) +
-      "&type_btn=" + encodeURIComponent(type_btn) +
-      "&unit=" + encodeURIComponent(type_unit);
-  
 
 }
 function getArabicTranslation(englishText) {

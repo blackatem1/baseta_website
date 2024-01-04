@@ -54,6 +54,14 @@ function getSR() {
         }
       });
   document.getElementById("counts").innerText = cardNumber;
+  if (cardNumber == 0) {
+    console.log("sdd");
+    const NotfoundT = document.createElement("li");
+    NotfoundT.innerText= "not data";
+    NotfoundT.className= "notfound";
+    x= document.getElementsByClassName("sreasults");
+    x[0].appendChild(NotfoundT);
+  }
   hideProressBar();
 
     
@@ -95,27 +103,38 @@ function displayPropertyCardss(querySnapshot,id) {
               <span class="visually-hidden">Next</span>
             </button>
           </div>
-            </div>
-            <div class="col-sm-12 col-md-12 col-lg-7 cursor" onclick="CardGOF('${id}')">
-            <h4 class="search-result-item-heading"><a href="#">${propertyData.title}</a></h4>
-            <p class="info">${propertyData.area}</p>
+          </div>
+          <div class="col-sm-12 col-md-12 col-lg-7  prop-card"  >
+          
+          <div class="card-baddge  ${propertyData.typeofunit === 'rent' ? 'green' : 'blue'}">For ${propertyData.typeofunit}</div>
+          <div class="titles-sea">
+          <ion-icon name="home" class="home_100"></ion-icon> 
+          <h4 class="search-result-item-heading">${propertyData.title}</h4>
+          </div>
+          
+            <div class="inf-are">
+            <ion-icon name="location-outline"></ion-icon>
+                    <p class="info inf-are"> ${propertyData.area}</p>
+            </div>       
             <p class="description">${propertyData.description}</p>
-                <p class="value3 mt-sm">$${propertyData.price}</p>
-                <p class="fs-mini text-muted">For ${propertyData.typeofunit}</p>
-                <div class="info">
-                <div class="infoyaya">
-                  <ion-icon name="bed-outline"></ion-icon>
-                  <p>${propertyData.Bedrooms}</p>
-                </div>
-                <div class="infoyaya">
-                  <ion-icon name="man-outline"></ion-icon>
-                  <p>${propertyData.Bathrooms}</p>
-                </div>
-                <div class="infoyaya">
-                  <ion-icon name="square-outline"></ion-icon>
-                  <p>${propertyData.Square_ft}</p>
-                </div>
-              </div>
+                <p class="value3 mt-sm">${propertyData.price} L.E \\ ${propertyData.typeofunit === 'rent' ? 'MONTHLY' : 'TOTAL PRICE'}</p>
+              <ul class="card-list cl-sea">
+              <li class="card-item ci-sea">
+                <strong>${propertyData.Bedrooms}</strong>
+                <ion-icon name="bed-outline"></ion-icon>
+                <span>Bedrooms</span>
+              </li>
+              <li class="card-item ci-sea">
+                <strong>${propertyData.Bathrooms}</strong>
+                <ion-icon name="man-outline"></ion-icon>
+                <span>Bathrooms</span>
+              </li>
+              <li class="card-item ci-sea">
+                <strong>${propertyData.Square_ft}</strong>
+                <ion-icon name="square-outline"></ion-icon>
+                <span>Square Ft</span>
+              </li>
+            </ul>
                 <div class="card-footer" style="justify-content:normal;gap:10px;">
 
                 <a href="tel:01119734953"class="butn  call-btn"> 

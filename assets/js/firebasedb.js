@@ -40,7 +40,11 @@ var db = firebase.firestore();
   function get(gets) {
   showProgressBar();
   db.collection(gets).get().then((querySnapshot) => {    
+
     displayPropertyCards(querySnapshot)
+}).catch((error) => {
+  console.error("Error deleting document:", error);
+  hideProressBar();
 });}
 
 
@@ -51,6 +55,7 @@ function deleteContents() {
 }
 
 function searchchnaged() {
+  let currentIndex = 0;
   document.getElementById('deleteconts').style.display="flex";
 
   var lociconDiv = document.querySelector('.locicon');
@@ -66,7 +71,6 @@ function searchchnaged() {
   db.collection("units").get().then((querySnapshot) => {    
     document.getElementById("suggestion-ul").innerHTML="";
     document.querySelector('.locicon').innerHTML="";
-    let currentIndex = 0;
     
     querySnapshot.forEach((doc) => {
       const propertyData = doc.data();
@@ -97,10 +101,16 @@ function searchchnaged() {
       
       currentIndex++;
     });
+    if (document.getElementById("suggestion-ul").innerHTML=="") {
+      var sugg_li = document.createElement("li");
+      var liElement = document.createElement('li');
+      sugg_li.innerText = "We can't find your search query. Please check your vocabulary or try a different site";
+      lociconDiv.appendChild(liElement);
+      document.getElementById("suggestion-ul").appendChild(sugg_li);
+    }  
     if (currentIndex != 0) {
       document.getElementById("suggestions").style.display="flex";
-      
-    }
+    }  
 });
 }
 
@@ -108,6 +118,18 @@ function searchchnaged() {
 
 function performSearch() {
   event.preventDefault();
+  var searchbarValue = document.getElementById('searchbar').value;
+  var typeUnit1Value = document.getElementById('type-unit1').value;
+  var firstPrice1Value = document.getElementById('first-price1').value;
+
+  var typeUnit2Value = document.getElementById('type-unit2').value;
+  var firstPrice2Value = document.getElementById('first-price2').value;
+
+  if (!searchbarValue && typeUnit1Value === '0' && firstPrice1Value === '0' && typeUnit2Value === '0' && firstPrice2Value === '0') {
+    // None of the input fields has a value
+    alert('Please enter at least one value before submitting the form.');
+    return false; // Prevent form submission
+  }
   // Get the search query from the input field
   var searchQuery = document.getElementById("searchbar").value;
   if (document.querySelector('input[name="type-btn"]:checked').value == "rent") {
