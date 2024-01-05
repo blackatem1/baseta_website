@@ -85,23 +85,7 @@
                 <div class="row cont searchdet w-100">
                   <div class="row cont w-100">
                     <div class="d-flex flex-row cont position-relative w-100" role="search">
-                      <div class="suggestions" id="suggestions">
-                        <div class="row w-100">
-                          <ul class="suggestio-ul" id="suggestion-ul">
-                          </ul>
-                          <div class="locicon">
-                          </div>
-                        </div>
-                        <script>
-                          document.body.addEventListener("click", function (evt) {
-                            document.getElementById("suggestions").style.display = "none";
-
-                            //note evt.target can be a nested element, not the body element, resulting in misfires
-                          });
-
-
-                        </script>
-                      </div>
+    
 
                       <div class="selects selectsrent position-relative w-100 " id="selectsrent">
                         <button class=" btn-search" id="search-submit" type="submit">
@@ -311,7 +295,23 @@
                           <ion-icon name="close-circle-outline" class="suffix" id="suffix"></ion-icon>
                         </p>
                         <input type="text" class=" searchbarinput" autocomplete="off" oninput="searchchnaged()"
-                          id="searchbar" placeholder="أبحث باستخدام المنطقه">
+                          id="searchbar" placeholder="أبحث باستخدام المنطقه">                  <div class="suggestions" id="suggestions">
+                            <div class="row w-100">
+                              <ul class="suggestio-ul" id="suggestion-ul">
+                              </ul>
+                              <div class="locicon">
+                              </div>
+                            </div>
+                            <script>
+                              document.body.addEventListener("click", function (evt) {
+                                document.getElementById("suggestions").style.display = "none";
+    
+                                //note evt.target can be a nested element, not the body element, resulting in misfires
+                              });
+    
+    
+                            </script>
+                          </div></input>
                         <ion-icon name="search" class="prefix"></ion-icon>
                       </div>
                     </div>
