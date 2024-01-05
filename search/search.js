@@ -140,17 +140,19 @@ function displayPropertyCardss(querySnapshot,id) {
                 <span>Square Ft</span>
               </li>
             </ul>
-                <div class="card-footer" style="justify-content:normal;gap:10px;">
-
-                <a href="tel:01119734953"class="butn  call-btn"> 
-                <button type="button" class="call-btn"style="font-size: 16px; font-weight: bold; color: white;"><ion-icon name="call-outline" class="btn-wtsapp"></ion-icon>Call</button>
-                </a>
-                
-                <a href="https://wa.me/1XXXXXXXXXX" style="font-size: 15px; font-weight: bold; color: white;">
-                                <button type="button" class="butn whatsapp-btn wts-btn" style="font-size: 16px; font-weight: bold;">
-                <ion-icon name="logo-whatsapp" class="btn-wtsapp"></ion-icon> WhatsApp
-              </button></a>
-                </div>
+            <div class="card-footer" style="justify-content:normal;gap:10px;">
+            <a href="tel:01090009000"class="butn  call-btn"> 
+            <button type="button" class="call-btn"style="font-size: 16px; font-weight: bold; color: white;">
+            <ion-icon name="call-outline" class="btn-wtsapp"></ion-icon>
+            call 
+            </button>
+            </a>
+            <button type="button" class="butn whatsapp-btn" style="font-size: 16px; font-weight: bold;">
+            <ion-icon name="logo-whatsapp" class="btn-wtsapp"></ion-icon> 
+            <a href="https://wa.me/01090009000" style="font-size: 15px; font-weight: bold; color: white;">whatsapp</a>
+          </button>
+            </div>
+ 
             </div>
         </div>
     </div>
