@@ -83,38 +83,23 @@ function displayPropertyCardss(querySnapshot) {
     <p class="card-text">
     ${propertyData.description}
     </p>
-    <ul class="card-list">
-      <li class="card-item" style="display: flex;
-      gap: 0.1rem;
-      align-items: center;
-      justify-content: flex-start;
-      width: 60%;
-      padding: 0.5rem 0;">
-        <strong>${propertyData.Bedrooms}</strong>
-        <ion-icon name="bed-outline"></ion-icon>
-        <span>Bedrooms</span>
-      </li>
-      <li class="card-item" style="display: flex;
-      gap: 0.1rem;
-      align-items: center;
-      justify-content: flex-start;
-      width: 60%;
-      padding: 0.5rem 0;">
-        <strong>${propertyData.Bathrooms}</strong>
-        <ion-icon name="man-outline"></ion-icon>
-        <span>Bathrooms</span>
-      </li>
-      <li class="card-item" style="display: flex;
-      gap: 0.1rem;
-      align-items: center;
-      justify-content: flex-start;
-      width: 60%;
-      padding: 0.5rem 0;">
-        <strong>${propertyData.Square_ft}</strong>
-        <ion-icon name="square-outline"></ion-icon>
-        <span>Square Ft</span>
-      </li>
-    </ul>
+            <ul class="card-list cl-sea">
+              <li class="card-item ci-sea">
+                <strong>${propertyData.Bedrooms}</strong>
+                <ion-icon name="bed-outline"></ion-icon>
+                <span>Bedrooms</span>
+              </li>
+              <li class="card-item ci-sea">
+                <strong>${propertyData.Bathrooms}</strong>
+                <ion-icon name="man-outline"></ion-icon>
+                <span>Bathrooms</span>
+              </li>
+              <li class="card-item ci-sea">
+                <strong>${propertyData.Square_ft}</strong>
+                <ion-icon name="square-outline"></ion-icon>
+                <span>Square Ft</span>
+              </li>
+            </ul>
   </div>`;
     // document.getElementById("perwhat").innerHTML="/ " +propertyData.typeofunit === 'rent' ? 'MONTHLY' : 'TOTAL PRICE';
     // document.getElementById("price-pro").innerHTML="$ "+propertyData.price;

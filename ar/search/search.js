@@ -66,8 +66,7 @@ function getSR() {
         querySnapshot.forEach(doc => {
         const data = doc.data();
         // Perform client-side filtering
-        data.area =data.area.toLowerCase();
-        if (data.area.includes(searchQuery)) {
+        if (data.area_ar.includes(searchQuery)) {
           if (secondPrice != ">") {
             secondPrice=parseInt(secondPrice);
           }

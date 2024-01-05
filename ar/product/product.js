@@ -100,58 +100,44 @@ function displayPropertyCardss(querySnapshot) {
     propertyData.title = getArabicTranslation(propertyData.title);
 
     document.getElementById("conss").innerHTML=`      
+    <div  style="left:0  ;right:auto;" class="card-badge ${propertyData.typeofunit === 'rent' ? 'green' : 'blue'}">${propertyData.typeofunit === 'rent' ? 'للأيجار' : 'للبيع'}</div>
 
   <div class="card-content" style="padding:0 !important"  >
     <div class="card-price">
      <strong>${propertyData.price}</strong>/${propertyData.typeofunit === 'rent' ? 'في الشهر' : 'السعر الكلي'}
     </div>
 
-    <p class="card-text">
+    <p class="card-text" style="font-size:1rem !important">
     ${propertyData.desc_ar}
     </p>
     <div class="banner-actions" style="display:flex !important;padding:2% 0">
     <button class="banner-actions-btn"style="color:black !important;width:fit-content;margin-right:2rem">
+    <address>${propertyData.area_ar}</address>
       <ion-icon name="location"></ion-icon>
-      <address>${propertyData.area_ar}</address>
     </button>
-    <button class="banner-actions-btn" style="color:black !important">
-      <ion-icon name="camera"></ion-icon>
-      <span>${propertyData.photos.length}</span>
+    <button class="banner-actions-btn" style="color:black !important ;margin-right:0">
+    <span>${propertyData.photos.length}</span>
+    <ion-icon name="camera"></ion-icon>
     </button>
    
   </div>
-    <ul class="card-list">
-      <li class="card-item" style="display: flex;
-      gap: 0.1rem;
-      align-items: center;
-      justify-content: flex-start;
-      width: 60%;
-      padding: 0.5rem 0;">
-        <strong>${propertyData.Bedrooms}</strong>
-        <ion-icon name="bed-outline"></ion-icon>
-        <span>غرف النوم</span>
-      </li>
-      <li class="card-item" style="display: flex;
-      gap: 0.1rem;
-      align-items: center;
-      justify-content: flex-start;
-      width: 60%;
-      padding: 0.5rem 0;">
-        <strong>${propertyData.Bathrooms}</strong>
-        <ion-icon name="man-outline"></ion-icon>
-        <span>الحمامات</span>
-      </li>
-      <li class="card-item" style="display: flex;
-      gap: 0.1rem;
-      align-items: center;
-      justify-content: flex-start;
-      width: 60%;
-      padding: 0.5rem 0;">
-        <strong>${propertyData.Square_ft}</strong>
-        <ion-icon name="square-outline"></ion-icon>
-        <span>قدم مربع</span>
-      </li>
-    </ul>
+    <ul class="card-list cl-sea" style="margin-bottom:.5rem">
+    <li class="card-item ci-sea">
+      <strong>${propertyData.Bedrooms}</strong>
+      <ion-icon name="bed-outline"></ion-icon>
+      <span>غرف النوم</span>
+    </li>
+    <li class="card-item ci-sea">
+      <strong>${propertyData.Bathrooms}</strong>
+      <ion-icon name="man-outline"></ion-icon>
+      <span>الحمامات</span>
+    </li>
+    <li class="card-item ci-sea">
+      <strong>${propertyData.Square_ft}</strong>
+      <ion-icon name="square-outline"></ion-icon>
+      <span>قدم مربع</span>
+    </li>
+  </ul>
   </div>`;
     // document.getElementById("perwhat").innerHTML="/ " +propertyData.typeofunit === 'rent' ? 'MONTHLY' : 'TOTAL PRICE';
     // document.getElementById("price-pro").innerHTML="$ "+propertyData.price;

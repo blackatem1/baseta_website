@@ -9,8 +9,8 @@ const firebaseConfig = {
 function showProgressBar() {
   document.getElementById('progress-container').style.display = 'flex';
 }
-  
-  // Hide the progress bar
+
+// Hide the progress bar
 function hideProressBar() {
   document.getElementById('progress-container').style.display = 'none';
 }
@@ -18,78 +18,79 @@ function hideProressBar() {
 firebase.initializeApp(firebaseConfig);
 var db = firebase.firestore();
 const analytics = firebase.analytics();
-  function get(gets) {
+function get(gets) {
   showProgressBar();
-  db.collection(gets).get().then((querySnapshot) => {    
+  db.collection(gets).get().then((querySnapshot) => {
     displayPropertyCards(querySnapshot)
-});}
+  });
+}
 
 
 function deleteContents() {
-  document.getElementById("searchbar").value="";
-  document.getElementById('deleteconts').style.display="none";
-  
+  document.getElementById("searchbar").value = "";
+  document.getElementById('deleteconts').style.display = "none";
+
 }
 
 function searchchnaged() {
-  document.getElementById('deleteconts').style.display="flex";
+  document.getElementById('deleteconts').style.display = "flex";
 
   var lociconDiv = document.querySelector('.locicon');
-  
-  document.getElementById('suffix').style.display="flex";
+
+  document.getElementById('suffix').style.display = "flex";
   if (document.querySelector('input[name="type-btn"]:checked').value == "rent") {
     var type_unit = document.getElementById("type-unit1").value;
   }
   if (document.querySelector('input[name="type-btn"]:checked').value == "sale") {
     var type_unit = document.getElementById("type-unit2").value;
-  }  
-  val2=document.getElementById("searchbar").value;
+  }
+  val2 = document.getElementById("searchbar").value;
   val3 = document.querySelector('input[name="type-btn"]:checked').value;
-  db.collection("units").get().then((querySnapshot) => {    
-    document.getElementById("suggestion-ul").innerHTML="";
-    document.querySelector('.locicon').innerHTML="";
+  db.collection("units").get().then((querySnapshot) => {
+    document.getElementById("suggestion-ul").innerHTML = "";
+    document.querySelector('.locicon').innerHTML = "";
     let currentIndex = 0;
-    
+
     querySnapshot.forEach((doc) => {
       const propertyData = doc.data();
       if (currentIndex <= 5) {
-        if (type_unit == propertyData.title || type_unit ==0) {
+        if (type_unit == propertyData.title || type_unit == 0) {
           if (propertyData.area_ar.includes(val2)) {
-            if (propertyData.typeofunit==val3) {
-                var sugg_li = document.createElement("li");
-                var liElement = document.createElement('li');
-                var ionIcon = document.createElement('ion-icon');
-                ionIcon.setAttribute('name', 'location-outline');
-                ionIcon.setAttribute('class', 'li');
-                sugg_li.setAttribute('class', 'li');
-                sugg_li.onclick=function sssss() {
-                  document.getElementById("searchbar").value = sugg_li.innerText ;
-                  document.getElementById('suggestion').style.display="none";
-                  searchchnaged();
-                }
-                sugg_li.innerText = propertyData.area_ar;
-                lociconDiv.appendChild(liElement);
-                liElement.appendChild(ionIcon);
-                document.getElementById("suggestion-ul").appendChild(sugg_li);
+            if (propertyData.typeofunit == val3) {
+              var sugg_li = document.createElement("li");
+              var liElement = document.createElement('li');
+              var ionIcon = document.createElement('ion-icon');
+              ionIcon.setAttribute('name', 'location-outline');
+              ionIcon.setAttribute('class', 'li');
+              sugg_li.setAttribute('class', 'li');
+              sugg_li.onclick = function sssss() {
+                document.getElementById("searchbar").value = sugg_li.innerText;
+                document.getElementById('suggestion').style.display = "none";
+                searchchnaged();
+              }
+              sugg_li.innerText = propertyData.area_ar;
+              lociconDiv.appendChild(liElement);
+              liElement.appendChild(ionIcon);
+              document.getElementById("suggestion-ul").appendChild(sugg_li);
             }
           }
+        }
       }
-      }
-      
+
       currentIndex++;
     });
-    if (document.getElementById("suggestion-ul").innerHTML=="") {
+    if (document.getElementById("suggestion-ul").innerHTML == "") {
       var sugg_li = document.createElement("li");
       var liElement = document.createElement('li');
       sugg_li.innerText = "لا يمكننا العثور على استعلام البحث الخاص بك. من فضلك تحقق من مفرداتك أو جرب موقعًا مختلفًا.";
       lociconDiv.appendChild(liElement);
       document.getElementById("suggestion-ul").appendChild(sugg_li);
-    }  
-    if (currentIndex != 0) {
-      document.getElementById("suggestions").style.display="flex";
-      
     }
-});
+    if (currentIndex != 0) {
+      document.getElementById("suggestions").style.display = "flex";
+
+    }
+  });
 }
 
 
@@ -103,37 +104,40 @@ function performSearch() {
   var typeUnit2Value = document.getElementById('type-unit2').value;
   var firstPrice2Value = document.getElementById('first-price2').value;
 
-  if (!searchbarValue && typeUnit1Value === '0' && firstPrice1Value === '0' && typeUnit2Value === '0' && firstPrice2Value === '0') {
-    // None of the input fields has a value
-    alert('Please enter at least one value before submitting the form.');
-     // Prevent form submission
-  }else{
 
-    // Get the search query from the input field
-    var searchQuery = document.getElementById("searchbar").value;
-    if (document.querySelector('input[name="type-btn"]:checked').value == "rent") {
-      var second_price = document.getElementById("second-price1").value;
-      var type_unit = document.getElementById("type-unit1").value;
-      var first_price = document.getElementById("first-price1").value;
+  // Get the search query from the input field
+  var searchQuery = document.getElementById("searchbar").value;
+  if (document.querySelector('input[name="type-btn"]:checked').value == "rent") {
+    var second_price = document.getElementById("second-price1").value;
+    var type_unit = document.getElementById("type-unit1").value;
+    var first_price = document.getElementById("first-price1").value;
+    if (!searchbarValue && typeUnit1Value === '0' && firstPrice1Value === '0') {
+      alert('Please enter at least one value before submitting the form.');
+      return;
     }
-    if (document.querySelector('input[name="type-btn"]:checked').value == "sale") {
-      var second_price = document.getElementById("second-price2").value;
-      var type_unit = document.getElementById("type-unit2").value;
-      var first_price = document.getElementById("first-price2").value;
-    }
-    
-    // Get the selected value from the radio button with the name "type-btn"
-    var type_btn = document.querySelector('input[name="type-btn"]:checked').value;
-    
-    
-    // Navigate to the search page with the search query and other parameters
-    window.location.href = "./search/search.html?search=" + encodeURIComponent(searchQuery) +
-        "&second_price=" + encodeURIComponent(second_price) +
-        "&first_price=" + encodeURIComponent(first_price) +
-        "&type_btn=" + encodeURIComponent(type_btn) +
-        "&unit=" + encodeURIComponent(type_unit);
-    
   }
+  if (document.querySelector('input[name="type-btn"]:checked').value == "sale") {
+    var second_price = document.getElementById("second-price2").value;
+    var type_unit = document.getElementById("type-unit2").value;
+    var first_price = document.getElementById("first-price2").value;
+    if (!searchbarValue && typeUnit2Value === '0' && firstPrice2Value === '0') {
+      alert('Please enter at least one value before submitting the form.');
+
+      return;
+    }
+  }
+
+  // Get the selected value from the radio button with the name "type-btn"
+  var type_btn = document.querySelector('input[name="type-btn"]:checked').value;
+
+
+  // Navigate to the search page with the search query and other parameters
+  window.location.href = "./search/search.html?search=" + encodeURIComponent(searchQuery) +
+    "&second_price=" + encodeURIComponent(second_price) +
+    "&first_price=" + encodeURIComponent(first_price) +
+    "&type_btn=" + encodeURIComponent(type_btn) +
+    "&unit=" + encodeURIComponent(type_unit);
+
 
 }
 function getArabicTranslation(englishText) {
@@ -173,12 +177,12 @@ function getArabicTranslation(englishText) {
   }
 }
 function CardGO(id) {
-  window.location.href = "./product/product.html?Product_ID=" + encodeURIComponent(id); 
+  window.location.href = "./product/product.html?Product_ID=" + encodeURIComponent(id);
 }
 function displayPropertyCards(querySnapshot) {
   // Clear the previous data
-  document.getElementsByClassName("property-list").innerHTML ="";
-  let c=0;
+  document.getElementsByClassName("property-list").innerHTML = "";
+  let c = 0;
   // Iterate through the documents in the query snapshot
   querySnapshot.forEach((doc) => {
     // Access data from each document
@@ -223,7 +227,12 @@ function displayPropertyCards(querySnapshot) {
       <h3 class="h3 card-title">
         <a >${propertyData.title}</a>
       </h3>
-      <p class="card-text">
+      <p class="card-text" style="   overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+              line-clamp: 2; 
+      -webkit-box-orient: vertical;">
       ${propertyData.desc_ar}
       </p>
       <ul class="card-list">
@@ -259,25 +268,25 @@ function displayPropertyCards(querySnapshot) {
     </div>
   </div>
     `
-      // Your code here
-      let osa = cardBanner.querySelector(".carousel-inner");
-      
-      propertyData.photos.forEach((element, index) => {
-        diva = document.createElement("div");
-        if (index == 0) {
-          diva.className = "carousel-item active h-100";
-        }else{
-          diva.className = "carousel-item  h-100";
-        }
-  
-        img = document.createElement("img");
-        img.className = "d-block w-100 h-100";
-        img.src = element;
-  
-        diva.appendChild(img);
-        osa.appendChild(diva);
+    // Your code here
+    let osa = cardBanner.querySelector(".carousel-inner");
+
+    propertyData.photos.forEach((element, index) => {
+      diva = document.createElement("div");
+      if (index == 0) {
+        diva.className = "carousel-item active h-100";
+      } else {
+        diva.className = "carousel-item  h-100";
+      }
+
+      img = document.createElement("img");
+      img.className = "d-block w-100 h-100";
+      img.src = element;
+
+      diva.appendChild(img);
+      osa.appendChild(diva);
     });
-    x= document.getElementsByClassName("property-list");
+    x = document.getElementsByClassName("property-list");
     x[0].appendChild(cardBanner);
     hideProressBar();
 
@@ -287,11 +296,11 @@ function displayPropertyCards(querySnapshot) {
 
 function selectsch() {
   if (document.querySelector('input[name="type-btn"]:checked').value == "rent") {
-  document.getElementById('selectsrent').style.display="flex";
-  document.getElementById('selectsbuy').style.display="none";
-}if(document.querySelector('input[name="type-btn"]:checked').value == "sale"){
-  document.getElementById('selectsbuy').style.display="flex";
-  document.getElementById('selectsrent').style.display="none";
+    document.getElementById('selectsrent').style.display = "flex";
+    document.getElementById('selectsbuy').style.display = "none";
+  } if (document.querySelector('input[name="type-btn"]:checked').value == "sale") {
+    document.getElementById('selectsbuy').style.display = "flex";
+    document.getElementById('selectsrent').style.display = "none";
   }
-  
+
 }

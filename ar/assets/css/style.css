@@ -57,7 +57,9 @@
   --shadow-2: 0 16px 32px hsla(188, 63%, 7%, 0.1);
 
 }
-
+p{
+  margin: 0;
+}
 .btn {
   border-radius: 10px !important;
 }
@@ -450,9 +452,9 @@ p{
   display: inline-block;
  }
 .ci-sea{
-  padding-right: 15px;
-    border-right: 1px solid hsla(0, 0%, 0%, 0.2);
-    margin-right: 20px;
+  padding-left: 15px;
+    border-left: 1px solid hsla(0, 0%, 0%, 0.2);
+    margin-left: 20px;
 }
 .cl-sea{
   display: flex;
@@ -958,7 +960,7 @@ p{
   align-items: center;
 }
 .card-text{
-  font-size: 1.5rem !important;
+  font-size: 1.5rem ;
 }
 
 .property-card .card-text {
@@ -2932,4 +2934,31 @@ margin-bottom: .5rem !important;
 }
 .navbar-nav{
   flex-direction: row;
+}
+.conns{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: .9rem;
+}
+.conss{
+position: relative;
+height: 90%;
+display: flex;
+flex-direction: column;
+gap: 1rem;
+}
+.card-content{
+  background-color: transparent;
+  display: flex;
+  padding: 1.5rem;
+  gap: 1rem !important;
+  flex-direction: column;
+}
+.card-content{
+  background-color: transparent;
+  display: flex;
+  padding: 1.5rem;
+  gap: 1rem !important;
+  flex-direction: column;
 }

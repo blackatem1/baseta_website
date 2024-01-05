@@ -125,11 +125,29 @@ function performSearch() {
   var typeUnit2Value = document.getElementById('type-unit2').value;
   var firstPrice2Value = document.getElementById('first-price2').value;
 
-  if (!searchbarValue && typeUnit1Value === '0' && firstPrice1Value === '0' && typeUnit2Value === '0' && firstPrice2Value === '0') {
-    // None of the input fields has a value
-    alert('Please enter at least one value before submitting the form.');
-    return false; // Prevent form submission
+
+  // Get the search query from the input field
+  var searchQuery = document.getElementById("searchbar").value;
+  if (document.querySelector('input[name="type-btn"]:checked').value == "rent") {
+    var second_price = document.getElementById("second-price1").value;
+    var type_unit = document.getElementById("type-unit1").value;
+    var first_price = document.getElementById("first-price1").value;
+    if (!searchbarValue && typeUnit1Value === '0' && firstPrice1Value === '0') {
+      alert('Please enter at least one value before submitting the form.');
+      return;
+    }
   }
+  if (document.querySelector('input[name="type-btn"]:checked').value == "sale") {
+    var second_price = document.getElementById("second-price2").value;
+    var type_unit = document.getElementById("type-unit2").value;
+    var first_price = document.getElementById("first-price2").value;
+    if (!searchbarValue && typeUnit2Value === '0' && firstPrice2Value === '0') {
+      alert('Please enter at least one value before submitting the form.');
+
+      return;
+    }
+  }
+
   // Get the search query from the input field
   var searchQuery = document.getElementById("searchbar").value;
   if (document.querySelector('input[name="type-btn"]:checked').value == "rent") {
@@ -206,7 +224,12 @@ function displayPropertyCards(querySnapshot) {
       <h3 class="h3 card-title">
         <a >${propertyData.title}</a>
       </h3>
-      <p class="card-text">
+      <p class="card-text" style="   overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+              line-clamp: 2; 
+      -webkit-box-orient: vertical;">
       ${propertyData.description}
       </p>
       <ul class="card-list">
