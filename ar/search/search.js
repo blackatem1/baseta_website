@@ -137,7 +137,12 @@ function displayPropertyCardss(querySnapshot,id) {
           <p class="info inf-are"> ${propertyData.area_ar}</p>
           <ion-icon name="location-outline"></ion-icon>
           </div>       
-          <p class="description">${propertyData.desc_ar}</p>
+          <p class="description" style="   overflow: hidden;
+          text-overflow: ellipsis;
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+                  line-clamp: 2; 
+          -webkit-box-orient: vertical;">${propertyData.desc_ar}</p>
               <p class="value3 mt-sm">${propertyData.price} L.E \\ ${propertyData.typeofunit === 'rent' ? 'في الشهر' : 'السعر الكلي'} </p>
             <ul class="card-list cl-sea">
             <li class="card-item ci-sea">
