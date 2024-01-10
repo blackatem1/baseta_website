@@ -1883,12 +1883,25 @@ flex-direction: row;
   width: 75%;
   text-align: center;
 }
-
+.second-search{
+  display: none !important;
+}
 @media (max-width: 800px) {
+  .second-search{
+    display: flex !important;
+  }
+  .first-search{
+    display: none !important;
+  }
   .hero-tistle {
     font-size: 30px !important;
   }
-
+  .rentsandsales button {
+    width: 40% !important;
+  }
+  .rentsandsales  {
+    justify-content: center !important;
+  }
   .cont,
   .selects {
     /* padding-top: 5%; */
