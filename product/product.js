@@ -16,17 +16,17 @@ collectionRef.get()
   .then(
     querySnapshot => {
       querySnapshot.forEach(doc => {
-      const data = doc.data();
-      // Perform client-side filtering
-      //  console.log(data.area);
-      data.area =data.area.toLowerCase();
-      if (doc.id == Product_ID) {
-        document.title = "Baseta - "+data.title;
-        displayPropertyCardss(data);
-      }
-    });
-    hideProressBar();
-  }
+        const data = doc.data();
+        // Perform client-side filtering
+        //  console.log(data.area);
+        data.area = data.area.toLowerCase();
+        if (doc.id == Product_ID) {
+          document.title = "Baseta - " + data.title;
+          displayPropertyCardss(data);
+        }
+      });
+      hideProressBar();
+    }
   )
   .catch(error => {
     console.error("Error getting documents: ", error);
@@ -36,51 +36,53 @@ collectionRef.get()
 
 
 function displayPropertyCardss(querySnapshot) {
-    // Clear the previous data
-    const propertyData = querySnapshot;
-    osa=document.getElementsByClassName("carousel-inner");
+  // Clear the previous data
+  const propertyData = querySnapshot;
+  osa = document.getElementsByClassName("carousel-inner");
 
-    osa.innerHTML ="";
-    
-    // Iterate through the documents in the query snapshot
-    // Access data from each document
-    propertyData.photos.forEach((element, index) => {
-        diva = document.createElement("div");
-        if (index == 0) {
-          diva.className = "carousel-item active h-100";
-        }else{
-          diva.className = "carousel-item h-100";
-        }
-        
-        img = document.createElement("img");
-        img.className = "d-block img-prod-caro w-100 h-100";
-        img.src = element;
-        diva.appendChild(img);
-        // alert(index);
-        osa[0].appendChild(diva);
-    });
-    // alert(document.getElementById("title-pro").innerHTML );
-    document.getElementById("title-pro").innerHTML=propertyData.title;
-    document.getElementById("conss").innerHTML=`      
+  osa.innerHTML = "";
+  price = propertyData.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+
+  // Iterate through the documents in the query snapshot
+  // Access data from each document
+  propertyData.photos.forEach((element, index) => {
+    diva = document.createElement("div");
+    if (index == 0) {
+      diva.className = "carousel-item active h-100";
+    } else {
+      diva.className = "carousel-item h-100";
+    }
+
+    img = document.createElement("img");
+    img.className = "d-block img-prod-caro w-100 h-100";
+    img.src = element;
+    diva.appendChild(img);
+    // alert(index);
+    osa[0].appendChild(diva);
+  });
+  // alert(document.getElementById("title-pro").innerHTML );
+  document.getElementById("title-pro").innerHTML = propertyData.title;
+  document.getElementById("conss").innerHTML = `      
     <div   class="card-badge ${propertyData.typeofunit === 'rent' ? 'green' : 'blue'}">For ${propertyData.typeofunit}</div>
-    <div class="banner-actions" style="display:flex !important;padding:2% 0">
-      <button class="banner-actions-btn"style="color:black !important;width:fit-content;margin-right:2rem">
-        <ion-icon name="location"></ion-icon>
-        <address>${propertyData.area}</address>
-      </button>
-      <button class="banner-actions-btn" style="color:black !important">
-        <ion-icon name="camera"></ion-icon>
-        <span>${propertyData.photos.length}</span>
-      </button>
-     
-    </div>
+
   </figure>
   <div class="card-content" style="padding:0 !important"  >
     <div class="card-price">
-     <strong>${propertyData.price}</strong>/${propertyData.typeofunit === 'rent' ? 'MONTHLY' : 'TOTAL PRICE'}
-    </div>
+    <strong> ${price}</strong> <strong> L.E </strong> \\ ${propertyData.typeofunit === 'rent' ? 'MONTHLY' : 'TOTAL PRICE'}
+        </div>
 
-    <p class="card-text">
+        <div class="banner-actions" style="display:flex !important;padding:2% 0">
+        <button class="banner-actions-btn"style="color:black !important;width:fit-content;margin-right:2rem">
+          <ion-icon name="location"></ion-icon>
+          <address>${propertyData.area}</address>
+        </button>
+        <button class="banner-actions-btn" style="color:black !important">
+          <ion-icon name="camera"></ion-icon>
+          <span>${propertyData.photos.length}</span>
+        </button>
+       
+      </div>
+    <p class="card-text card-ssss">
     ${propertyData.description}
     </p>
             <ul class="card-list cl-sea">
@@ -101,8 +103,8 @@ function displayPropertyCardss(querySnapshot) {
               </li>
             </ul>
   </div>`;
-    // document.getElementById("perwhat").innerHTML="/ " +propertyData.typeofunit === 'rent' ? 'MONTHLY' : 'TOTAL PRICE';
-    // document.getElementById("price-pro").innerHTML="$ "+propertyData.price;
-    // document.getElementById("desc-prod").innerHTML=propertyData.description;
-      
-    }  
+  // document.getElementById("perwhat").innerHTML="/ " +propertyData.typeofunit === 'rent' ? 'MONTHLY' : 'TOTAL PRICE';
+  // document.getElementById("price-pro").innerHTML="$ "+propertyData.price;
+  // document.getElementById("desc-prod").innerHTML=propertyData.description;
+
+}  

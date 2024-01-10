@@ -119,6 +119,7 @@ function displayPropertyCardss(querySnapshot,id) {
       const propertyData = querySnapshot;
       const cardBanner = document.createElement("li");
      ar_title = getArabicTranslation(propertyData.title);
+     price = propertyData.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
     cardBanner.innerHTML=`
      <section class="search-result-item p-3">
@@ -137,13 +138,11 @@ function displayPropertyCardss(querySnapshot,id) {
           <p class="info inf-are"> ${propertyData.area_ar}</p>
           <ion-icon name="location-outline"></ion-icon>
           </div>       
-          <p class="description" style="   overflow: hidden;
-          text-overflow: ellipsis;
-          display: -webkit-box;
-          -webkit-line-clamp: 2;
-                  line-clamp: 2; 
-          -webkit-box-orient: vertical;">${propertyData.desc_ar}</p>
-              <p class="value3 mt-sm">${propertyData.price} L.E \\ ${propertyData.typeofunit === 'rent' ? 'في الشهر' : 'السعر الكلي'} </p>
+          <p class="description" style="">${propertyData.desc_ar}</p>
+              <p class="value3 mt-sm">
+              ${propertyData.typeofunit === 'rent' ? 'في الشهر' : 'السعر الكلي'}/
+              <strong>${price} جنيه</strong> 
+              </p>
             <ul class="card-list cl-sea">
             <li class="card-item ci-sea">
               <strong>${propertyData.Bedrooms}</strong>

@@ -191,6 +191,8 @@ function displayPropertyCards(querySnapshot) {
     const propertyData = doc.data();
     const cardBanner = document.createElement("li");
     propertyData.title = getArabicTranslation(propertyData.title);
+    price = propertyData.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+
     cardBanner.innerHTML = `
     <div class="property-card" >
     <figure class="card-banner h-100">
@@ -222,7 +224,7 @@ function displayPropertyCards(querySnapshot) {
     </figure>
     <div class="card-content cursor" onclick="CardGO('${doc.id}')" >
       <div class="card-price">
-      ${propertyData.typeofunit === 'rent' ? 'في الشهر' : 'السعر الكلي'}/<strong>${propertyData.price}</strong>
+     <div><p> ${propertyData.typeofunit === 'rent' ? 'في الشهر' : 'السعر الكلي'}<p></div>/<strong>جنيه</strong><strong>${price}  </strong>
       </div>
       <h3 class="h3 card-title">
         <a >${propertyData.title}</a>

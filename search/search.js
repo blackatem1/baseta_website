@@ -87,6 +87,8 @@ function displayPropertyCardss(querySnapshot,id) {
     // Iterate through the documents in the query snapshot
       // Access data from each document
       const propertyData = querySnapshot;
+    price = propertyData.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+
       const cardBanner = document.createElement("li");
     cardBanner.innerHTML=`
      <section class="search-result-item p-3">
@@ -119,13 +121,8 @@ function displayPropertyCardss(querySnapshot,id) {
             <ion-icon name="location-outline"></ion-icon>
                     <p class="info inf-are"> ${propertyData.area}</p>
             </div>       
-            <p class="description" style="   overflow: hidden;
-            text-overflow: ellipsis;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-                    line-clamp: 2; 
-            -webkit-box-orient: vertical;">${propertyData.description}</p>
-                <p class="value3 mt-sm">${propertyData.price} L.E \\ ${propertyData.typeofunit === 'rent' ? 'MONTHLY' : 'TOTAL PRICE'}</p>
+            <p class="description" style="">${propertyData.description}</p>
+                <p class="value3 mt-sm"><strong> ${price}</strong> L.E \\ ${propertyData.typeofunit === 'rent' ? 'MONTHLY' : 'TOTAL PRICE'}</p>
               <ul class="card-list cl-sea">
               <li class="card-item ci-sea">
                 <strong>${propertyData.Bedrooms}</strong>

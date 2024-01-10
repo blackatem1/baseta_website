@@ -185,8 +185,9 @@ function displayPropertyCards(querySnapshot) {
   querySnapshot.forEach((doc) => {
     // Access data from each document
     c++;
-
+    
     const propertyData = doc.data();
+    price = propertyData.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     const cardBanner = document.createElement("li");
     cardBanner.innerHTML = `
     <div class="property-card" >
@@ -219,7 +220,9 @@ function displayPropertyCards(querySnapshot) {
     </figure>
     <div class="card-content cursor" onclick="CardGO('${doc.id}')" >
       <div class="card-price">
-       <strong>${propertyData.price}</strong>/${propertyData.typeofunit === 'rent' ? 'MONTHLY' : 'TOTAL PRICE'}
+       <strong>${price}</strong> 
+       <strong>L.E</strong> 
+       <div><p> /${propertyData.typeofunit === 'rent' ? 'MONTHLY' : 'TOTAL PRICE'}</p></div>
       </div>
       <h3 class="h3 card-title">
         <a >${propertyData.title}</a>

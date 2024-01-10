@@ -98,18 +98,17 @@ function displayPropertyCardss(querySnapshot) {
     // alert(document.getElementById("title-pro").innerHTML );
     document.getElementById("title-pro").innerHTML=
     propertyData.title = getArabicTranslation(propertyData.title);
+    price = propertyData.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
     document.getElementById("conss").innerHTML=`      
     <div  style="left:0  ;right:auto;" class="card-badge ${propertyData.typeofunit === 'rent' ? 'green' : 'blue'}">${propertyData.typeofunit === 'rent' ? 'للأيجار' : 'للبيع'}</div>
 
   <div class="card-content" style="padding:0 !important"  >
     <div class="card-price">
-     <strong>${propertyData.price}</strong>/${propertyData.typeofunit === 'rent' ? 'في الشهر' : 'السعر الكلي'}
+    ${propertyData.typeofunit === 'rent' ? 'في الشهر' : 'السعر الكلي'}/
+    <strong>جنيه</strong>
+    <strong>${price}</strong>
     </div>
-
-    <p class="card-text" style="font-size:1rem !important">
-    ${propertyData.desc_ar}
-    </p>
     <div class="banner-actions" style="display:flex !important;padding:2% 0">
     <button class="banner-actions-btn"style="color:black !important;width:fit-content;margin-right:2rem">
     <address>${propertyData.area_ar}</address>
@@ -121,6 +120,10 @@ function displayPropertyCardss(querySnapshot) {
     </button>
    
   </div>
+
+    <p class="card-text card-ssss" style="font-size:1rem !important">
+    ${propertyData.desc_ar}
+    </p>
     <ul class="card-list cl-sea" style="margin-bottom:.5rem">
     <li class="card-item ci-sea">
       <strong>${propertyData.Bedrooms}</strong>
