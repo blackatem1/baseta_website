@@ -127,7 +127,6 @@ function displayPropertyCardss(querySnapshot,id) {
     <div class="search-result-item-body">
         <div class="row">
         <div class="col-sm-12 col-md-12 col-lg-7 align-texdt-end   prop-card"  >
-          
         <div class="card-baddge  ${propertyData.typeofunit === 'rent' ? 'green' : 'blue'}">${propertyData.typeofunit === 'rent' ? 'للايجار' : 'للبيع'} </div>
         <div class="titles-sea">
         <h4 class="search-result-item-heading">${ar_title}</h4>

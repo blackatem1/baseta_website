@@ -176,8 +176,9 @@ function getArabicTranslation(englishText) {
       return englishText;
   }
 }
-function CardGO(id) {
-  window.location.href = "./product/product.html?Product_ID=" + encodeURIComponent(id);
+function CardGO(id,area,title) {
+  analytics.logEvent('watched', { ID: id, Area: area ,Title:title });
+    window.location.href = "./product/product.html?Product_ID=" + encodeURIComponent(id); 
 }
 function displayPropertyCards(querySnapshot) {
   // Clear the previous data
@@ -209,8 +210,8 @@ function displayPropertyCards(querySnapshot) {
     </div>
         
       
-      <div onclick="CardGO('${doc.id}')" class="card-badge cursor ${propertyData.typeofunit === 'rent' ? 'green' : 'blue'}">${propertyData.typeofunit === 'rent' ? 'للايجار' : 'للبيع'}</div>
-      <div class="banner-actions"onclick="CardGO('${doc.id}')">
+      <div  onclick="CardGO('${doc.id}','${propertyData.title}','${propertyData.area}')" class="card-badge cursor ${propertyData.typeofunit === 'rent' ? 'green' : 'blue'}">${propertyData.typeofunit === 'rent' ? 'للايجار' : 'للبيع'}</div>
+      <div class="banner-actions" onclick="CardGO('${doc.id}','${propertyData.title}','${propertyData.area}')">
         <button class="banner-actions-btn">
           <ion-icon name="location"></ion-icon>
           <address>${propertyData.area_ar}</address>
@@ -222,7 +223,7 @@ function displayPropertyCards(querySnapshot) {
        
       </div>
     </figure>
-    <div class="card-content cursor" onclick="CardGO('${doc.id}')" >
+    <div class="card-content cursor"  onclick="CardGO('${doc.id}','${propertyData.title}','${propertyData.area}')" >
       <div class="card-price">
      <div><p> ${propertyData.typeofunit === 'rent' ? 'في الشهر' : 'السعر الكلي'}<p></div>/<strong>جنيه</strong><strong>${price}  </strong>
       </div>

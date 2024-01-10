@@ -17,7 +17,7 @@ function hideProressBar() {
 
 firebase.initializeApp(firebaseConfig);
 var db = firebase.firestore();
-// const analytics = firebase.analytics();
+const analytics = firebase.analytics();
 // firebase.analytics().logEvent('Login',{1:'blackatem',2:"hhhhhhhhhhhhhhhhhhhhhhhhhh"});
 // firebase.analytics().logEvent('first_visit');
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -26,7 +26,7 @@ var db = firebase.firestore();
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
       // you can now add any event you like by just typing this code do it by your self
-      // firebase.analytics().logEvent('event_name', { param1: 'value1', param2: 'value2' });
+      // firebase.analytics().logEvent('event_name', { ID: 'value1', Area: 'value2' ,Title: 'value2' });
       // firebase.analytics().logEvent('notification_received');
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -114,6 +114,12 @@ function searchchnaged() {
 });
 }
 
+function CardGO(id,area,title) {
+  analytics.logEvent('watched', { ID: id, Area: area ,Title:title });
+    window.location.href = "./product/product.html?Product_ID=" + encodeURIComponent(id); 
+}
+// Example: Log a custom event named 'purchase' with parameters
+// logCustomEventWithParams('purchase', purchaseParams);
 
 
 function performSearch() {
@@ -174,9 +180,7 @@ function performSearch() {
   
 
 }
-function CardGO(id) {
-  window.location.href = "./product/product.html?Product_ID=" + encodeURIComponent(id); 
-}
+
 function displayPropertyCards(querySnapshot) {
   // Clear the previous data
   document.getElementsByClassName("property-list").innerHTML ="";
@@ -205,8 +209,8 @@ function displayPropertyCards(querySnapshot) {
     </div>
         
       
-      <div onclick="CardGO('${doc.id}')" class="card-badge cursor ${propertyData.typeofunit === 'rent' ? 'green' : 'blue'}">For ${propertyData.typeofunit}</div>
-      <div class="banner-actions"onclick="CardGO('${doc.id}')">
+      <div onclick="CardGO('${doc.id}','${propertyData.title}','${propertyData.area}')" class="card-badge cursor ${propertyData.typeofunit === 'rent' ? 'green' : 'blue'}">For ${propertyData.typeofunit}</div>
+      <div class="banner-actions"onclick="CardGO('${doc.id}','${propertyData.title}','${propertyData.area}')">
         <button class="banner-actions-btn">
           <ion-icon name="location"></ion-icon>
           <address>${propertyData.area}</address>
@@ -218,7 +222,7 @@ function displayPropertyCards(querySnapshot) {
        
       </div>
     </figure>
-    <div class="card-content cursor" onclick="CardGO('${doc.id}')" >
+    <div class="card-content cursor" onclick="CardGO('${doc.id}','${propertyData.title}','${propertyData.area}')" >
       <div class="card-price">
        <strong>${price}</strong> 
        <strong>L.E</strong> 
