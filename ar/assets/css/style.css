@@ -2493,6 +2493,7 @@ body{
   background: #fff;
   border: 2px #bbb8bd solid !important;
   padding-left: 1rem;
+  margin: 1% 2%;
   overflow: hidden;
   font-family: sans-serif;
 }
@@ -2689,7 +2690,7 @@ p {
   }
 
   .suggestions {
-    top: 97% !important;
+    top: 78% !important;
     width: 100% !important;
   }
 
