@@ -254,16 +254,18 @@ function displayPropertyCards(querySnapshot) {
       </ul>
     </div>
     <div class="card-footer ">
-    <a href="tel:01090009000"class="butn  call-btn"> 
-    <button type="button" class="call-btn"style="font-size: 16px; font-weight: bold; color: white;">
-    اتصال 
-    <ion-icon name="call-outline" class="btn-wtsapp"></ion-icon>
-    </button>
-    </a>
-    <button type="button" class="butn whatsapp-btn" style="font-size: 16px; font-weight: bold;">
-    <a href="https://wa.me/01090009000" style="font-size: 15px; font-weight: bold; color: white;">واتساب</a>
-    <ion-icon name="logo-whatsapp" class="btn-wtsapp"></ion-icon> 
+  <a href="tel:01090009000"class="butn  call-btn wb-a"> 
+  <button type="button" class="call-btn"style="font-size: 16px; font-weight: bold; color: white;">
+  اتصال
+  <ion-icon name="call-outline" class="btn-wtsapp"></ion-icon>
   </button>
+  </a>
+  <a href="tel:01090009000"class="butn  whatsapp-btn wb-a"> 
+  <button type="button" class="whatsapp-btn"style="font-size: 16px; font-weight: bold; color: white;">
+  واتساب
+  <ion-icon name="logo-whatsapp" class="btn-wtsapp"></ion-icon>
+  </button>
+  </a>
     </div>
     </div>
   </div>

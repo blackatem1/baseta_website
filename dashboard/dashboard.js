@@ -182,18 +182,18 @@ function displayUnitCards(params) {
      });
     cardBanner.innerHTML = `
     <tr>
-    <th scope="row">${cardNumber}</th>
-    <td>${propertyData.title}</td>
-    <td>${propertyData.description}</td>
-    <td>${propertyData.desc_ar}</td>
-    <td>${propertyData.area}</td>
-    <td>${propertyData.area_ar}</td>
-    <td>${propertyData.price}</td>
-    <td>${propertyData.Square_ft}</td>
-    <td>${propertyData.Bathrooms}</td>
-    <td>${propertyData.Bedrooms}</td>
-    <td>${propertyData.typeofunit}</td>
-    <td>${formattedDate}</td>
+    <th scope="row"><div class="clamp-text"> ${cardNumber}</div></th>
+    <td><div class="clamp-text">${propertyData.title}</div></td>
+    <td><div class="clamp-text"> ${propertyData.description} </div></td>
+    <td><div class="clamp-text"> ${propertyData.desc_ar}</div></td>
+    <td><div class="clamp-text"> ${propertyData.area}</div></td>
+    <td><div class="clamp-text"> ${propertyData.area_ar}</div></td>
+    <td><div class="clamp-text"> ${propertyData.price}</div></td>
+    <td><div class="clamp-text"> ${propertyData.Square_ft}</div></td>
+    <td><div class="clamp-text"> ${propertyData.Bathrooms}</div></td>
+    <td><div class="clamp-text"> ${propertyData.Bedrooms}</div></td>
+    <td><div class="clamp-text"> ${propertyData.typeofunit}</div></td>
+    <td><div class="clamp-text"> ${formattedDate}</div></td>
 
 
    

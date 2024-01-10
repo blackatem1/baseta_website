@@ -835,6 +835,7 @@ p, ul{
 .infoyaya:first-child{
   padding-left: 0 !important;
 }
+
 .prop-card{
   display: flex;
   flex-direction: column;
@@ -843,7 +844,7 @@ p, ul{
 }
 .property-card .banner-actions {
   position: absolute;
-  bottom: 15px;
+  bottom: 9px;
   left: 15px;
   right: 0;
   display: flex;
@@ -875,7 +876,7 @@ p, ul{
 }
 
 .property-card .card-content {
-  padding: 30px 15px 15px;
+  padding: 12px 15px 15px;
   border-bottom: 1px solid hsla(0, 0%, 0%, 0.1);
 }
 
@@ -950,10 +951,13 @@ p, ul{
   border-color: #25D366 !important;
 
 }
+.wb-a{
+  width: 45% !important;
 
+}
 .call-btn,
 .whatsapp-btn {
-  width: 45%;
+  width: 100%;
   text-align: center;
   display: flex;
   align-items: center;
@@ -2936,6 +2940,5 @@ gap: 1rem;
   background-color: transparent;
   display: flex;
   padding: 1.5rem;
-  gap: 1rem !important;
   flex-direction: column;
 }

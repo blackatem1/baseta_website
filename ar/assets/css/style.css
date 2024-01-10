@@ -926,10 +926,14 @@ p{
   pointer-events: none;
   z-index: 1;
 }
-
+@media (max-width:768px) {
+  .whatsapp-btn,.search-results-count{
+    font-size: 14px !important;
+  }
+}
 .property-card .banner-actions {
   position: absolute;
-  bottom: 15px;
+  bottom: 9px;
   left: 15px;
   right: 15px;
   display: flex;
@@ -961,7 +965,7 @@ p{
 }
 
 .property-card .card-content {
-  padding: 30px 15px 15px;
+  padding: 12px 15px 15px;
   border-bottom: 1px solid hsla(0, 0%, 0%, 0.1);
 }
 
@@ -1043,10 +1047,13 @@ p{
   border-color: #25D366 !important;
 
 }
+.wb-a{
+  width: 45% !important;
 
+}
 .call-btn,
 .whatsapp-btn {
-  width: 45%;
+  width: 100%;
   text-align: center;
   display: flex;
   align-items: center;
@@ -2987,13 +2994,11 @@ gap: 1rem;
   background-color: transparent;
   display: flex;
   padding: 1.5rem;
-  gap: 1rem !important;
   flex-direction: column;
 }
 .card-content{
   background-color: transparent;
   display: flex;
   padding: 1.5rem;
-  gap: 1rem !important;
   flex-direction: column;
 }
