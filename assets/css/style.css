@@ -1473,6 +1473,7 @@ flex-direction: row;
     font-size: 20px;
     padding-bottom: 0 !important;
     word-break: auto-phrase !important;
+    white-space:normal;
   }
 
   /**

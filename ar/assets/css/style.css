@@ -2359,6 +2359,7 @@ flex-direction: row;
   font-family: var(--ff-poppins);
   padding-bottom: 2%;
   word-break: auto-phrase !important;
+  white-space:normal;
   text-align: center;
 }
 
