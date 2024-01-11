@@ -92,7 +92,10 @@ function searchchnaged() {
     }
   });
 }
-
+function change_page_ind() {
+  window.location.href = "../login/login.html";
+  
+}
 
 
 function performSearch() {
