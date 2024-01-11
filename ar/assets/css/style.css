@@ -2358,6 +2358,7 @@ flex-direction: row;
   z-index: 999 !important;
   font-family: var(--ff-poppins);
   padding-bottom: 2%;
+  word-break: auto-phrase !important;
   text-align: center;
 }
 

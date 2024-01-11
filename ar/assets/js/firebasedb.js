@@ -178,7 +178,7 @@ function getArabicTranslation(englishText) {
 }
 function CardGO(id,area,title) {
   analytics.logEvent('watched', { ID: id, Area: area ,Title:title });
-    window.location.href = "./product/product.html?Product_ID=" + encodeURIComponent(id); 
+    window.location.href = "../product/product.html?Product_ID=" + encodeURIComponent(id); 
 }
 function displayPropertyCards(querySnapshot) {
   // Clear the previous data
