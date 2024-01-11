@@ -2726,7 +2726,7 @@ p {
 
   }
 
-  .butn {
+  .butn,.whatsapp-btn,.call-btn {
     width: 100% !important;
   }
 }
