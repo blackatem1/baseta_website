@@ -110,7 +110,9 @@ function displayPropertyCardss(querySnapshot) {
 }  
 function myFunction() {
   // Get the text field
+  
   var copyText =window.location.href;
+  analytics.logEvent('shared', {share_link:window.location.href })
   navigator.clipboard.writeText(copyText);
   document.getElementById("shareButton").innerText="copied to clipboard";
 }
