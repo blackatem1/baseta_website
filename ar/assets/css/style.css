@@ -317,24 +317,27 @@ a {
 .card-badge.orange {
   background: var(--orange-soda);
 }
-
 .has-scrollbar {
   display: flex;
   align-items: flex-start;
   gap: 15px;
-  overflow-x: auto;
+  height: fit-content !important;
+  flex-wrap: wrap;
   margin-inline: -15px;
   padding-inline: 15px;
   scroll-padding-left: 15px;
   padding-bottom: 60px;
-  scroll-snap-type: inline mandatory;
 }
+@media (max-width: 630px) {
+  .has-scrollbar>li {
+    min-width: calc(100% ) !important;
+  }
 
+}
 .has-scrollbar>li {
-  min-width: 100%;
-  scroll-snap-align: start;
+  flex-basis: calc(33.333% - 100px); /* 33.333% is one-third of the container width, considering the gap */
+  box-sizing: border-box;
 }
-
 .has-scrollbar::-webkit-scrollbar-track {
   background: var(--cultured-2);
   outline: 2px solid var(--cadet);

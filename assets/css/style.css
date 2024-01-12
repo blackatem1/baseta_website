@@ -339,17 +339,17 @@ a {
   display: flex;
   align-items: flex-start;
   gap: 15px;
-  overflow-x: auto;
+  height: fit-content !important;
+  flex-wrap: wrap;
   margin-inline: -15px;
   padding-inline: 15px;
   scroll-padding-left: 15px;
   padding-bottom: 60px;
-  scroll-snap-type: inline mandatory;
 }
 
 .has-scrollbar>li {
-  min-width: 100%;
-  scroll-snap-align: start;
+  flex-basis: calc(33.333% - 100px); /* 33.333% is one-third of the container width, considering the gap */
+  box-sizing: border-box;
 }
 
 .has-scrollbar::-webkit-scrollbar-track {
@@ -1447,8 +1447,13 @@ flex-direction: row;
     text-align: center;
   }
 }
+@media (max-width: 630px) {
+  .has-scrollbar>li {
+    min-width: calc(100% ) !important;
+  }
 
-@media (min-width: 600px) {
+}
+ @media (min-width: 600px) {
 
   /**
    * CUSTOM PROPERTY
