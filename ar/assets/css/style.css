@@ -1070,6 +1070,18 @@ h4{
   width: 45% !important;
 
 }
+.upper-share-btn{
+  width: 91% !important;
+  background-color: grey !important;
+  border-color: grey !important;
+}
+.share-btn{
+  display: flex;
+  align-items: center;
+  gap: 5%;
+  width: 100%;
+  justify-content: center;  
+}
 .call-btn,
 .whatsapp-btn {
   width: 100%;

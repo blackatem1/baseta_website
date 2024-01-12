@@ -147,3 +147,9 @@ function displayPropertyCardss(querySnapshot) {
     // document.getElementById("desc-prod").innerHTML=propertyData.description;
       
     }  
+    function myFunction() {
+      // Get the text field
+      var copyText =window.location.href;
+      navigator.clipboard.writeText(copyText);
+      document.getElementById("shareButton").innerText="تم الحفظ في الحافظه";
+    }
