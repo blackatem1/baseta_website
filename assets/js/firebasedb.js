@@ -246,7 +246,9 @@ function displayPropertyCards(querySnapshot) {
     <a href="tel:01090009000"class="  whatsapp-btn wb-a"> 
     <button type="button" class="butn whatsapp-btn"style="font-size: 16px; font-weight: bold; color: white;"><ion-icon name="logo-whatsapp" class="btn-wtsapp"></ion-icon>whatsapp</button>
     </a>
-
+    <a href="tel:01090009000"class="  whatsapp-btn wb-a"> 
+    <button type="button" class="butn whatsapp-btn"style="font-size: 16px; font-weight: bold; color: white;"><ion-icon name="logo-whatsapp" class="btn-wtsapp"></ion-icon>share</button>
+    </a>
     </div>
     </div>
   </div>
