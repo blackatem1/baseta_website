@@ -21,7 +21,7 @@ const analytics = firebase.analytics();
 function get(gets) {
   showProgressBar();
   db.collection(gets).get().then((querySnapshot) => {
-    displayPropertyCards(querySnapshot)
+    displayPropertyCards(querySnapshot,2)
   });
 }
 
@@ -94,7 +94,7 @@ function searchchnaged() {
 }
 function change_page_ind() {
   window.location.href = "../login/login.html";
-  
+
 }
 
 
@@ -179,18 +179,24 @@ function getArabicTranslation(englishText) {
       return englishText;
   }
 }
-function CardGO(id,area,title) {
-  analytics.logEvent('watched', { ID: id, Area: area ,Title:title });
-    window.location.href = "./product/product.html?Product_ID=" + encodeURIComponent(id); 
+function CardGO(id, area, title) {
+  analytics.logEvent('watched', { ID: id, Area: area, Title: title });
+  window.location.href = "./product/product.html?Product_ID=" + encodeURIComponent(id);
 }
-function displayPropertyCards(querySnapshot) {
+function displayPropertyCards(querySnapshot,currentp) {
   // Clear the previous data
   document.getElementsByClassName("property-list").innerHTML = "";
   let c = 0;
+  let startIndex = (currentp - 1) * 10;
+  let endIndex = startIndex + 10;
+
   // Iterate through the documents in the query snapshot
   querySnapshot.forEach((doc) => {
-    // Access data from each document
     c++;
+    console.log(c-1,startIndex,endIndex);
+    // Access data from each document 
+    // if (currentp) {
+      // if (c-1 >= startIndex && c-1 < endIndex) {
 
     const propertyData = doc.data();
     const cardBanner = document.createElement("li");
@@ -290,6 +296,7 @@ function displayPropertyCards(querySnapshot) {
       img = document.createElement("img");
       img.className = "d-block w-100 h-100";
       img.src = element;
+      diva.onclick = ()=>CardGO(doc.id,propertyData.title,propertyData.area);
 
       diva.appendChild(img);
       osa.appendChild(diva);
@@ -297,9 +304,138 @@ function displayPropertyCards(querySnapshot) {
     x = document.getElementsByClassName("property-list");
     x[0].appendChild(cardBanner);
     hideProressBar();
+  // }
 
   });
 }
+// function displayPropertyCards(querySnapshot, currentPage = 1, cardsPerPage = 10) {
+//   // Clear the previous data
+//   const propertyList = document.getElementsByClassName("property-list")[0];
+//   propertyList.innerHTML = "";
+//   let c = 0;
+
+  // Calculate the starting index and ending index for the current page
+//   const startIndex = (currentPage - 1) * cardsPerPage;
+//   const endIndex = startIndex + cardsPerPage;
+
+//   // Iterate through the documents in the query snapshot
+//   querySnapshot.forEach((doc, index) => {
+//     if (index >= startIndex && index < endIndex) {
+//       // Access data from each document
+//       c++;
+//     const propertyData = doc.data();
+//     const cardBanner = document.createElement("li");
+//     propertyData.title = getArabicTranslation(propertyData.title);
+//     price = propertyData.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+
+//     cardBanner.innerHTML = `
+//     <div class="property-card" >
+//     <figure class="card-banner h-100">
+//       <div id="carouselExampleControls-${c}" class="carousel h-100 slide" data-bs-ride="carousel">
+//       <div class="carousel-inner h-100">
+
+//       </div>
+//       <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls-${c}" data-bs-slide="prev">
+//         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+//       </button>
+//       <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls-${c}" data-bs-slide="next">
+//         <span class="carousel-control-next-icon" aria-hidden="true"></span>
+//       </button>
+//     </div>
+        
+      
+//       <div  onclick="CardGO('${doc.id}','${propertyData.title}','${propertyData.area}')" class="card-badge cursor ${propertyData.typeofunit === 'rent' ? 'green' : 'blue'}">${propertyData.typeofunit === 'rent' ? 'للايجار' : 'للبيع'}</div>
+//       <div class="banner-actions" onclick="CardGO('${doc.id}','${propertyData.title}','${propertyData.area}')">
+//         <button class="banner-actions-btn">
+//           <ion-icon name="location"></ion-icon>
+//           <address>${propertyData.area_ar}d</address>
+//         </button>
+//         <button class="banner-actions-btn">
+//           <ion-icon name="camera"></ion-icon>
+//           <span>${propertyData.photos.length}</span>
+//         </button>
+       
+//       </div>
+//     </figure>
+//     <div class="card-content cursor"  onclick="CardGO('${doc.id}','${propertyData.title}','${propertyData.area}')" >
+//       <div class="card-price">
+//      <div><p> ${propertyData.typeofunit === 'rent' ? 'في الشهر' : 'السعر الكلي'}<p></div>/<strong>جنيه</strong><strong>${price}  </strong>
+//       </div>
+//       <h3 class="h3 card-title">
+//         <a >${propertyData.title}</a>
+//       </h3>
+//       <p class="card-text" style="   overflow: hidden;
+//       text-overflow: ellipsis;
+//       display: -webkit-box;
+//       -webkit-line-clamp: 2;
+//               line-clamp: 2; 
+//       -webkit-box-orient: vertical;">
+//       ${propertyData.desc_ar}
+//       </p>
+//       <ul class="card-list">
+//         <li class="card-item">
+//           <strong>${propertyData.Bedrooms}</strong>
+//           <ion-icon name="bed-outline"></ion-icon>
+//           <span>غرف النوم</span>
+//         </li>
+//         <li class="card-item">
+//           <strong>${propertyData.Bathrooms}</strong>
+//           <ion-icon name="man-outline"></ion-icon>
+//           <span>الحمامات</span>
+//         </li>
+//         <li class="card-item">
+//           <strong>${propertyData.Square_ft}</strong>
+//           <ion-icon name="square-outline"></ion-icon>
+//           <span>قدم مربع</span>
+//         </li>
+//       </ul>
+//     </div>
+//     <div class="card-footer ">
+//   <a href="tel:01090009000"class="  call-btn wb-a"> 
+//   <button type="button" class="butn call-btn"style="font-size: 16px; font-weight: bold; color: white;">
+//   اتصال
+//   <ion-icon name="call-outline" class="btn-wtsapp"></ion-icon>
+//   </button>
+//   </a>
+//   <a href="https://wa.me/01090009000"class=" whatsapp-btn wb-a"> 
+//   <button type="button" class="butn whatsapp-btn"style="font-size: 16px; font-weight: bold; color: white;">
+//   واتساب
+//   <ion-icon name="logo-whatsapp" class="btn-wtsapp"></ion-icon>
+//   </button>
+//   </a>
+//     </div>
+//     </div>
+//   </div>
+//     `
+//     // Your code here
+//     let osa = cardBanner.querySelector(".carousel-inner");
+
+//     propertyData.photos.forEach((element, index) => {
+//       diva = document.createElement("div");
+//       if (index == 0) {
+//         diva.className = "carousel-item active h-100";
+//       } else {
+//         diva.className = "carousel-item  h-100";
+//       }
+
+//       img = document.createElement("img");
+//       img.className = "d-block w-100 h-100";
+//       img.src = element;
+
+//       diva.appendChild(img);
+//       osa.appendChild(diva);
+//     });
+//     x = document.getElementsByClassName("property-list");
+//     x[0].appendChild(cardBanner);
+//     hideProressBar();
+// //     x = document.getElementsByClassName("property-list");
+// //     x[0].appendChild(cardBanner);
+// //     hideProressBar();
+//     }
+//   });
+
+//   hideProressBar();
+// }
 
 
 function selectsch() {

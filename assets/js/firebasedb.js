@@ -261,9 +261,10 @@ function displayPropertyCards(querySnapshot) {
         }else{
           diva.className = "carousel-item  h-100";
         }
-  
+        
         img = document.createElement("img");
         img.className = "d-block w-100 h-100";
+        diva.onclick = ()=>CardGO(doc.id,propertyData.title,propertyData.area);
         img.src = element;
   
         diva.appendChild(img);
