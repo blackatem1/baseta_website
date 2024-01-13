@@ -2266,7 +2266,7 @@ h4{
 }
 
 .hero {
-  height: 75vh !important;
+  height: 85vh !important;
   position: relative;
   z-index: 100;
   overflow: hidden;
