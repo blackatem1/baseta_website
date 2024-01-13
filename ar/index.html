@@ -37,11 +37,28 @@
   <navbar>
     <div class="header-top" style="">
       <div class="constainer headn">
-        <a href="../index.html">
+        <!-- <a href="../index.html">
           <button class="butn btn-secondary" type="button">
-            English
+            Eng
           </button>
-        </a>
+        </a> -->
+        <ul class="header-top-social-list">
+          <li class="fb-li">
+            <a href="https://www.facebook.com/mybaseta/" class="header-top-social-link">
+              <ion-icon name="logo-facebook"></ion-icon>
+            </a>
+          </li>
+          <li class="fb-li">
+            <a href="../index.html" class="header-top-social-link">
+              <ion-icon name="globe"></ion-icon>
+              <a href="../index.html" class="header-top-link">
+                <p style="color: white;">Eng</p>
+
+              </a>
+
+            </a>
+          </li>
+        </ul>
         <div class="wrapper">
           <ul class="header-top-list">
             <li>
@@ -73,7 +90,7 @@
             <form class=" w-100" onsubmit="performSearch()">
               <div class="container cont">
                 <p class="hero-tistle"style="  word-break: auto-phrase !important;
-                white-space:normal;">فلتجد منزل احلامك معنا</p>
+                white-space:normal;">بيتك عندنا</p>
                 <div class="row rentsandsales d-flex  w-100">
 
                   <input type="radio" onchange="selectsch()" id="rent" name="type-btn" value="rent" class="vnone"
@@ -339,9 +356,6 @@
         <div class="container">
 
           <!-- <p class="section-subtitle">Properties</p> -->
-
-          <h2 class="h2 section-title">NEW Listings</h2>
-
           <ul class="property-list has-scrollbar">
             <script>get("units")</script>
 
@@ -362,16 +376,7 @@
     <div class="container-fluid">
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav navbar-nava me-auto mb-2 gap-3 mb-lg-0">
-          <ul class="header-top-social-list">
-            <li class="fb-li">
-              <a href="https://www.facebook.com/mybaseta/" class="header-top-social-link">
-                <ion-icon name="logo-facebook"></ion-icon>
-                <a href="https://www.facebook.com/mybaseta/" class="header-top-link">
-                  <p>Facebook</p>
-                </a>
-              </a>
-            </li>
-          </ul>
+         
           <button class="header-top-btn" onclick="change_page_ind()">الموظفين</button>
         </ul>
         <div class="d-flex inof-foot gap-3">
@@ -381,12 +386,7 @@
               <span>info@baseta.com</span>
             </a>
           </li>
-          <li>
-            <a href="#" class="header-top-link">
-              <ion-icon name="location-outline"></ion-icon>
-              <p>105/A, Maadi Tower, MAADI</p>
-            </a>
-          </li>
+        
 
         </div>
       </div>

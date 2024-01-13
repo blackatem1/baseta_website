@@ -43,11 +43,28 @@
           </li>
         </ul>
         <div class="wrapper">
-          <a href="./ar/index.html">
+          <li class="fb-li">
+            <a href="https://www.facebook.com/mybaseta/" class="header-top-social-link">
+              <ion-icon name="logo-facebook"></ion-icon>
+              <a href="https://www.facebook.com/mybaseta/" class="header-top-link">
+              </a>
+            </a>
+          </li>
+          <li class="fb-li">
+            <a href="./ar/index.html" class="header-top-social-link">
+              <ion-icon name="globe"></ion-icon>
+              <a href="./ar/index.html" class="header-top-link">
+                <p style="color: white;">Ar</p>
+
+              </a>
+
+            </a>
+          </li>
+          <!-- <a href="./ar/index.html">
             <button class="butn btn-secondary" type="button">
-              عربي
+              Ar
             </button>
-          </a>
+          </a> -->
         </div>
       </div>
     </div>
@@ -72,7 +89,7 @@
             <form class=" w-100" onsubmit="performSearch()">
               <div class="container cont">
                 <p class="hero-tistle" style="  word-break: auto-phrase !important;
-                white-space:normal;">Find Your Dream House By Us</p>
+                white-space:normal;">Find Your Dream House</p>
                 <div class="row rentsandsales d-flex  w-100">
 
                   <input type="radio" onchange="selectsch()" id="rent" name="type-btn" value="rent" class="vnone"
@@ -314,9 +331,6 @@
         <div class="container">
 
           <!-- <p class="section-subtitle">Properties</p> -->
-
-          <h2 class="h2 section-title">NEW Listings</h2>
-
           <ul class="property-list has-scrollbar">
             <script>get("units")</script>
 
@@ -343,88 +357,15 @@
                 <span>info@baseta.com</span>
               </a>
             </li>
-            <li>
-              <a href="#" class="header-top-link">
-                <ion-icon name="location-outline"></ion-icon>
-                <p>105/A, Maadi Tower, MAADI</p>
-              </a>
-            </li>
+          
         </ul>
         <div class="d-flex gap-3">
-          <ul class="header-top-social-list">
-            <li class="fb-li">
-              <a href="https://www.facebook.com/mybaseta/" class="header-top-social-link">
-                <ion-icon name="logo-facebook"></ion-icon>
-                <a href="https://www.facebook.com/mybaseta/" class="header-top-link">
-                  <p>FACEBOOK</p>
-                </a>
-              </a>
-            </li>
-          </ul>
+          
           <button class="header-top-btn" onclick="change_page()">STAFF</button>
         </div>
       </div>
     </div>
   </nav>
-  <!-- <footer class="footer">
-
-    <div class="overlay" data-overlay></div>
-
-    <div class="header-top">
-      <div class="container foot-st">
-        
-        <ul class="header-top-list">
-          <li>
-            <a href="mailto:info@homeverse.com" class="header-top-link">
-              <ion-icon name="mail-outline"></ion-icon>
-              <span>info@baseta.com</span>
-            </a>
-          </li>
-          <li>
-            <a href="#" class="header-top-link">
-              <ion-icon name="location-outline"></ion-icon>
-              <p>105/A, Maadi Tower, MAADI</p>
-            </a>
-          </li>
-
-
-        </ul>
-
-        <div class="wrapper navbar-text">
-          <ul class="header-top-social-list">
-
-
-            <li class="fb-li">
-              <a href="https://www.facebook.com/mybaseta/" class="header-top-social-link">
-                <ion-icon name="logo-facebook"></ion-icon>
-                <a href="https://www.facebook.com/mybaseta/" class="header-top-link">
-                  <p>FACEBOOK</p>
-                </a>
-              </a>
-            </li>
-
-
-
-
-
-
-
-
-
-          </ul>
-
-          <button class="header-top-btn" onclick="change_page()">STAFF</button>
-
-        </div>
-
-      </div>
-    </div>
-
-
-
-
-  </footer> -->
-
   <script>
 
     // console.log(document.querySelector('input[name="type-btn"]:checked').value);
