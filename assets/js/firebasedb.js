@@ -162,15 +162,19 @@ function performSearch() {
   
 
 }
+currentp = 1;
 
 function displayPropertyCards(querySnapshot) {
   // Clear the previous data
   document.getElementsByClassName("property-list").innerHTML ="";
-  let c=0;
+  let c = 0;
+  let startIndex = (currentp - 1) * 10;
+  let endIndex = startIndex + 10;
   // Iterate through the documents in the query snapshot
   querySnapshot.forEach((doc) => {
     // Access data from each document
     c++;
+    if (c-1 >= startIndex && c-1 < endIndex) {
     
     const propertyData = doc.data();
     price = propertyData.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -273,8 +277,13 @@ function displayPropertyCards(querySnapshot) {
     x= document.getElementsByClassName("property-list");
     x[0].appendChild(cardBanner);
     hideProressBar();
-
+    }
   });
+  hideProressBar();
+  if (c-1 <= startIndex ) {
+    let as = document.getElementById("navigat");
+      as.style.display = "none";
+  }
 }
 
 
