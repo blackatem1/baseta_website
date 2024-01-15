@@ -9,6 +9,12 @@ var unit = urlParams.get('unit');
 window.onpopstate = function(event) {
   location.reload();
 }
+function share_search(id) {
+  let copyText =window.location.origin+"/BASETA_WEBSITE/ar/product/product.html?Product_ID=" + encodeURIComponent(id);
+  analytics.logEvent('shared', {share_link:window.location.href })
+  navigator.clipboard.writeText(copyText);
+  document.getElementById("shareButton_"+id).innerText="تم النسخ الي الحافظه";
+}
 function getArabicTranslation(englishText) {
   switch (englishText) {
     case 'Apartment':
@@ -159,7 +165,10 @@ function displayPropertyCardss(querySnapshot,id) {
               <span>قدم مربع</span>
             </li>
           </ul>
-              <div class="card-footer" style="justify-content:normal;gap:10px;">
+              <div class="card-footer" style="flex-direction:column;gap:10px;">
+              <div style="display: inline-flex;
+              /* justify-content: space-evenly; */
+              gap: 4%;">
               <a href="tel:01090009000"class="  call-btn "> 
               <button type="button" class="butn call-btn"style="font-size: 16px; font-weight: bold; color: white;">
               اتصال
@@ -171,7 +180,15 @@ function displayPropertyCardss(querySnapshot,id) {
               واتساب
               <ion-icon name="logo-whatsapp" class="btn-wtsapp"></ion-icon>
               </button>
+              </a> 
+              </div>
+              <div class="buttons sharebtn w-100">
+              <a class="upper-share-btn butn wb-a" style="
+              width: 100% !important;"> 
+                <button type="button" id="shareButton_${id}" onclick="share_search('${id}')" class=" share-btn"style="font-size: 16px; font-weight: bold; color: white;">مشاركه<ion-icon name="share-social-outline"class="btn-wtsapp"></ion-icon></button>
               </a>
+            </div>
+              
               </div>
           </div>
 

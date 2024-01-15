@@ -77,7 +77,12 @@ function getSR() {
     function change_page(){
       window.location.href = "../login/login.html";
     } 
-    
+function share_search(id) {
+  let copyText =window.location.origin+"/BASETA_WEBSITE/product/product.html?Product_ID=" + encodeURIComponent(id);
+  analytics.logEvent('shared', {share_link:window.location.href })
+  navigator.clipboard.writeText(copyText);
+  document.getElementById("shareButton_"+id).innerText="copied to clipboard";
+}
 function CardGOF(id) {
   window.location.href = "../product/product.html?Product_ID=" + encodeURIComponent(id); 
 }
@@ -140,13 +145,20 @@ function displayPropertyCardss(querySnapshot,id) {
                 <span>Square Ft</span>
               </li>
             </ul>
-            <div class="card-footer" style="justify-content:normal;gap:10px;">
-            <a href="tel:01090009000"class="  call-btn "> 
-            <button type="button" class=" butn call-btn"style="font-size: 16px; font-weight: bold; color: white;"><ion-icon name="call-outline" class="btn-wtsapp"></ion-icon>Call</button>
+            <div class="card-footer" style="justify-content:normal;flex-direction:column">
+            <div class="buttons">
+            <a href="tel:01090009000"class="   call-btn wb-a"> 
+              <button type="button" class="butn call-btn"style="font-size: 16px; font-weight: bold; color: white;"><ion-icon name="call-outline" class="btn-wtsapp"></ion-icon>Call</button>
             </a>
-            <a href="https://wa.me/01090009000"class=" whatsapp-btn "> 
-            <button type="button" class="butn whatsapp-btn"style="font-size: 16px; font-weight: bold; color: white;"><ion-icon name="logo-whatsapp" class="btn-wtsapp"></ion-icon>whatsapp</button>
+            <a href="https://wa.me/01090009000"class="  whatsapp-btn wb-a"> 
+              <button type="button" class="butn whatsapp-btn"style="font-size: 16px; font-weight: bold; color: white;"><ion-icon name="logo-whatsapp" class="btn-wtsapp"></ion-icon>whatsapp</button>
             </a>
+          </div>
+          <div class="buttons w-100">
+            <a class="upper-share-btn butn wb-a"> 
+              <button type="button" id="shareButton_${id}" onclick="share_search('${id}')" class=" share-btn"style="font-size: 16px; font-weight: bold; color: white;"><ion-icon name="share-social-outline"class="btn-wtsapp"></ion-icon>Share</button>
+            </a>
+          </div>
             </div>
  
             </div>

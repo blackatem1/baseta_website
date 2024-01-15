@@ -2381,7 +2381,9 @@ flex-direction: row;
     width: 255px;
   }
 }
-
+.sharebtn{
+  display: block;
+}
 .hero {
   height: 85vh !important;
   position: relative;
