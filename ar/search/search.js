@@ -9,12 +9,7 @@ var unit = urlParams.get('unit');
 window.onpopstate = function(event) {
   location.reload();
 }
-function share_search(id) {
-  let copyText =window.location.origin+"/BASETA_WEBSITE/ar/product/product.html?Product_ID=" + encodeURIComponent(id);
-  analytics.logEvent('shared', {share_link:window.location.href })
-  navigator.clipboard.writeText(copyText);
-  document.getElementById("shareButton_"+id).innerText="تم النسخ الي الحافظه";
-}
+
 function getArabicTranslation(englishText) {
   switch (englishText) {
     case 'Apartment':
@@ -185,7 +180,7 @@ function displayPropertyCardss(querySnapshot,id) {
               <div class="buttons sharebtn w-100">
               <a class="upper-share-btn butn wb-a" style="
               width: 100% !important;"> 
-                <button type="button" id="shareButton_${id}" onclick="share_search('${id}')" class=" share-btn"style="font-size: 16px; font-weight: bold; color: white;">مشاركه<ion-icon name="share-social-outline"class="btn-wtsapp"></ion-icon></button>
+                <button type="button"  data-bs-toggle="modal" data-bs-target="#exampleModal_${id}"class=" share-btn"style="font-size: 16px; font-weight: bold; color: white;">مشاركه<ion-icon name="share-social-outline"class="btn-wtsapp"></ion-icon></button>
               </a>
             </div>
               
@@ -208,7 +203,34 @@ function displayPropertyCardss(querySnapshot,id) {
             </div>
         </div>
     </div>
-</section>`;
+</section>
+<div class="modal modal_${id} fade text-end" id="exampleModal_${id}" tabindex="-1" aria-labelledby="exampleModalLabel_${id}" aria-hidden="true"style="  z-index: 99999999999 !important;">
+<div class="modal-dialog modal-dialog-centered"style="z-index: 9999999 !important;">
+  <div class="modal-content">
+    <div class="modal-header text-end w-100">
+      <h1 class="modal-title fs-5 text-end w-100" id="exampleModalLabel">مشاركه</h1>
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body" style="">
+      <div class="buttons" style="justify-content: space-around;">
+        <a class="   call-btn wb-a"style="backgroung" onclick="share_search('${id}')"> 
+          <button type="button"  id="shareButton_${id}"  class="butn call-btn"style="font-size: 16px; font-weight: bold; color: white;">النسخ<ion-icon name="copy"class="btn-wtsapp"></ion-icon></button>
+        </a>
+        <a onclick="myFunction_wa('${id}')" class="  whatsapp-btn wb-a" target="_blank" data-bs-dismiss="modal" aria-label="Close" > 
+          <button type="button" class="butn whatsapp-btn"style="font-size: 16px; font-weight: bold; color: white;">المشاركه في الواتس <ion-icon name="logo-whatsapp" class="btn-wtsapp"></ion-icon></button>
+        </a>
+      </div>
+    </div>
+    <div class="modal-footer justify-content-start">
+      <button type="button" class="butn btn-secondary" data-bs-dismiss="modal">اغلاق</button>
+    </div>
+  </div>
+</div>
+</div>
+
+
+
+`;
     x= document.getElementsByClassName("sreasults");
     x[0].appendChild(cardBanner);
     osa=document.getElementsByClassName("carousel-inner-"+id);
@@ -238,4 +260,15 @@ function displayPropertyCardss(querySnapshot,id) {
     function change_page(){
       window.location.href = "../../login/login.html";
     } 
-    
+    function share_search(id) {
+      let copyText =window.location.origin+"/BASETA_WEBSITE/ar/product/product.html?Product_ID=" + encodeURIComponent(id);
+      analytics.logEvent('shared', {share_link:window.location.href })
+      navigator.clipboard.writeText(copyText);
+      document.getElementById("shareButton_"+id).innerText="تم النسخ الي الحافظه";
+    }
+    function myFunction_wa(id) {
+      let copyText =window.location.origin+"/BASETA_WEBSITE/ar/product/product.html?Product_ID=" + encodeURIComponent(id);
+      newtext= "whatsapp://send?text="+copyText;
+      analytics.logEvent('shared', {share_link:window.location.href })
+      window. open(newtext, '_blank');
+    }

@@ -116,3 +116,9 @@ function myFunction() {
   navigator.clipboard.writeText(copyText);
   document.getElementById("shareButton").innerText="copied to clipboard";
 }
+function myFunction_wa() {
+  var copyText =window.location.href;
+  newtext= "whatsapp://send?text="+copyText;
+  analytics.logEvent('shared', {share_link:window.location.href })
+  window. open(newtext, '_blank');
+}

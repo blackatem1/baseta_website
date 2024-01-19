@@ -82,7 +82,7 @@
               </div>
               <div class="buttons w-100">
                 <a class="upper-share-btn butn wb-a"> 
-                  <button type="button" id="shareButton" onclick="myFunction()" class=" share-btn"style="font-size: 16px; font-weight: bold; color: white;"><ion-icon name="share-social-outline"class="btn-wtsapp"></ion-icon>مشاركه</button>
+                  <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"   class=" share-btn"style="font-size: 16px; font-weight: bold; color: white;"><ion-icon name="share-social-outline"class="btn-wtsapp"></ion-icon>مشاركه</button>
                 </a>
               </div>
             </div>
@@ -125,7 +125,32 @@
     </div>
   </section>
   <!-- content -->
-
+  <div class="modal fade text-end" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"style="  z-index: 99999999999 !important;">
+    <div class="modal-dialog modal-dialog-centered"style="z-index: 9999999 !important;">
+      <div class="modal-content">
+        <div class="modal-header text-end w-100">
+          <h1 class="modal-title fs-5 text-end w-100" id="exampleModalLabel">مشاركه</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" style="">
+          <div class="buttons" style="justify-content: space-around;">
+            <a class="   call-btn wb-a"style="backgroung" onclick="myFunction()"> 
+              <button type="button" id="shareButton"  class="butn call-btn"style="font-size: 16px; font-weight: bold; color: white;">النسخ<ion-icon name="copy"class="btn-wtsapp"></ion-icon></button>
+            </a>
+            <a onclick="myFunction_wa()" class="  whatsapp-btn wb-a" target="_blank" data-bs-dismiss="modal" aria-label="Close" > 
+              <button type="button" class="butn whatsapp-btn"style="font-size: 16px; font-weight: bold; color: white;">المشاركه في الواتس <ion-icon name="logo-whatsapp" class="btn-wtsapp"></ion-icon></button>
+            </a>
+          </div>
+        </div>
+        <div class="modal-footer justify-content-start">
+          <button type="button" class="butn btn-secondary" data-bs-dismiss="modal">اغلاق</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  
   <nav class="foot-st header-top navbar-expand-lg ">
     <div class="container-fluid">
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
