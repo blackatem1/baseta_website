@@ -267,7 +267,7 @@ function displayPropertyCards(querySnapshot) {
         }
         
         img = document.createElement("img");
-        img.className = "d-block w-100 h-100";
+        img.className = "d-block w-100 h-100 clicke";
         diva.onclick = ()=>CardGO(doc.id,propertyData.title,propertyData.area);
         img.src = element;
   

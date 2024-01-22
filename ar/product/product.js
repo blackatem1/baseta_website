@@ -152,7 +152,7 @@ function displayPropertyCardss(querySnapshot) {
       var copyText =window.location.href;
   analytics.logEvent('shared', {share_link:window.location.href })
       navigator.clipboard.writeText(copyText);
-      document.getElementById("shareButton").innerText="تم الحفظ في الحافظه";
+      document.getElementById("shareButton").innerText="تم النسخ";
     }
     function myFunction_wa() {
       var copyText =window.location.href;

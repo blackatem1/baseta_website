@@ -368,8 +368,9 @@ a {
   width: 15%;
 }
 
-
-
+.clicke{
+  cursor: pointer;
+}
 .wrapper{
   background-color: white;
 border-radius: 10px !important;

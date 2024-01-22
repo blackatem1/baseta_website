@@ -1701,7 +1701,9 @@ flex-direction: row;
   }
 }
 
-
+.clicke{
+  cursor: pointer;
+} 
 /**
  * responsive for larger than 768px screen
  */

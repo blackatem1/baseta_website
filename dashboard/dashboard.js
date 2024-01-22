@@ -93,12 +93,6 @@ function searchchnagedash() {
       var selectedFiles = event.target.files;
     
       // Limit the number of files to 3
-      if (selectedFiles.length > 3) {
-        alert('You can only upload up to three files.');
-        // Clear the input field to prevent exceeding the limit
-        event.target.value = '';
-        return;
-      }
     
       for (var i = 0; i < selectedFiles.length; i++) {
         var file = selectedFiles[i];
